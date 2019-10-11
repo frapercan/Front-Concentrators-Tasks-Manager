@@ -1,0 +1,134 @@
+﻿<mat-toolbar class="align-items">{{ estudio.nombre_estudio }}</mat-toolbar>
+
+<mat-tab-group (selectedTabChange)="tabChanged($event)">
+  <mat-tab label="{{ 'result.analisisComunicaciones' | translate }}">
+    <table
+      mat-table
+      [dataSource]="communicationResult"
+      class="mat-elevation-z8"
+    >
+      <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <td mat-cell *matCellDef="let element">
+          <span> {{ "result." + element.nombre | translate }}</span>
+        </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="cantidad">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.cantidad }}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="porcentaje">
+        <th mat-header-cell *matHeaderCellDef>Weight</th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element.nombre != 'Total'"
+            >{{
+              (element.cantidad / estudio.total_cerco) * 100 | number: ".2-2"
+            }}%</span
+          >
+        </td>
+      </ng-container>
+
+      <tr
+        mat-header-row
+        *matHeaderRowDef="displayedColumns"
+        style="display: none"
+      ></tr>
+      <tr
+        mat-row
+        [ngClass]="{
+          'make-green': row.nombre == 'Finalizado correctamente',
+          'make-red': row.nombre == 'Inaccesibles',
+          'make-orange': row.nombre == 'Pendientes'
+        }"
+        *matRowDef="let row; columns: communicationDisplayedColumns"
+      ></tr>
+    </table>
+
+
+    <div style="height: 650px">
+      <div id="chartCommunicationContainer" style="height: 90%; width: 100%;"></div>
+    </div>
+
+  </mat-tab>
+
+  <!------------------------------------------------------------------------>
+  <mat-tab label="{{ 'result.issuesAnalysis' | translate }}">
+    <table mat-table [dataSource]="issuesResult" class="mat-elevation-z8">
+      <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+
+      <ng-container matColumnDef="nombre_incidencia">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "incident.name" | translate }}.
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <span> {{ element.nombre_incidencia }}</span>
+        </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="detectados">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "issues.detected" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.detectados }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="porcentaje_detectados">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "issues.porcentaje_detectados" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{
+            (element.detectados / estudio.total_cerco) * 100 | number: ".2-2"
+          }}
+          %
+        </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="corregidos">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "issues.fixed" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.arreglados }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="porcentaje_arreglados">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "issues.porcentaje_arreglados" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element.fixflag == 1 || element.fixflag == 2">
+            {{
+              (element.detectados / element.arreglados) * 100 | number: ".2-2"
+            }}
+            %</span
+          >
+        </td>
+      </ng-container>
+
+      <tr
+        mat-header-row
+        *matHeaderRowDef="issuesDisplayedColumns"
+        style="border-style: dotted dashed solid double;"
+      ></tr>
+      <tr mat-row *matRowDef="let row; columns: issuesDisplayedColumns"></tr>
+    </table>
+
+    <div style="height: 650px">
+      <div id="chartIssuesContainer" style="height: 90%; width: 100%;"></div>
+    </div>
+  </mat-tab>
+</mat-tab-group>

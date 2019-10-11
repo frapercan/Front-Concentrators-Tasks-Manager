@@ -1,0 +1,68 @@
+{
+  "loggedIn": "Logged in as:",
+  "pageTitle": "Cerco Task",
+  "TOOLBAR_TITLE": "Toolbar Title",
+  "welcome": "Welcome",
+  "forms": {
+    "username": "Username",
+    "password": "Password"
+  },
+  "section": {
+    "home": "Studies List",
+    "documentation": "Documentacion",
+    "apidoc": "API"
+  },
+  "action": {
+    "logout": "Logout",
+    "login": " Login"
+  },
+  "login": {
+    "title": "Access",
+    "username": "Enter your user name",
+    "password": "Password here"
+  },
+  "error": {
+    "userRequired": "Username is required",
+    "passwordRequired": "Password is required"
+  },
+  "study": {
+    "id": "id",
+    "name": "Name",
+    "target": "Target",
+    "results": "Results",
+    "tipoEjecucion": "EXECUTION TYPE",
+    "progress": "PROGRESS",
+    "ID":"ID",
+    "NAME":"NAME",
+    "DATE":"DATE",
+    "TARGETS":"TARGETS"
+    
+  },
+  "result": {
+    "analisisComunicaciones": "Comunication analysis",
+    "Total": "Total",
+    "Finalizado correctamente": "Successfully finnished",
+    "Ping KO": "Ping KO",
+    "Error apertura socket": "Socket opening error",
+    "CERCO ocupado": "CERCO bussy",
+    "GPRS Inestable": "Unstable GPRS",
+    "Error de autenticacion": "Authentication error",
+    "Pendientes": "Pending",
+    "Inaccesibles": " Unreachable",
+    "issues": "Issues (%)",
+    "issuesAnalysis": "Issues Analysis",
+    "graphics": "Graphics",
+    "comunicationGraphicTitle": "Communication Results (%)",
+    "issuesGraphicTitle": "Issues Results (%)",
+    "true": "Total CERCOs",
+    "totalAmountAnalyzed": "Total of CERCOs Analyzed: "
+
+  },
+  "issues": {
+    "name": "Name",
+    "detected": "Detected",
+    "fixed": "Fixed",
+    "porcentaje_detectados": "% Detected",
+    "porcentaje_arreglados": "% Fixed",
+    "detectedLabel": "Detected: "  }
+}

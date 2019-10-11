@@ -1,0 +1,35 @@
+﻿<div class="login-wrapper Aligner" fxLayout="row" fxLayoutAlign="center center">
+
+    <mat-card class="box">
+        <mat-card-header>
+            <mat-card-title>Log in</mat-card-title>
+        </mat-card-header>
+
+        <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <mat-card-content>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Username" type="text" formControlName="username" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                        <div *ngIf="f.username.errors.required">{{"error.userRequired" | translate}}</div>
+                    </div>
+
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Password" type="password" formControlName="password"
+                        class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">{{"error.passwordRequired" | translate}}</div>
+                    </div>
+                </mat-form-field>
+            </mat-card-content>
+            <button mat-stroked-button color="primary" class="btn btn-primary btn-block" [disabled]="loading">
+                {{"action.login" | translate}}   
+            </button>
+            <mat-progress-spinner style="margin: auto; padding-top: 5px" *ngIf="loading" [mode]="'indeterminate'" [diameter]="40"></mat-progress-spinner>  
+            <mat-error *ngIf="error">{{error}}</mat-error>
+        </form>
+    </mat-card>
+</div>
+

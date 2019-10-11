@@ -1,0 +1,33 @@
+<span
+  ><navigation-bar
+    *ngIf="currentUser"
+    class="topbar"
+    (toggleSidenav)="navigationSidenav.toggle()"
+    (closeSidenav)="navigationSidenav.close()"
+  >
+  </navigation-bar>
+
+  <mat-toolbar class="welcome" color="primary" *ngIf="!currentUser">{{
+    "welcome" | translate
+  }}</mat-toolbar>
+
+  <mat-sidenav-container style="height: 100vh;">
+    <mat-sidenav #navigationSidenav mode="push" role="navigation" class="test2">
+      <mat-toolbar>
+        <!-- trick in order to not overlap with navigation bar-->
+        <mat-toolbar-row> </mat-toolbar-row>
+        <mat-toolbar-row>
+          <h2 class="toolbar-title">{{ "TOOLBAR_TITLE" | translate }}</h2>
+        </mat-toolbar-row>
+      </mat-toolbar>
+    </mat-sidenav>
+
+    <mat-sidenav-content
+      class="content"
+      style=" padding-top: 64px;"
+      role="main"
+    >
+      <router-outlet style="height: 100%;"></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</span>
