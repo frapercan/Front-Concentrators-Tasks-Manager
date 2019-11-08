@@ -1,0 +1,74 @@
+﻿<table mat-table [dataSource]="issues" class="mat-elevation-z8">
+  <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Name Issue Column -->
+  <ng-container matColumnDef="nombre_incidencia">
+    <th mat-header-cell *matHeaderCellDef>{{ "issues.name" | translate }}.</th>
+    <td mat-cell *matCellDef="let element">
+      <span> {{ element.nombre_incidencia }}</span>
+    </td>
+  </ng-container>
+
+  <!-- Issue detected Column -->
+  <ng-container matColumnDef="detectados">
+    <th mat-header-cell *matHeaderCellDef>
+      {{ "issues.detected" | translate }}
+    </th>
+    <td mat-cell *matCellDef="let element">
+      <span *ngIf="element.detectados != 0">{{ element.detectados }}</span>
+      <span *ngIf="element.detectados == 0"
+        ><img src="assets/img/perfect.png"
+      /></span>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="porcentaje_detectados">
+    <th mat-header-cell *matHeaderCellDef>
+      {{ "issues.porcentaje_detectados" | translate }}
+    </th>
+    <td mat-cell *matCellDef="let element">
+      <span *ngIf="element.detectados != 0">
+        {{ (element.detectados / study.total_cerco) * 100 | number: ".2-2" }}
+        %</span
+      >
+    </td>
+  </ng-container>
+
+  <!-- issue fixed Column -->
+  <ng-container matColumnDef="corregidos">
+    <th mat-header-cell *matHeaderCellDef>
+      {{ "issues.fixed" | translate }}
+    </th>
+    <td mat-cell *matCellDef="let element">
+      <span *ngIf="element.detectados != 0">
+        <span *ngIf="element.fixflag != 0">{{ element.arreglados }}</span>
+        <span *ngIf="element.fixflag == 0"> Not selected to fix </span>
+      </span>
+    </td>
+  </ng-container>
+
+  <!-- issue % fixed Column -->
+  <ng-container matColumnDef="porcentaje_arreglados">
+    <th mat-header-cell *matHeaderCellDef>
+      {{ "issues.porcentaje_arreglados" | translate }}
+    </th>
+    <td mat-cell *matCellDef="let element">
+      <span *ngIf="element.fixflag == 1 || element.fixflag == 2">
+        {{ (element.arreglados / element.detectados) * 100 | number: ".2-2" }}
+        %</span
+      >
+    </td>
+  </ng-container>
+
+  <tr
+    mat-header-row
+    *matHeaderRowDef="issuesDisplayedColumns"
+    style="border-style: dotted dashed solid double;"
+  ></tr>
+  <tr mat-row *matRowDef="let row; columns: issuesDisplayedColumns"></tr>
+</table>
+
+<div style="height: 650px">
+  <div id="chartIssuesContainer" style="height: 90%; width:100%;"></div>
+</div>

@@ -1,7 +1,13 @@
 {
   "loggedIn": "Logged in as:",
   "pageTitle": "Cerco Task",
-  "TOOLBAR_TITLE": "Toolbar Title",
+  "next": "Next",
+  "back": "Back",
+  "menu": {
+    "title": "Menu",
+    "concentrators": " Concentrators",
+    "studies": "Studies"
+  },
   "welcome": "Welcome",
   "forms": {
     "username": "Username",
@@ -26,17 +32,39 @@
     "passwordRequired": "Password is required"
   },
   "study": {
+    "form": {
+      "title": "Create a new  study",
+      "name": "Study name",
+      "namePlaceholder": " Descriptive name",
+      "description": "Description",
+      "descriptionPlaceholder": "Description of de study",
+      "selectCERCO": "CERCO targets",
+      "selectCERCOPlaceholder": "Upload list of Cerco",
+      "settings": "Settings",
+      "settingsPlaceholder": "Settings",
+      "issues": "Issues",
+      "loopLengthPlaceholder": "Repeat the study every x hours",
+      "attempts": "Communication attempts",
+      "executionModeLabel": "Execution Type: ",
+      "atLeastOne": "You must check at least one",      
+      "issuesSelector": "Issues Selector",
+      "issuesName": "Issues name",
+      "detect": "Detect",
+      "fix": "Fix",
+      "executionNumber":"Number of executions"
+    },
     "id": "id",
     "name": "Name",
+    "amount": "Amount Detected",
+    "percentage": "Percentage",
     "target": "Target",
     "results": "Results",
     "tipoEjecucion": "EXECUTION TYPE",
     "progress": "PROGRESS",
-    "ID":"ID",
-    "NAME":"NAME",
-    "DATE":"DATE",
-    "TARGETS":"TARGETS"
-    
+    "ID": "ID",
+    "NAME": "NAME",
+    "DATE": "DATE",
+    "TARGETS": "TARGETS"
   },
   "result": {
     "analisisComunicaciones": "Comunication analysis",
@@ -49,14 +77,17 @@
     "Error de autenticacion": "Authentication error",
     "Pendientes": "Pending",
     "Inaccesibles": " Unreachable",
-    "issues": "Issues (%)",
+    "issues": "Issues",
     "issuesAnalysis": "Issues Analysis",
     "graphics": "Graphics",
-    "comunicationGraphicTitle": "Communication Results (%)",
-    "issuesGraphicTitle": "Issues Results (%)",
+    "comunicationGraphicTitle": "Communication Results",
+    "issuesGraphicTitle": "Issues Results",
     "true": "Total CERCOs",
-    "totalAmountAnalyzed": "Total of CERCOs Analyzed: "
-
+    "totalAmountAnalyzed": "Amount of CERCOs Analyzed: ",
+    "Puerto Comandos Bloqueado": "Comamnd Socket Blocked",
+    "CERCO no encontrado en MongoDB": "Cerco Not found",
+    "Claves CERCO no encontrada en BDE": "Cerco Password Not found",
+    "amountCerco": " No. CERCOs"
   },
   "issues": {
     "name": "Name",
@@ -64,5 +95,7 @@
     "fixed": "Fixed",
     "porcentaje_detectados": "% Detected",
     "porcentaje_arreglados": "% Fixed",
-    "detectedLabel": "Detected: "  }
+    "remainingLabel": "Remaining: ",
+    "detectedLabel": "Detected: "
+  }
 }

@@ -1,0 +1,35 @@
+﻿<mat-form-field id="filter">
+  <input
+    matInput
+    (keyup)="applyFilter($event.target.value)"
+    placeholder="Filter"
+  />
+</mat-form-field>
+<button mat-stroked-button color="primary" (click)="displayFilter()">
+  Filter
+</button>
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-8">
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="id_concentrador">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      {{ "study.ID" | translate }}
+    </th>
+    <td mat-cell *matCellDef="let element">{{ element.id_concentrador }}</td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr
+    mat-row
+    *matRowDef="let row; columns: displayedColumns"
+  ></tr>
+</table>
+
+<mat-paginator
+  [pageSizeOptions]="[10, 50, 100]"
+  showFirstLastButtons
+></mat-paginator>
+
+

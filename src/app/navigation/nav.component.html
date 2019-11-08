@@ -1,33 +1,71 @@
-<span
-  ><navigation-bar
-    *ngIf="currentUser"
-    class="topbar"
-    (toggleSidenav)="navigationSidenav.toggle()"
-    (closeSidenav)="navigationSidenav.close()"
+<div class="container" [class.is-mobile]="mobileQuery.matches">
+    <mat-toolbar class="welcome" *ngIf="!currentUser">{{
+        "welcome" | translate
+      }}</mat-toolbar>
+  <mat-toolbar color="primary" class="toolbar" *ngIf="currentUser">
+    <button mat-icon-button (click)="snav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <h1 class="app-name" [routerLink] = "['/']">{{ "pageTitle" | translate }}</h1>
+
+    
+    
+    <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+      <li fxHide.xs>
+        <button mat-icon-button>
+          <mat-icon>settings</mat-icon>
+        </button>
+      </li>
+
+      <li fxHide.xs>
+        <button mat-icon-button>
+          <mat-icon>help_outline</mat-icon>
+        </button>
+      </li>
+
+      <li>
+        <button mat-icon-button [matMenuTriggerFor]="auth">
+          <mat-icon>person_outline</mat-icon>
+        </button>
+        <mat-menu #auth="matMenu">
+          <button mat-menu-item [routerLink] (click)="logout(); snav.close()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Sign out</span>
+          </button>
+        </mat-menu>
+      </li>
+    </ul>
+  </mat-toolbar>
+
+  <mat-sidenav-container
+    class="sidenav-container"
+    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
   >
-  </navigation-bar>
-
-  <mat-toolbar class="welcome" color="primary" *ngIf="!currentUser">{{
-    "welcome" | translate
-  }}</mat-toolbar>
-
-  <mat-sidenav-container style="height: 100vh;">
-    <mat-sidenav #navigationSidenav mode="push" role="navigation" class="test2">
-      <mat-toolbar>
-        <!-- trick in order to not overlap with navigation bar-->
-        <mat-toolbar-row> </mat-toolbar-row>
-        <mat-toolbar-row>
-          <h2 class="toolbar-title">{{ "TOOLBAR_TITLE" | translate }}</h2>
+    <mat-sidenav
+      #snav
+      [mode]="mobileQuery.matches ? 'over' : 'push'"
+      [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56"
+    >
+      <mat-nav-list style="padding-top: 0px">
+        <mat-toolbar-row style="background-color: #3f51b5">
+          <h2 class="toolbar-title">{{ "menu.title" | translate }}</h2>
         </mat-toolbar-row>
-      </mat-toolbar>
+        <a
+          mat-list-item
+          routerLink="{{ nav.path }}"
+          *ngFor="let nav of sideMenu"
+          >{{ "menu." + nav.name | translate }}</a
+        >
+      </mat-nav-list>
     </mat-sidenav>
 
-    <mat-sidenav-content
-      class="content"
-      style=" padding-top: 64px;"
-      role="main"
-    >
+    <mat-sidenav-content>
       <router-outlet style="height: 100%;"></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
-</span>
+</div>
+
+<!-- Copyright 2019 Google Inc. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->

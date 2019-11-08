@@ -1,29 +1,33 @@
-﻿<mat-form-field>
+﻿<mat-form-field id="filter" style="display: none;">
   <input
     matInput
     (keyup)="applyFilter($event.target.value)"
     placeholder="Filter"
   />
 </mat-form-field>
+<button mat-stroked-button color="primary" (click)="routeToCreation()">New Study</button>
+<button mat-stroked-button color="primary" (click)="displayFilter()">
+  Filter
+</button>
 
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-8">
   <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
 
   <!-- Position Column -->
-  <ng-container matColumnDef="id_paquete">
+  <ng-container matColumnDef="id_estudio">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>
       {{ "study.ID" | translate }}
     </th>
-    <td mat-cell *matCellDef="let element">{{ element.id_paquete }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.id_estudio }}</td>
   </ng-container>
 
   <!-- Name Column -->
-  <ng-container matColumnDef="nombre_estudio">
+  <ng-container matColumnDef="nombre">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>
       {{ "study.NAME" | translate }}
     </th>
-    <td mat-cell *matCellDef="let element">{{ element.nombre_estudio }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
   </ng-container>
 
   <!-- Weight Column -->
@@ -45,15 +49,15 @@
   </ng-container>
 
   <!-- Symbol Column -->
-  <ng-container matColumnDef="id_tipo_periodicidad">
+  <ng-container matColumnDef="n_ciclos">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>
       {{ "study.tipoEjecucion" | translate }}
     </th>
     <td mat-cell *matCellDef="let element">
-      <span *ngIf="element.id_tipo_periodicidad == 1" style="padding-left: 15px"
+      <span *ngIf="element.n_ciclos == 1" style="padding-left: 15px"
         ><img src="assets/img/rightarrowicon.png"
       /></span>
-      <span *ngIf="element.id_tipo_periodicidad == 2" style="padding-left: 15px"
+      <span *ngIf="element.n_ciclos != 1" style="padding-left: 15px"
         ><img src="assets/img/loopicon.png"
       /></span>
     </td>
@@ -89,6 +93,8 @@
 </table>
 
 <mat-paginator
-  [pageSizeOptions]="[10, 25, 100]"
+  [pageSizeOptions]="[25, 50, 100]"
   showFirstLastButtons
 ></mat-paginator>
+
+

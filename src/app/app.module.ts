@@ -17,12 +17,21 @@ import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 
 import { NavComponent } from "./navigation/nav.component";
-import { NavigationBarComponent } from "./navigation/navigation-bar.component";
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { JwtInterceptor, ErrorInterceptor } from "./_helpers";
 
-import { StudyListComponent, StudyDetailsComponent } from "./study";
+import {
+  StudyListComponent,
+  StudyDetailsComponent,
+  StudyCommunicationComponent,
+  StudyIssuesDetailsComponent,
+  StudyFormComponent
+} from "./study";
+import { ConcentratorListComponent } from "./concentrator";
+
+import { MatFileUploadModule } from "angular-material-fileupload";
+
 import { from } from "rxjs";
 
 @NgModule({
@@ -31,8 +40,11 @@ import { from } from "rxjs";
     LoginComponent,
     StudyListComponent,
     StudyDetailsComponent,
-    NavComponent,
-    NavigationBarComponent
+    StudyCommunicationComponent,
+    StudyIssuesDetailsComponent,
+    StudyFormComponent,
+    ConcentratorListComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +61,8 @@ import { from } from "rxjs";
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    MatFileUploadModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

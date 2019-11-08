@@ -1,10 +1,10 @@
 ﻿export class Study {
-    id_paquete: number;
-    nombre_estudio: string;
+    id_estudio: number;
+    nombre: string;
     fecha_insercion: Date;
-    tipo_ejecucion: Boolean;
+    n_ciclos: number;
     total_cerco: number;
     finalizado_cerco: number;
-    progreso_cerco: number;
-    pendiente_cerco: number;
+    pendiente_cerco:number;
+    progreso: number;
 }

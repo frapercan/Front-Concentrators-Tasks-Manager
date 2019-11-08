@@ -1,0 +1,53 @@
+﻿<table mat-table [dataSource]="communication" class="mat-elevation-z8">
+  <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef>{{ "study.name" | translate }}</th>
+    <td mat-cell *matCellDef="let element">
+      <span> {{ "result." + element.nombre | translate }}</span>
+    </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="cantidad">
+    <th mat-header-cell *matHeaderCellDef>{{ "study.amount" | translate }}</th>
+    <td mat-cell *matCellDef="let element">      <span *ngIf="element.cantidad == null  && element.nombre != 'Pendientes'"><img src="assets/img/perfect.png"
+      /></span>{{ element.cantidad }}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="porcentaje">
+    <th mat-header-cell *matHeaderCellDef>
+      {{ "study.percentage" | translate }}
+    </th>
+    <td mat-cell *matCellDef="let element">
+      <span *ngIf="element.nombre != 'Total' && element.cantidad != null"
+        >{{
+          (element.cantidad / study.total_cerco) * 100 | number: ".2-2"
+        }}%</span
+      >
+
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="communicationDisplayedColumns"></tr>
+  <tr
+    mat-row
+    [ngClass]="{
+      'make-green': row.nombre == 'Finalizado correctamente',
+      'make-red': row.nombre == 'Inaccesibles',
+      'make-orange': row.nombre == 'Pendientes'
+    }"
+    *matRowDef="let row; columns: communicationDisplayedColumns"
+  ></tr>
+</table>
+
+<div style="display: flex;">
+  <div
+    id="chartCommunicationContainer"
+    style="height: 650px; width:100%;"
+  ></div>
+</div>

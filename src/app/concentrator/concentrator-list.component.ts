@@ -1,23 +1,19 @@
-﻿import { Component, ViewChild, OnInit } from "@angular/core";
+﻿import { Component, ViewChild, OnInit, OnDestroy } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
-import { User, Study } from "../_models";
-import { StudyService, AuthenticationService } from "../_services";
+import { User, Concentrator } from "../_models";
+import { ConcentratorService, AuthenticationService } from "../_services";
 import { Router } from "@angular/router";
 
-@Component({ templateUrl: "study-list.component.html" })
-export class StudyListComponent implements OnInit {
+
+@Component({ templateUrl: "concentrator-list.component.html" })
+export class ConcentratorListComponent implements OnInit,OnDestroy {
   currentUser: User;
   displayedColumns: string[] = [
-    "id_estudio",
-    "nombre",
-    "fecha_insercion",
-    "total_cerco",
-    "n_ciclos",
-    "progreso"
+    "id_concentrador"
   ];
-  dataSource: MatTableDataSource<Study>;
+  dataSource: MatTableDataSource<Concentrator>;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   applyFilter(filterValue: string) {
@@ -26,40 +22,39 @@ export class StudyListComponent implements OnInit {
 
   constructor(
     private authenticationService: AuthenticationService,
-    private studyService: StudyService,
+    private concentratorService: ConcentratorService,
     private router: Router
   ) {
     this.currentUser = this.authenticationService.currentUserValue;
   }
 
   ngOnInit() {
-    this.loadAllStudies();
+    this.loadAllConcentrators();
   }
 
   ngAfterViewInit() {}
 
-  private loadAllStudies() {
-    this.studyService
+  private loadAllConcentrators() {
+    this.concentratorService
       .getAll()
       .then(
-        studies => (
-          (this.dataSource = new MatTableDataSource(studies)),
+        concentrators => (
+          (this.dataSource = new MatTableDataSource(concentrators)),
           (this.dataSource.sort = this.sort),
           (this.dataSource.paginator = this.paginator)
         )
       );
   }
+  ngOnDestroy(){
+    if (this.dataSource) {
+      this.dataSource.disconnect();
+    }
+    
 
-  routeToDetails(row) {
-    this.router.navigate(["/study", row.id_estudio]);
-  }
-
-  routeToCreation(row) {
-    this.router.navigate(["/study/new"]);
   }
 
   displayFilter() {
-    var x = document.getElementById("filter");
+    var x = document.getElementById("filter"); 
     console.log(x);
     if (x.style.display === "none") {
       x.style.display = "block";
@@ -67,4 +62,11 @@ export class StudyListComponent implements OnInit {
       x.style.display = "none";
     }
   }
+
+
+
+
+
 }
+
+

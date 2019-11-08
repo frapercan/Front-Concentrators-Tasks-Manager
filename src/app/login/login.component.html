@@ -5,9 +5,9 @@
             <mat-card-title>Log in</mat-card-title>
         </mat-card-header>
 
-        <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <mat-card-content>
-                <mat-form-field class="example-full-width">
+                <mat-form-field class="full-width">
                     <input matInput placeholder="Username" type="text" formControlName="username" class="form-control"
                         [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
                     <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
@@ -16,7 +16,7 @@
 
                 </mat-form-field>
 
-                <mat-form-field class="example-full-width">
+                <mat-form-field class="full-width">
                     <input matInput placeholder="Password" type="password" formControlName="password"
                         class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
                     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
