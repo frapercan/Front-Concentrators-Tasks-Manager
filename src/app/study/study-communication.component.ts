@@ -25,10 +25,12 @@ export class StudyCommunicationComponent implements OnChanges {
   constructor(private route: ActivatedRoute, translate: TranslateService) {
     this.translate = translate;
     this.id = this.route.snapshot.paramMap.get("id");
-    this.communicationDisplayedColumns = ["nombre", "cantidad", "porcentaje"];
+    this.communicationDisplayedColumns = ["name", "amount", "percentage"];
   }
 
   ngOnChanges() {
+    console.log(this.communication);
+    console.log(this.study)
     if (this.communication) {
       this.renderCommunicationChart();
     }
@@ -37,27 +39,26 @@ export class StudyCommunicationComponent implements OnChanges {
   renderCommunicationChart() {
     if (
       this.communication.some(
-        element => element.nombre == "Finalizado correctamente" && element.cantidad > 0
+        element =>
+          element.name == "Finalizado correctamente" && element.amount > 0
       )
     ) {
       let data = [];
       this.communication.forEach(element => {
         if (
           !(
-            element.nombre == "Pendientes" ||
-            element.nombre == "Total" ||
-            element.nombre == "Finalizado correctamente" ||
-            element.nombre == "Inaccesibles"
-            || element.cantidad == null
+            element.name == "Pendientes" ||
+            element.name == "total" ||
+            element.name == "Finalizado correctamente" ||
+            element.name == "Inaccesibles" ||
+            element.amount == null
           )
         ) {
           data.push({
             y:
-              Math.round(
-                (element.cantidad / this.study.total_cerco) * 100 * 100
-              ) / 100,
-            label: this.translate.instant("result." + element.nombre),
-            cantidad: element.cantidad
+              Math.round((element.amount / this.study.total) * 100 * 100) / 100,
+            label: this.translate.instant("result." + element.name),
+            amount: element.amount
           });
         }
       });
@@ -73,7 +74,7 @@ export class StudyCommunicationComponent implements OnChanges {
             {
               text:
                 this.translate.instant("result." + "totalAmountAnalyzed") +
-                this.study.total_cerco
+                this.study.total
             }
           ],
           axisY: {
@@ -90,8 +91,8 @@ export class StudyCommunicationComponent implements OnChanges {
           data: [
             {
               type: "column",
-              toolTipContent: "<b>{y}%</b> <br>{label}: <b>{cantidad}</b>",
-              indexLabel: "{cantidad}",
+              toolTipContent: "<b>{y}%</b> <br>{label}: <b>{amount}</b>",
+              indexLabel: "{amount}",
               indexLabelFontColor: "#000000",
               indexLabelPlacement: "auto",
               dataPoints: data

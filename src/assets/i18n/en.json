@@ -68,7 +68,7 @@
   },
   "result": {
     "analisisComunicaciones": "Comunication analysis",
-    "Total": "Total",
+    "total": "Total amount of CERCOs",
     "Finalizado correctamente": "Successfully finnished",
     "Ping KO": "Ping KO",
     "Error apertura socket": "Socket opening error",
@@ -87,7 +87,8 @@
     "Puerto Comandos Bloqueado": "Comamnd Socket Blocked",
     "CERCO no encontrado en MongoDB": "Cerco Not found",
     "Claves CERCO no encontrada en BDE": "Cerco Password Not found",
-    "amountCerco": " No. CERCOs"
+    "amountCerco": " No. CERCOs",
+    "name": "Name"
   },
   "issues": {
     "name": "Name",

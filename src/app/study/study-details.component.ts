@@ -47,7 +47,8 @@ export class StudyDetailsComponent implements OnInit, OnChanges {
 
     this.studyService
       .getCommunicationResult(this.id)
-      .then(communication => (this.communication = communication));
+      .then(communication => (this.communication = communication,
+        console.log(this.communication)));
 
     this.studyService
       .getIssuesResult(this.id)

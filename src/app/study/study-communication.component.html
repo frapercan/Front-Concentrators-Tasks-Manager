@@ -4,29 +4,29 @@
 
   <!-- Position Column -->
 
-  <ng-container matColumnDef="nombre">
+  <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef>{{ "study.name" | translate }}</th>
     <td mat-cell *matCellDef="let element">
-      <span> {{ "result." + element.nombre | translate }}</span>
+      <span> {{ "result." + element.name | translate }}</span>
     </td>
   </ng-container>
 
   <!-- Name Column -->
-  <ng-container matColumnDef="cantidad">
+  <ng-container matColumnDef="amount">
     <th mat-header-cell *matHeaderCellDef>{{ "study.amount" | translate }}</th>
-    <td mat-cell *matCellDef="let element">      <span *ngIf="element.cantidad == null  && element.nombre != 'Pendientes'"><img src="assets/img/perfect.png"
-      /></span>{{ element.cantidad }}</td>
+    <td mat-cell *matCellDef="let element">      <span *ngIf="element.amount == null  && element.name != 'Pendientes'"><img src="assets/img/perfect.png"
+      /></span>{{ element.amount }}</td>
   </ng-container>
 
   <!-- Weight Column -->
-  <ng-container matColumnDef="porcentaje">
+  <ng-container matColumnDef="percentage">
     <th mat-header-cell *matHeaderCellDef>
       {{ "study.percentage" | translate }}
     </th>
     <td mat-cell *matCellDef="let element">
-      <span *ngIf="element.nombre != 'Total' && element.cantidad != null"
+      <span *ngIf="element.name != 'total' && element.amount != null"
         >{{
-          (element.cantidad / study.total_cerco) * 100 | number: ".2-2"
+          (element.amount / study.total) * 100 | number: ".2-2"
         }}%</span
       >
 
@@ -37,9 +37,9 @@
   <tr
     mat-row
     [ngClass]="{
-      'make-green': row.nombre == 'Finalizado correctamente',
-      'make-red': row.nombre == 'Inaccesibles',
-      'make-orange': row.nombre == 'Pendientes'
+      'make-green': row.name == 'Finalizado correctamente',
+      'make-red': row.name == 'Inaccesibles',
+      'make-orange': row.name == 'Pendientes'
     }"
     *matRowDef="let row; columns: communicationDisplayedColumns"
   ></tr>

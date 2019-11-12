@@ -79,7 +79,7 @@ export class StudyIssuesDetailsComponent implements OnInit {
         {
           text:
             this.translate.instant("result." + "totalAmountAnalyzed") +
-            this.study.total_cerco
+            this.study.total
         }
       ],
       toolTip: {

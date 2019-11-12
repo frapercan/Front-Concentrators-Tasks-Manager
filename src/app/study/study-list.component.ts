@@ -13,7 +13,7 @@ export class StudyListComponent implements OnInit {
     "id_estudio",
     "nombre",
     "fecha_insercion",
-    "total_cerco",
+    "total",
     "n_ciclos",
     "progreso"
   ];

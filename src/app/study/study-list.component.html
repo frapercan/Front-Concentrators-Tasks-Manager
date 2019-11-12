@@ -41,11 +41,11 @@
   </ng-container>
 
   <!-- Symbol Column -->
-  <ng-container matColumnDef="total_cerco">
+  <ng-container matColumnDef="total">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>
       {{ "study.TARGETS" | translate }}
     </th>
-    <td mat-cell *matCellDef="let element">{{ element.total_cerco }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.total }}</td>
   </ng-container>
 
   <!-- Symbol Column -->
@@ -71,11 +71,11 @@
     <td mat-cell *matCellDef="let element">
       <mat-progress-bar
         color="warn"
-        *ngIf="element.finalizado_cerco / element.total_cerco < 1"
+        *ngIf="element.finalizado_cerco / element.total < 1"
         value="{{ element.progreso * 100 }}"
       ></mat-progress-bar>
       <mat-progress-bar
-        *ngIf="element.finalizado_cerco / element.total_cerco == 1"
+        *ngIf="element.finalizado_cerco / element.total == 1"
         color="primary"
         value="{{ element.progreso * 100 }}"
       ></mat-progress-bar

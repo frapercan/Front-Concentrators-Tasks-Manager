@@ -11,24 +11,24 @@ export class StudyService {
     return this.http.get(`${environment.apiUrl}/studies/` + id).toPromise();
   }
   post(name,description,targets,settings,issues){
-    console.log('hola')
     return this.http.post(`${environment.apiUrl}/studies/`,{name,description,targets,settings,issues}).toPromise();
-
   };
   
 
   getAll() {
     return this.http.get<Study[]>(`${environment.apiUrl}/studies`).toPromise();
-  }
+  };
 
   getCommunicationResult(id) {
     return this.http.get(`${environment.apiUrl}/studies/` + id + "/result").toPromise();
-  }
+  };
 
   getIssuesResult(id) {
     return this.http.get(`${environment.apiUrl}/studies/` + id + "/result/issues").toPromise();
-  }
+  };
+
   getIssuesList(){
     return this.http.get<Issue[]>(`${environment.apiUrl}/studies/issues`).toPromise();
-  }
+  };
+  
 }
