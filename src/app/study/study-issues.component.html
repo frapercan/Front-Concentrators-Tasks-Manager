@@ -6,7 +6,7 @@
   <ng-container matColumnDef="nombre_incidencia">
     <th mat-header-cell *matHeaderCellDef>{{ "issues.name" | translate }}.</th>
     <td mat-cell *matCellDef="let element">
-      <span> {{ element.nombre_incidencia }}</span>
+      <span> {{ element.nombre }}</span>
     </td>
   </ng-container>
 
@@ -16,8 +16,8 @@
       {{ "issues.detected" | translate }}
     </th>
     <td mat-cell *matCellDef="let element">
-      <span *ngIf="element.detectados != 0">{{ element.detectados }}</span>
-      <span *ngIf="element.detectados == 0"
+      <span *ngIf="element.detectado != 0">{{ element.detectado }}</span>
+      <span *ngIf="element.detectado == 0"
         ><img src="assets/img/perfect.png"
       /></span>
     </td>
@@ -29,7 +29,7 @@
     </th>
     <td mat-cell *matCellDef="let element">
       <span *ngIf="element.detectados != 0">
-        {{ (element.detectados / study.total) * 100 | number: ".2-2" }}
+        {{ (element.detectado / study.total) * 100 | number: ".2-2" }}
         %</span
       >
     </td>
@@ -41,8 +41,8 @@
       {{ "issues.fixed" | translate }}
     </th>
     <td mat-cell *matCellDef="let element">
-      <span *ngIf="element.detectados != 0">
-        <span *ngIf="element.fixflag != 0">{{ element.arreglados }}</span>
+      <span *ngIf="element.detectado != 0">
+        <span *ngIf="element.fixflag != 0">{{ element.corregido }}</span>
         <span *ngIf="element.fixflag == 0"> Not selected to fix </span>
       </span>
     </td>
@@ -55,7 +55,7 @@
     </th>
     <td mat-cell *matCellDef="let element">
       <span *ngIf="element.fixflag == 1 || element.fixflag == 2">
-        {{ (element.arreglados / element.detectados) * 100 | number: ".2-2" }}
+        {{ (element.corregido / element.detectado) * 100 | number: ".2-2" }}
         %</span
       >
     </td>

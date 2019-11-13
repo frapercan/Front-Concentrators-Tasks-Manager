@@ -16,17 +16,20 @@ import { ActivatedRoute } from "@angular/router";
 import * as CanvasJS from "../../assets/scripts/canvasjs.min";
 import { TranslateService } from "@ngx-translate/core";
 import { MatTabChangeEvent } from "@angular/material";
+import {FormControl} from '@angular/forms';
+
 
 @Component({
   selector: "study-details",
   templateUrl: "study-details.component.html"
 })
 export class StudyDetailsComponent implements OnInit, OnChanges {
+  cycleTabs = [];
+  @Output() selected = new FormControl(0);
   id: string;
   loading = false;
   communication: any;
   issues: any;
-  noIssues: Boolean;
   study;
   translate: TranslateService;
   @Output() getChart = new EventEmitter<any>();
@@ -44,20 +47,23 @@ export class StudyDetailsComponent implements OnInit, OnChanges {
     this.study = this.studyService
       .get(this.id)
       .then(study => (this.study = study));
+    
+    this.studyService.getCicloInfo(this.id).then(tab => (this.cycleTabs.push(tab),console.log(this.cycleTabs)))
 
     this.studyService
       .getCommunicationResult(this.id)
-      .then(communication => (this.communication = communication,
-        console.log(this.communication)));
+      .then(communication => (this.communication = communication));
 
     this.studyService
       .getIssuesResult(this.id)
       .then(issues => (this.issues = issues));
+    
   }
 
   ngOnChanges() {
     if (this.communication){
       this.getChart.emit(this.communication)
+      this.getChart.emit(this.issues)
     }
   }
 }

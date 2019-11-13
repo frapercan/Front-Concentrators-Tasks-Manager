@@ -11,7 +11,7 @@ import { Router } from "@angular/router";
 export class ConcentratorListComponent implements OnInit,OnDestroy {
   currentUser: User;
   displayedColumns: string[] = [
-    "id_concentrador"
+    "id_concentrador","lvcid","CERCO-VER","HW-VER","ROM-VER","MODEM-VER","var","/disk","/tmpn2pload","/tmpdailyClosure","MODEM-REBOOT-PERIODICITY","CERCO-REBOOT-PERIODICITY"
   ];
   dataSource: MatTableDataSource<Concentrator>;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;

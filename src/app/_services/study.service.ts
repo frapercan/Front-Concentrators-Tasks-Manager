@@ -30,5 +30,11 @@ export class StudyService {
   getIssuesList(){
     return this.http.get<Issue[]>(`${environment.apiUrl}/studies/issues`).toPromise();
   };
+
+
+  getCicloInfo(id) {
+    return this.http.get(`${environment.apiUrl}/studies/` + id + "/result/ciclos").toPromise();
+  };
+  
   
 }

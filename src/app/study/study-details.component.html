@@ -1,16 +1,30 @@
 ﻿<mat-toolbar class="align-items">{{ study.nombre }}</mat-toolbar>
+<mat-tab-group
+  [selectedIndex]="selected.value"
+  (selectedIndexChange)="selected.setValue($event)"
+>
+  <mat-tab *ngFor="let tab of cycleTabs[0]" label = "{{tab.first | date }}"></mat-tab>
+</mat-tab-group>
 
 <mat-tab-group>
   <mat-tab label="{{ 'result.analisisComunicaciones' | translate }}">
-      <ng-template matTabContent>
-   <communication [communication]="communication" [study]="study"></communication>
-  </ng-template>
+    <ng-template matTabContent>
+      <div *ngIf="communication">
+        <communication
+          [communication]="communication[selected.value]"
+          [study]="study"
+        ></communication>
+      </div>
+    </ng-template>
   </mat-tab>
 
-  <!------------------------------------------------------------------------>
   <mat-tab label="{{ 'result.issuesAnalysis' | translate }}">
     <ng-template matTabContent>
-      <issues [issues]="issues" [study]="study"></issues>
+      <div *ngIf="issues">
+        <issues
+          [issues]="issues[selected.value]"
+          [study]="study"></issues>
+      </div>
     </ng-template>
   </mat-tab>
 </mat-tab-group>

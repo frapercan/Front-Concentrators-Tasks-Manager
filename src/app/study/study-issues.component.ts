@@ -22,7 +22,7 @@ import { MatTabChangeEvent } from "@angular/material";
   selector: "issues",
   templateUrl: "study-issues.component.html"
 })
-export class StudyIssuesDetailsComponent implements OnInit {
+export class StudyIssuesDetailsComponent implements OnInit,OnChanges {
   @Input() issues: any;
   noIssues: Boolean;
   @Input() study;
@@ -47,22 +47,31 @@ export class StudyIssuesDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.issues.some(element => element.detectados > 0)) {
+    console.log(this.issues)
+
+  }
+  ngOnChanges() {
+    if (this.issues.some(element => element.detectado > 0)) {
       this.renderIssuesChart();
+    }
+    else {
+      var chart = new CanvasJS.Chart("chartIssuesContainer", {})
+      chart.render()
+      
     }
   }
 
   renderIssuesChart() {
     let data = { detected: [], fixed: [] };
     this.issues.forEach(element => {
-      if (element.detectados > 0) {
+      if (element.detectado > 0) {
         data.detected.push({
-          y: Number(element.detectados - element.arreglados),
-          label: element.nombre_incidencia
+          y: Number(element.detectado - element.corregido),
+          label: element.nombre
         });
         data.fixed.push({
-          y: Number(element.arreglados),
-          label: element.nombre_incidencia
+          y: Number(element.corregido),
+          label: element.nombre
         });
       }
     });

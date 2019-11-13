@@ -18,6 +18,9 @@ export class StudyCommunicationComponent implements OnChanges {
   loading = false;
   @Input() communication: any;
   @Input() study: any;
+  @Input() index;
+  ciclo: String
+
   communicationDisplayedColumns;
   chartCommunication;
   translate: TranslateService;
@@ -29,8 +32,6 @@ export class StudyCommunicationComponent implements OnChanges {
   }
 
   ngOnChanges() {
-    console.log(this.communication);
-    console.log(this.study)
     if (this.communication) {
       this.renderCommunicationChart();
     }
@@ -63,7 +64,7 @@ export class StudyCommunicationComponent implements OnChanges {
         }
       });
       this.chartCommunication = new CanvasJS.Chart(
-        "chartCommunicationContainer",
+        'chartCommunicationContainer',
         {
           animationEnabled: true,
           exportEnabled: true,
