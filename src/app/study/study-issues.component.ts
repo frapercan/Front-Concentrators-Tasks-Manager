@@ -22,9 +22,8 @@ import { MatTabChangeEvent } from "@angular/material";
   selector: "issues",
   templateUrl: "study-issues.component.html"
 })
-export class StudyIssuesDetailsComponent implements OnInit,OnChanges {
+export class StudyIssuesDetailsComponent implements OnInit, OnChanges {
   @Input() issues: any;
-  noIssues: Boolean;
   @Input() study;
   issuesDisplayedColumns;
   chartIssues;
@@ -43,21 +42,18 @@ export class StudyIssuesDetailsComponent implements OnInit,OnChanges {
       "corregidos",
       "porcentaje_arreglados"
     ];
-    this.noIssues = false;
   }
 
-  ngOnInit() {
-    console.log(this.issues)
-
-  }
+  ngOnInit() {}
   ngOnChanges() {
-    if (this.issues.some(element => element.detectado > 0)) {
-      this.renderIssuesChart();
-    }
-    else {
-      var chart = new CanvasJS.Chart("chartIssuesContainer", {})
-      chart.render()
-      
+    if (this.issues) {
+      if (this.issues.some(element => element.detectado > 0)) {
+        this.renderIssuesChart();
+      } else {
+      }
+    } else {
+      var chart = new CanvasJS.Chart("chartIssuesContainer", {});
+      chart.render();
     }
   }
 

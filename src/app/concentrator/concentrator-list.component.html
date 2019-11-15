@@ -30,7 +30,7 @@
   </ng-container>
 
   <!-- Position Column -->
-  <ng-container matColumnDef="CERCO-VER">
+  <ng-container matColumnDef="cercoVersion">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>
         CERCO-VER
     </th>
@@ -38,7 +38,7 @@
   </ng-container>
 
   <!-- Position Column -->
-  <ng-container matColumnDef="HW-VER">
+  <ng-container matColumnDef="hwVersion">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>
         HW-VER
     </th>
@@ -46,7 +46,7 @@
   </ng-container>
 
   <!-- Position Column -->
-  <ng-container matColumnDef="ROM-VER">
+  <ng-container matColumnDef="romVersion">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>
         ROM-VER
     </th>
@@ -54,7 +54,7 @@
   </ng-container>
 
   <!-- Position Column -->
-  <ng-container matColumnDef="MODEM-VER">
+  <ng-container matColumnDef="modemVersion">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>
         MODEM-VER
     </th>
@@ -62,35 +62,35 @@
   </ng-container>
 
   <!-- Position Column -->
-  <ng-container matColumnDef="var">
+  <ng-container matColumnDef="varMem">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>
-        var"
+        /var
     </th>
     <td mat-cell *matCellDef="let element">{{ element.varMem }}</td>
   </ng-container>
   <!-- Position Column -->
-  <ng-container matColumnDef="/disk">
+  <ng-container matColumnDef="diskMem">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>
         /disk
     </th>
     <td mat-cell *matCellDef="let element">{{ element.diskMem }}</td>
   </ng-container>
   <!-- Position Column -->
-  <ng-container matColumnDef="/tmpn2pload">
+  <ng-container matColumnDef="tmpn2ploadMem">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>
         /tmpn2pload
     </th>
     <td mat-cell *matCellDef="let element">{{ element.tmpn2ploadMem }}</td>
   </ng-container>
   <!-- Position Column -->
-  <ng-container matColumnDef="/tmpdailyClosure">
+  <ng-container matColumnDef="tmpDailyClousureMem">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>
         /tmpdailyClosure
     </th>
     <td mat-cell *matCellDef="let element">{{ element.tmpDailyClousureMem }}</td>
   </ng-container>
   <!-- Position Column -->
-  <ng-container matColumnDef="MODEM-REBOOT-PERIODICITY">
+  <ng-container matColumnDef="modemRebootPeriodicity">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>
         MODEM-REBOOT-PERIODICITY
     </th>
@@ -98,9 +98,9 @@
   </ng-container>
 
     <!-- Position Column -->
-    <ng-container matColumnDef="CERCO-REBOOT-PERIODICITY">
+    <ng-container matColumnDef="cercoRebootPeriodicity">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-            CERCO-REBOOT-PERIODICITY"
+            CERCO-REBOOT-PERIODICITY
         </th>
         <td mat-cell *matCellDef="let element">{{ element.cercoRebootPeriodicity }}</td>
       </ng-container>

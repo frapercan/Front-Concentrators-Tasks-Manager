@@ -54,7 +54,7 @@
       {{ "issues.porcentaje_arreglados" | translate }}
     </th>
     <td mat-cell *matCellDef="let element">
-      <span *ngIf="element.fixflag == 1 || element.fixflag == 2">
+      <span *ngIf="element.corregido > 0">
         {{ (element.corregido / element.detectado) * 100 | number: ".2-2" }}
         %</span
       >

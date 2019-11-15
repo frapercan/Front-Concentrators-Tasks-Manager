@@ -27,7 +27,7 @@ export interface IssueElement {
 export class StudyFormComponent implements OnInit {
   displayedColumns: string[] = [
     "id_incidencia",
-    "nombre_incidencia",
+    "nombre",
     "detect",
     "fix"
   ];
@@ -71,8 +71,9 @@ export class StudyFormComponent implements OnInit {
       mode: ["", Validators.required]
     });
     this.issuesFormGroup = this._formBuilder.group({
-       detect: [[],[Validators.required]],
-       fix: [[],] });
+      detect: [[], [Validators.required]],
+      fix: [[]]
+    });
 
     this.loadAllIssues();
     this.forthFormGroupValueChanged();
@@ -126,12 +127,16 @@ export class StudyFormComponent implements OnInit {
   fileReset() {
     this.fileImportInput.nativeElement.value = "";
     this.cercoRecords = [];
+    this.targetsFormGroup.get('targets').reset;
+    
   }
 
   forthFormGroupValueChanged() {
     const modeControl = this.settingsFormGroup.get("mode");
     const loopLengthControl = this.settingsFormGroup.get("loopLength");
-    const executionNumberControl = this.settingsFormGroup.get("executionNumber");
+    const executionNumberControl = this.settingsFormGroup.get(
+      "executionNumber"
+    );
 
     modeControl.valueChanges.subscribe((mode: string) => {
       if (mode == modeSelection.loop) {
@@ -178,8 +183,14 @@ export class StudyFormComponent implements OnInit {
         )
       );
   }
-  onSubmit(){
-    this.studyService.post(this.nameFormGroup.value,this.descriptionFormGroup.value,this.cercoRecords,this.settingsFormGroup.value,this.issuesFormGroup.value)
+  onSubmit() {
+    this.studyService.post(
+      this.nameFormGroup.value,
+      this.descriptionFormGroup.value,
+      this.cercoRecords,
+      this.settingsFormGroup.value,
+      this.issuesFormGroup.value
+    );
   }
 }
 

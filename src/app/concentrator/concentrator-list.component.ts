@@ -6,12 +6,22 @@ import { User, Concentrator } from "../_models";
 import { ConcentratorService, AuthenticationService } from "../_services";
 import { Router } from "@angular/router";
 
-
 @Component({ templateUrl: "concentrator-list.component.html" })
-export class ConcentratorListComponent implements OnInit,OnDestroy {
+export class ConcentratorListComponent implements OnInit, OnDestroy {
   currentUser: User;
   displayedColumns: string[] = [
-    "id_concentrador","lvcid","CERCO-VER","HW-VER","ROM-VER","MODEM-VER","var","/disk","/tmpn2pload","/tmpdailyClosure","MODEM-REBOOT-PERIODICITY","CERCO-REBOOT-PERIODICITY"
+    "id_concentrador",
+    "lvcid",
+    "cercoVersion",
+    "hwVersion",
+    "romVersion",
+    "modemVersion",
+    "varMem",
+    "diskMem",
+    "tmpn2ploadMem",
+    "tmpDailyClousureMem",
+    "modemRebootPeriodicity",
+    "cercoRebootPeriodicity"
   ];
   dataSource: MatTableDataSource<Concentrator>;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -21,11 +31,9 @@ export class ConcentratorListComponent implements OnInit,OnDestroy {
   }
 
   constructor(
-    private authenticationService: AuthenticationService,
     private concentratorService: ConcentratorService,
     private router: Router
   ) {
-    this.currentUser = this.authenticationService.currentUserValue;
   }
 
   ngOnInit() {
@@ -45,16 +53,14 @@ export class ConcentratorListComponent implements OnInit,OnDestroy {
         )
       );
   }
-  ngOnDestroy(){
+  ngOnDestroy() {
     if (this.dataSource) {
       this.dataSource.disconnect();
     }
-    
-
   }
 
   displayFilter() {
-    var x = document.getElementById("filter"); 
+    var x = document.getElementById("filter");
     console.log(x);
     if (x.style.display === "none") {
       x.style.display = "block";
@@ -62,11 +68,4 @@ export class ConcentratorListComponent implements OnInit,OnDestroy {
       x.style.display = "none";
     }
   }
-
-
-
-
-
 }
-
-
