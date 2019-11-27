@@ -1,0 +1,114 @@
+{
+    "loggedIn": "connesso",
+    "pageTitle": "Compiti di CERCO ",
+    "search": "Ricerca",
+    "next": "Il prossimo",
+    "back": "indietro",
+    "menu": {
+        "title": "Menù",
+        "concentrators": "concentratori",
+        "studies": "studi"
+    },
+    "welcome": "benvenuto",
+    "forms": {
+        "username": "nome utente",
+        "password": "parola d'ordine"
+    },
+    "section": {
+        "home": "casa",
+        "documentation": "documentazione",
+        "apidoc": "apidoc"
+    },
+    "action": {
+        "logout": "disconnettersi",
+        "login": "accesso"
+    },
+    "login": {
+        "title": "titolo",
+        "username": "nome utente",
+        "password": "parola d'ordine"
+    },
+    "error": {
+        "userRequired": "userRequired",
+        "passwordRequired": "Password richiesta"
+    },
+    "study": {
+        "form": {
+            "title": "titolo",
+            "name": "nome",
+            "namePlaceholder": "namePlaceholder",
+            "description": "descrizione",
+            "descriptionPlaceholder": "descriptionPlaceholder",
+            "selectCERCO": "selectCERCO",
+            "selectCERCOPlaceholder": "selectCERCOPlaceholder",
+            "settings": "impostazioni",
+            "settingsPlaceholder": "settingsPlaceholder",
+            "issues": "problemi",
+            "loopLengthPlaceholder": "loopLengthPlaceholder",
+            "attempts": "tentativi",
+            "executionModeLabel": "executionModeLabel",
+            "atLeastOne": "almeno uno",
+            "issuesSelector": "issuesSelector",
+            "issuesName": "issuesName",
+            "detect": "individuare",
+            "fix": "fix",
+            "executionNumber": "executionNumber"
+        },
+        "id": "id",
+        "name": "nome",
+        "amount": "quantità",
+        "percentage": "percentuale",
+        "target": "bersaglio",
+        "results": "risultati",
+        "tipoEjecucion": "tipoEjecucion",
+        "currentLoopNumber": "currentLoopNumber",
+        "currentLoopStart": "currentLoopStart",
+        "progress": "progresso",
+        "ID": "ID",
+        "NAME": "NOME",
+        "DATE": "DATA",
+        "TARGETS": "OBIETTIVI"
+    },
+    "result": {
+        "analisisComunicaciones": "analisisComunicaciones",
+        "total": "totale",
+        "Finalizado correctamente": "Finalizzato correttamente",
+        "Ping KO": "Ping KO",
+        "Error apertura socket": "Errore apertura socket",
+        "CERCO ocupado": "CERCO ocupado",
+        "GPRS Inestable": "GPRS Inestable",
+        "Error de autenticacion": "Errore di autenticazione",
+        "Pendientes": "Pendientes",
+        "Inaccesibles": "Inaccesibles",
+        "issues": "problemi",
+        "issuesAnalysis": "issuesAnalysis",
+        "graphics": "grafica",
+        "comunicationGraphicTitle": "comunicationGraphicTitle",
+        "issuesGraphicTitle": "issuesGraphicTitle",
+        "true": "vero",
+        "totalAmountAnalyzed": "totalAmountAnalyzed",
+        "Puerto Comandos Bloqueado": "Puerto Comandos Bloqueado",
+        "CERCO no encontrado en MongoDB": "CERCO no encontrado in MongoDB",
+        "Claves CERCO no encontrada en BDE": "Claves CERCO no encontrada en BDE",
+        "amountCerco": "amountCerco",
+        "name": "nome"
+    },
+    "issues": {
+        "name": "nome",
+        "detected": "rilevato",
+        "fixed": "fisso",
+        "porcentaje_detectados": "porcentaje_detectados",
+        "porcentaje_arreglados": "porcentaje_arreglados",
+        "remainingLabel": "remainingLabel",
+        "detectedLabel": "detectedLabel"
+    },
+    "tooltip": {
+        "studies": "STUDI",
+        "concentrators": "CONCENTRATORI"
+    },
+    "language": {
+        "english": "Inglese",
+        "spanish": "Spagnolo",
+        "italian": "Italiano"
+    }
+}

@@ -96,7 +96,8 @@ export class StudyCommunicationComponent implements OnChanges {
               indexLabel: "{amount}",
               indexLabelFontColor: "#000000",
               indexLabelPlacement: "auto",
-              dataPoints: data
+              dataPoints: data,
+              color: "rgba(244,67,54,0.6)"
             }
           ]
         }

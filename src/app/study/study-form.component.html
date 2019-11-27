@@ -41,14 +41,15 @@
     </form>
   </mat-step>
   <mat-step [stepControl]="targetsFormGroup">
-    <form [formGroup]="targetsFormGroup">
+    <form [formGroup]="targetsFormGroup" id="CERCOSelection">
       <ng-template matStepLabel>{{
         "study.form.selectCERCO" | translate
       }}</ng-template>
       <button type="button" mat-raised-button (click)="fileImportInput.click()">
         Choose File
       </button>
-
+      <mat-card style="width: 70%; margin: 15px auto; background-color: gray"><concentratorPreview [package]='cercoRecords'></concentratorPreview></mat-card>
+      
       <input
         hidden
         formControlName="targets"
@@ -210,8 +211,7 @@
 
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
-    You are now done. Resume: {{ issuesFormGroup.value | json }},
-    {{ nameFormGroup.value | json }}
+    You are now done. Resume:
     <div>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button (click)="stepper.reset()">Reset</button>

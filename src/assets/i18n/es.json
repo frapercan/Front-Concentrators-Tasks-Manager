@@ -1,0 +1,114 @@
+{
+  "loggedIn": "Conectado como:",
+  "pageTitle": "Tarea Cerco",
+  "search": "Buscar",
+  "next": "siguiente",
+  "back": "atrás",
+  "menu": {
+    "title": "Menú",
+    "concentrators": " Concentradores",
+    "studies": "Estudios"
+  },
+  "welcome": "Bienvenido",
+  "forms": {
+    "username": "Nombre de usuario",
+    "password": "Contraseña"
+  },
+  "section": {
+    "home": "Lista de estudios",
+    "documentation": "Documentacion",
+    "apidoc": "API"
+  },
+  "action": {
+    "logout": "Cerrar sesión",
+    "login": " Iniciar sesión"
+  },
+  "login": {
+    "title": "Acceso",
+    "username": "Ingrese su nombre de usuario",
+    "password": "Contraseña aquí"
+  },
+  "error": {
+    "userRequired": "Se requiere nombre de usuario",
+    "passwordRequired": "se requiere contraseña"
+  },
+  "study": {
+    "form": {
+      "title": "Crea un nuevo estudio",
+      "name": "Nombre del estudio",
+      "namePlaceholder": " Nombre descriptivo",
+      "description": "Descripción",
+      "descriptionPlaceholder": "Descripción del estudio",
+      "selectCERCO": "Objetivos CERCO",
+      "selectCERCOPlaceholder": "Subir lista de Cerco",
+      "settings": "Configuraciones",
+      "settingsPlaceholder": "Configuraciones",
+      "issues": "Cuestiones",
+      "loopLengthPlaceholder": "Repita el estudio cada x horas.",
+      "attempts": "Intentos de comunicación",
+      "executionModeLabel": "Tipo de ejecución: ",
+      "atLeastOne": "Debes marcar al menos uno",
+      "issuesSelector": "Selector de problemas",
+      "issuesName": "Nombre de problemas",
+      "detect": "Detectar",
+      "fix": "Fijar",
+      "executionNumber": "Numero de ejecuciones"
+    },
+    "id": "ID",
+    "name": "Nombre",
+    "amount": "Cantidad detectada",
+    "percentage": "Porcentaje",
+    "target": "Objetivo",
+    "results": "Resultados",
+    "tipoEjecucion": "TIPO DE EJECUCION",
+    "currentLoopNumber": "Nº LOOP",
+    "currentLoopStart": "ARRANQUE EN BUCLE",
+    "progress": "PROGRESO",
+    "ID": "ID",
+    "NAME": "NOMBRE",
+    "DATE": "FECHA",
+    "TARGETS": "OBJETIVOS"
+  },
+  "result": {
+    "analisisComunicaciones": "Análisis de comunicación.",
+    "total": "Cantidad total de CERCO",
+    "Finalizado correctamente": "Terminado con éxito",
+    "Ping KO": "Ping KO",
+    "Error apertura socket": "Error de apertura del puerto",
+    "CERCO ocupado": "CERCO ocupado",
+    "GPRS Inestable": "GPRS inestable",
+    "Error de autenticacion": "Error de autenticación",
+    "Pendientes": "Pendiente",
+    "Inaccesibles": " Inalcanzable",
+    "issues": "Cuestiones",
+    "issuesAnalysis": "Análisis de problemas",
+    "graphics": "Gráficos",
+    "comunicationGraphicTitle": "Resultados de comunicación",
+    "issuesGraphicTitle": "Resultados de problemas",
+    "true": "Total de CERCO",
+    "totalAmountAnalyzed": "Cantidad de CERCO analizados: ",
+    "Puerto Comandos Bloqueado": "Enchufe de comando bloqueado",
+    "CERCO no encontrado en MongoDB": "Cerco no encontrado",
+    "Claves CERCO no encontrada en BDE": "Contraseña Cerco no encontrada",
+    "amountCerco": " No. CERCO",
+    "name": "Nombre"
+  },
+  "issues": {
+    "name": "Nombre",
+    "detected": "Detectado",
+    "fixed": "Arreglado",
+    "porcentaje_detectados": "% Detectado",
+    "porcentaje_arreglados": "% Arreglado",
+    "remainingLabel": "Restante: ",
+    "detectedLabel": "Detectado: "
+  },
+  "tooltip": {
+    "studies": "ESTUDIOS",
+    "concentrators": "CONCENTRADORES"
+  },
+  "language": {
+    "english": "English",
+    "spanish": "Spanish",
+    "italian": "Italian"
+  }
+}

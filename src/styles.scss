@@ -93,12 +93,16 @@ body {
 }
 
 
+  #expandlastright .mat-tab-label:last-child {
+  margin-left: auto; 
+}
 .make-green {
-  background-color: greenyellow;
+  background-color: rgba(76,175,80,0.6);
 }
 
 .make-red {
-  background-color: red;
+  background-color: rgba(244,67,54,0.6);
+  
 }
 
 .make-orange {
@@ -112,8 +116,4 @@ body {
 }
 
 
-
-.mat-horizontal-content-container {
-  text-align: center;
-}
 

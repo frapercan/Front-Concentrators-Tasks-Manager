@@ -25,12 +25,7 @@ export interface IssueElement {
   styleUrls: ["./study-form.component.scss"]
 })
 export class StudyFormComponent implements OnInit {
-  displayedColumns: string[] = [
-    "id_incidencia",
-    "nombre",
-    "detect",
-    "fix"
-  ];
+  displayedColumns: string[] = ["id_incidencia", "nombre", "detect", "fix"];
   dataSource;
   detect = new SelectionModel<Issue>(true, []);
   fix = new SelectionModel<Issue>(true, []);
@@ -127,8 +122,7 @@ export class StudyFormComponent implements OnInit {
   fileReset() {
     this.fileImportInput.nativeElement.value = "";
     this.cercoRecords = [];
-    this.targetsFormGroup.get('targets').reset;
-    
+    this.targetsFormGroup.get("targets").reset;
   }
 
   forthFormGroupValueChanged() {
@@ -137,6 +131,11 @@ export class StudyFormComponent implements OnInit {
     const executionNumberControl = this.settingsFormGroup.get(
       "executionNumber"
     );
+    const communicationAttemptsControl = this.settingsFormGroup.get("attempts");
+    const priorityControl = this.settingsFormGroup.get("priority");
+    
+    this.settingsFormGroup.disable()
+    modeControl.enable();
 
     modeControl.valueChanges.subscribe((mode: string) => {
       if (mode == modeSelection.loop) {
@@ -145,13 +144,18 @@ export class StudyFormComponent implements OnInit {
         loopLengthControl.enable();
         executionNumberControl.enable();
         executionNumberControl.setValidators([Validators.required]);
-      } else if (mode === modeSelection.single) {
+        communicationAttemptsControl.enable();
+        priorityControl.enable();
+      }
+      if (mode === modeSelection.single) {
         loopLengthControl.setValue(null);
         loopLengthControl.clearValidators();
         loopLengthControl.disable();
         executionNumberControl.clearValidators();
         executionNumberControl.setValue(1);
         executionNumberControl.disable();
+        communicationAttemptsControl.enable();
+        priorityControl.enable();
       }
 
       loopLengthControl.updateValueAndValidity();

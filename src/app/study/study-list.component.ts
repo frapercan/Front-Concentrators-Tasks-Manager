@@ -15,6 +15,8 @@ export class StudyListComponent implements OnInit {
     "fecha_insercion",
     "total",
     "n_ciclos",
+    "ciclo_actual",
+    "fecha_incicio_ciclo",
     "progreso"
   ];
   dataSource: MatTableDataSource<Study>;
@@ -66,5 +68,8 @@ export class StudyListComponent implements OnInit {
     } else {
       x.style.display = "none";
     }
+  }
+  refresh() {
+    this.loadAllStudies();
   }
 }

@@ -1,20 +1,32 @@
 <div class="container" [class.is-mobile]="mobileQuery.matches">
-    <mat-toolbar class="welcome" *ngIf="!currentUser">{{
-        "welcome" | translate
-      }}</mat-toolbar>
+  <mat-toolbar class="welcome" *ngIf="!currentUser">{{
+    "welcome" | translate
+  }}</mat-toolbar>
   <mat-toolbar color="primary" class="toolbar" *ngIf="currentUser">
     <button mat-icon-button (click)="snav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <h1 class="app-name" [routerLink] = "['/']">{{ "pageTitle" | translate }}</h1>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="app-name" [routerLink]="['/']">{{ "pageTitle" | translate }}</h1>
 
-    
-    
     <ul fxLayout fxLayoutGap="20px" class="navigation-items">
       <li fxHide.xs>
-        <button mat-icon-button>
+        <button mat-icon-button [matMenuTriggerFor]="settings">
           <mat-icon>settings</mat-icon>
         </button>
+        <mat-menu #settings="matMenu">
+          <button mat-menu-item (click)="switchLanguage('es')">
+            <span class="flag-icon flag-icon-es"></span>
+            {{ "language.spanish" | translate }}
+          </button>
+          <button mat-menu-item (click)="switchLanguage('en')">
+            <span class="flag-icon flag-icon-gb"></span>
+            {{ "language.english" | translate }}
+          </button>
+          <button mat-menu-item (click)="switchLanguage('it')">
+            <span class="flag-icon flag-icon-it"></span>
+            {{ "language.italian" | translate }}
+          </button>
+        </mat-menu>
       </li>
 
       <li fxHide.xs>

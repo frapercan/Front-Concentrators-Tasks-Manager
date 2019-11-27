@@ -18,8 +18,7 @@
     <td mat-cell *matCellDef="let element">
       <span *ngIf="element.detectado != 0">{{ element.detectado }}</span>
       <span *ngIf="element.detectado == 0"
-        ><img src="assets/img/perfect.png"
-      /></span>
+        ><mat-icon>done_all</mat-icon></span>
     </td>
   </ng-container>
 
@@ -43,7 +42,7 @@
     <td mat-cell *matCellDef="let element">
       <span *ngIf="element.detectado != 0">
         <span *ngIf="element.fixflag != 0">{{ element.corregido }}</span>
-        <span *ngIf="element.fixflag == 0"> Not selected to fix </span>
+        <span *ngIf="element.fixflag == 0"> <mat-icon>cancel_presentation</mat-icon> </span>
       </span>
     </td>
   </ng-container>
@@ -70,5 +69,6 @@
 </table>
 
 <div style="height: 650px">
-  <div id="chartIssuesContainer" style="height: 90%; width:100%;"></div>
+  <div id="chartIssuesContainer" style="height: 90%; width:100%; margin-top: 32px"></div>
 </div>
+

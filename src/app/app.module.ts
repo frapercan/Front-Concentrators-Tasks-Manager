@@ -1,5 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import "hammerjs";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -28,7 +29,7 @@ import {
   StudyIssuesDetailsComponent,
   StudyFormComponent
 } from "./study";
-import { ConcentratorListComponent } from "./concentrator";
+import { ConcentratorListComponent,ConcentratorPreviewComponent } from "./concentrator";
 
 import { MatFileUploadModule } from "angular-material-fileupload";
 
@@ -44,6 +45,7 @@ import { from } from "rxjs";
     StudyIssuesDetailsComponent,
     StudyFormComponent,
     ConcentratorListComponent,
+    ConcentratorPreviewComponent,
     NavComponent
   ],
   imports: [

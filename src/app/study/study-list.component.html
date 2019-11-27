@@ -1,14 +1,18 @@
-﻿<mat-form-field id="filter" style="display: none;">
+﻿<mat-toolbar class="align-items">{{'tooltip.studies' | translate}}</mat-toolbar>
+<mat-form-field id="filter" style="display: none;">
   <input
     matInput
     (keyup)="applyFilter($event.target.value)"
-    placeholder="Filter"
+    placeholder="{{'search' | translate}}"
   />
 </mat-form-field>
-<button mat-stroked-button color="primary" (click)="routeToCreation()">New Study</button>
-<button mat-stroked-button color="primary" (click)="displayFilter()">
-  Filter
+<button mat-stroked-button color="primary" (click)="routeToCreation()">
+    <mat-icon color="primary" >add</mat-icon>
 </button>
+<button mat-stroked-button color="primary" (click)="displayFilter()">
+    <mat-icon color="primary" >search</mat-icon>
+</button>
+<button mat-stroked-button color="primary" (click)="refresh()"><mat-icon>cached</mat-icon></button>
 
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-8">
   <!--- Note that these columns can be defined in any order.
@@ -55,11 +59,29 @@
     </th>
     <td mat-cell *matCellDef="let element">
       <span *ngIf="element.n_ciclos == 1" style="padding-left: 15px"
-        ><img src="assets/img/rightarrowicon.png"
-      /></span>
+        ><mat-icon>arrow_right_alt</mat-icon></span>
       <span *ngIf="element.n_ciclos != 1" style="padding-left: 15px"
-        ><img src="assets/img/loopicon.png"
-      /></span>
+        ><mat-icon>loop</mat-icon></span>
+    </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="ciclo_actual">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      {{ "study.currentLoopNumber" | translate }}
+    </th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.ciclo_actual }}
+    </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="fecha_incicio_ciclo">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      {{ "study.currentLoopStart" | translate }}
+    </th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.fecha_inicio_ciclo | date: "medium" }}
     </td>
   </ng-container>
 
@@ -89,6 +111,7 @@
     *matRowDef="let row; columns: displayedColumns"
     [routerLink]
     (dblclick)="routeToDetails(row)"
+    style="cursor: pointer"
   ></tr>
 </table>
 
@@ -96,5 +119,3 @@
   [pageSizeOptions]="[25, 50, 100]"
   showFirstLastButtons
 ></mat-paginator>
-
-

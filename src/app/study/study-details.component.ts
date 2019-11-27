@@ -66,4 +66,18 @@ export class StudyDetailsComponent implements OnInit, OnChanges {
       this.getChart.emit(this.issues)
     }
   }
+  refresh() {
+    this.studyService
+    .getCommunicationResult(this.id)
+    .then(communication => (this.communication = communication));
+
+  this.studyService
+    .getIssuesResult(this.id)
+    .then(issues => (this.issues = issues));
+    if (this.communication){
+      this.getChart.emit(this.communication)
+      this.getChart.emit(this.issues)
+    }
+  }
+  
 }

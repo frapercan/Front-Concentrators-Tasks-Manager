@@ -1,6 +1,7 @@
 {
   "loggedIn": "Logged in as:",
   "pageTitle": "Cerco Task",
+  "search": "Search",
   "next": "Next",
   "back": "Back",
   "menu": {
@@ -60,6 +61,8 @@
     "target": "Target",
     "results": "Results",
     "tipoEjecucion": "EXECUTION TYPE",
+    "currentLoopNumber": "No. LOOP",
+    "currentLoopStart" : "LOOP START",
     "progress": "PROGRESS",
     "ID": "ID",
     "NAME": "NAME",
@@ -98,5 +101,14 @@
     "porcentaje_arreglados": "% Fixed",
     "remainingLabel": "Remaining: ",
     "detectedLabel": "Detected: "
+  },
+  "tooltip": {
+    "studies":"STUDIES",
+    "concentrators":"CONCENTRATORS"
+  },
+  "language": {
+    "english":"English",
+    "spanish":"Spanish",
+    "italian":"Italian"
   }
 }

@@ -18,7 +18,6 @@ import { User } from "../_models"
 export class NavComponent implements OnDestroy,OnInit {
   sideMenu = [{name:'studies',path:'/'},{name:'concentrators',path:'/concentrator'}]
   mobileQuery: MediaQueryList;
-  translate: TranslateService;
   @Output() toggleSidenav = new EventEmitter<void>();
   @Output() closeSidenav = new EventEmitter<void>();
   currentUser: User;
@@ -28,7 +27,7 @@ export class NavComponent implements OnDestroy,OnInit {
   constructor(
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
-    translate: TranslateService,
+    private translate: TranslateService,
     private authenticationService: AuthenticationService,
     private router: Router,
 
@@ -40,6 +39,7 @@ export class NavComponent implements OnDestroy,OnInit {
     this.authenticationService.currentUser.subscribe(
       x => (this.currentUser = x)
     );
+    this.translate = translate;
     
   }
 
@@ -52,6 +52,9 @@ export class NavComponent implements OnDestroy,OnInit {
     this.authenticationService.logout();
     this.router.navigate(["/login"]);
     
+  }
+  switchLanguage(language: string) {
+    this.translate.use(language);
   }
 }
 

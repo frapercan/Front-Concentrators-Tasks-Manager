@@ -46,15 +46,15 @@ export class StudyIssuesDetailsComponent implements OnInit, OnChanges {
 
   ngOnInit() {}
   ngOnChanges() {
+    console.log('issues',this.issues)
     if (this.issues) {
       if (this.issues.some(element => element.detectado > 0)) {
         this.renderIssuesChart();
       } else {
+        var chart = new CanvasJS.Chart("chartIssuesContainer", {});
+        chart.render();
       }
-    } else {
-      var chart = new CanvasJS.Chart("chartIssuesContainer", {});
-      chart.render();
-    }
+    } 
   }
 
   renderIssuesChart() {
@@ -97,7 +97,7 @@ export class StudyIssuesDetailsComponent implements OnInit, OnChanges {
           showInLegend: "true",
           dataPoints: data.detected,
           toolTipContent: "Remaining: <b>{y}</b>",
-          color: "red"
+          color: "rgba(244,67,54,0.6)"
         },
         {
           type: "stackedColumn",
@@ -105,11 +105,10 @@ export class StudyIssuesDetailsComponent implements OnInit, OnChanges {
           showInLegend: "true",
           toolTipContent: "Repaired: <b>{y}</b>",
           dataPoints: data.fixed,
-          color: "green"
+          color: "rgba(76,175,80,0.6)"
         }
       ]
     });
-    console.log(data);
     chart.render();
   }
 }

@@ -1,18 +1,4 @@
-﻿<mat-toolbar class="align-items">{{'tooltip.concentrators' | translate}}</mat-toolbar>
-
-<mat-form-field id="filter" style="display: none;">
-    <input
-      matInput
-      (keyup)="applyFilter($event.target.value)"
-      placeholder="{{'search' | translate}}"
-    />
-</mat-form-field>
-<button mat-stroked-button color="primary" (click)="displayFilter()">
-    <mat-icon color="primary" >search</mat-icon>
-</button>
-
-
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-8">
+﻿<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-8">
   <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
 

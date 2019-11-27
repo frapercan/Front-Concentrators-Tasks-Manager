@@ -8,7 +8,8 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class AppComponent {
   constructor(private translate: TranslateService) {
-    translate.setDefaultLang('en');
+    translate.addLangs(['en', 'es','it'])
+    translate.setDefaultLang('es');
 }
   title = "app";
   selectedValue: string = "";
