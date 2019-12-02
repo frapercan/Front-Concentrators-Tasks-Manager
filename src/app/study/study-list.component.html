@@ -93,11 +93,11 @@
     <td mat-cell *matCellDef="let element">
       <mat-progress-bar
         color="warn"
-        *ngIf="element.finalizado_cerco / element.total < 1"
+        *ngIf="element.progreso < 1"
         value="{{ element.progreso * 100 }}"
       ></mat-progress-bar>
       <mat-progress-bar
-        *ngIf="element.finalizado_cerco / element.total == 1"
+        *ngIf="element.progreso == 1"
         color="primary"
         value="{{ element.progreso * 100 }}"
       ></mat-progress-bar

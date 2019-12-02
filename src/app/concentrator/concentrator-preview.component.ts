@@ -48,7 +48,6 @@ export class ConcentratorPreviewComponent implements OnInit, OnChanges {
 
   private loadConcentrators(){
     if (this.package.length){
-      console.log('hola',this.package)
     
     this.concentratorService
     .getConcentrators(this.package)

@@ -8,8 +8,12 @@ import {
   FormArray,
   ControlContainer
 } from "@angular/forms";
-import { StudyService } from "../_services";
-import { Issue } from "../_models";
+import {
+  StudyService,
+  PackageService,
+  ConcentratorService
+} from "../_services";
+import { Issue, Package } from "../_models";
 import { AbstractControl } from "@angular/forms";
 import { SelectionModel } from "@angular/cdk/collections";
 import { MatTableDataSource, MatPaginator, MatSort } from "@angular/material";
@@ -42,10 +46,13 @@ export class StudyFormComponent implements OnInit {
   settingsFormGroup: FormGroup;
   issuesFormGroup: FormGroup;
   fileName: String;
+  packages: Package[];
 
   constructor(
     private _formBuilder: FormBuilder,
-    private studyService: StudyService
+    private studyService: StudyService,
+    private packageService: PackageService,
+    private concentratorService: ConcentratorService
   ) {}
 
   ngOnInit() {
@@ -56,14 +63,18 @@ export class StudyFormComponent implements OnInit {
       description: ["", Validators.required]
     });
     this.targetsFormGroup = this._formBuilder.group({
-      targets: ["", Validators.required]
+      selectionMode: ["", Validators.required],
+      targets: ["", Validators.required],
+      package: ["", Validators.required],
+      name: ["", Validators.required],
+      description: ["", Validators.required]
     });
     this.settingsFormGroup = this._formBuilder.group({
       loopLength: ["", [Validators.required, Validators.min(1)]],
       executionNumber: ["", [Validators.required, Validators.min(1)]],
       attempts: ["", [Validators.required, Validators.min(1)]],
       priority: ["", Validators.required],
-      mode: ["", Validators.required]
+      settingsMode: ["", Validators.required]
     });
     this.issuesFormGroup = this._formBuilder.group({
       detect: [[], [Validators.required]],
@@ -71,7 +82,7 @@ export class StudyFormComponent implements OnInit {
     });
 
     this.loadAllIssues();
-    this.forthFormGroupValueChanged();
+    this.thirdFormGroupValueChanged();
     this.fifthFormGroupValueChanged();
   }
 
@@ -125,20 +136,61 @@ export class StudyFormComponent implements OnInit {
     this.targetsFormGroup.get("targets").reset;
   }
 
+  thirdFormGroupValueChanged() {
+    const selectionModeControl = this.targetsFormGroup.get("selectionMode");
+    const nameControl = this.targetsFormGroup.get("name");
+    const descriptionControl = this.targetsFormGroup.get("description");
+    const targetControl = this.targetsFormGroup.get("targets");
+    const packageControl = this.targetsFormGroup.get("package");
+
+    selectionModeControl.valueChanges.subscribe((selectionMode: string) => {
+      this.cercoRecords = [];
+      if (selectionMode == packageModeSelection.select) {
+        packageControl.setValidators(Validators.required);
+        nameControl.reset();
+        descriptionControl.reset();
+        targetControl.reset();
+        this.getPackages();
+        nameControl.clearValidators();
+        descriptionControl.clearValidators();
+        targetControl.clearValidators();
+        nameControl.updateValueAndValidity();
+        descriptionControl.updateValueAndValidity();
+        targetControl.updateValueAndValidity();
+      }
+      if (selectionMode == packageModeSelection.new) {
+        packageControl.reset();
+        packageControl.clearValidators();
+        nameControl.setValidators(Validators.required);
+        descriptionControl.setValidators(Validators.required);
+        targetControl.setValidators(Validators.required);
+        nameControl.updateValueAndValidity();
+        descriptionControl.updateValueAndValidity();
+        targetControl.updateValueAndValidity();
+        packageControl.updateValueAndValidity();
+      }
+    });
+
+    packageControl.valueChanges.subscribe(pack => {
+      if (pack){
+      this.concentratorService
+        .getConcentratorsByPackage({ id_paquete: pack })
+        .then(records => (this.cercoRecords = records));
+    }});
+  }
+
   forthFormGroupValueChanged() {
-    const modeControl = this.settingsFormGroup.get("mode");
+    const settingsModeControl = this.settingsFormGroup.get("settingsMode");
     const loopLengthControl = this.settingsFormGroup.get("loopLength");
     const executionNumberControl = this.settingsFormGroup.get(
       "executionNumber"
     );
     const communicationAttemptsControl = this.settingsFormGroup.get("attempts");
     const priorityControl = this.settingsFormGroup.get("priority");
-    
-    this.settingsFormGroup.disable()
-    modeControl.enable();
 
-    modeControl.valueChanges.subscribe((mode: string) => {
-      if (mode == modeSelection.loop) {
+
+    settingsModeControl.valueChanges.subscribe((settingsMode: string) => {
+      if (settingsMode == modeSelection.loop) {
         loopLengthControl.setValidators([Validators.required]);
         loopLengthControl.setValue(null);
         loopLengthControl.enable();
@@ -147,7 +199,7 @@ export class StudyFormComponent implements OnInit {
         communicationAttemptsControl.enable();
         priorityControl.enable();
       }
-      if (mode === modeSelection.single) {
+      if (settingsMode === modeSelection.single) {
         loopLengthControl.setValue(null);
         loopLengthControl.clearValidators();
         loopLengthControl.disable();
@@ -157,7 +209,6 @@ export class StudyFormComponent implements OnInit {
         communicationAttemptsControl.enable();
         priorityControl.enable();
       }
-
       loopLengthControl.updateValueAndValidity();
     });
   }
@@ -187,10 +238,14 @@ export class StudyFormComponent implements OnInit {
         )
       );
   }
+  private getPackages() {
+    this.packageService.getAll().then(pack => (this.packages = pack));
+  }
   onSubmit() {
     this.studyService.post(
       this.nameFormGroup.value,
       this.descriptionFormGroup.value,
+      this.targetsFormGroup.value,
       this.cercoRecords,
       this.settingsFormGroup.value,
       this.issuesFormGroup.value
@@ -213,4 +268,9 @@ export enum IssuesSelection {
 export enum modeSelection {
   single = "1",
   loop = "2"
+}
+
+export enum packageModeSelection {
+  select = "1",
+  new = "2"
 }

@@ -1,12 +1,12 @@
 {
   "loggedIn": "Logged in as:",
-  "pageTitle": "Cerco Task",
+  "pageTitle": "ARTEMISA",
   "search": "Search",
   "next": "Next",
   "back": "Back",
   "menu": {
     "title": "Menu",
-    "concentrators": " Concentrators",
+    "concentrators": "Concentrators",
     "studies": "Studies"
   },
   "welcome": "Welcome",
@@ -37,8 +37,10 @@
       "title": "Create a new  study",
       "name": "Study name",
       "namePlaceholder": " Descriptive name",
+      "namePackagePlaceholder": "Descriptive package name",
       "description": "Description",
       "descriptionPlaceholder": "Description of de study",
+      "descriptionPackagePlaceholder": "Description of the package",
       "selectCERCO": "CERCO targets",
       "selectCERCOPlaceholder": "Upload list of Cerco",
       "settings": "Settings",
@@ -52,7 +54,13 @@
       "issuesName": "Issues name",
       "detect": "Detect",
       "fix": "Fix",
-      "executionNumber":"Number of executions"
+      "executionNumber":"Number of executions",
+      "targetMode":"Choose mode:",
+      "packageSelection":"Select package",
+      "packageCreation":"Create package",
+      "done" : "Done",
+      "singleRun": "Single run",
+      "loop": "Loop"
     },
     "id": "id",
     "name": "Name",

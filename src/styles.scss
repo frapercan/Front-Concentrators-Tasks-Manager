@@ -24,9 +24,9 @@ body {
   box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
     0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
 }
-
-
-
+.radio-group {
+  justify-content: center;
+}
 .positronx {
   text-decoration: none;
   color: #ffffff;
@@ -82,8 +82,6 @@ body {
   height: 100%;
 }
 
-
-
 .align-items {
   height: 50px;
   display: flex;
@@ -92,17 +90,15 @@ body {
   align-items: center;
 }
 
-
-  #expandlastright .mat-tab-label:last-child {
-  margin-left: auto; 
+#expandlastright .mat-tab-label:last-child {
+  margin-left: auto;
 }
 .make-green {
-  background-color: rgba(76,175,80,0.6);
+  background-color: rgba(76, 175, 80, 0.6);
 }
 
 .make-red {
-  background-color: rgba(244,67,54,0.6);
-  
+  background-color: rgba(244, 67, 54, 0.6);
 }
 
 .make-orange {
@@ -110,10 +106,11 @@ body {
 }
 
 .mat-header-cell {
-   color: whitesmoke;
-   background: grey;
-
+  color: whitesmoke;
+  background: grey;
 }
 
-
-
+.package-description {
+  min-width: 300px;
+  font-size: 16px;
+}

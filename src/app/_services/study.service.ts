@@ -10,8 +10,8 @@ export class StudyService {
   get(id) {
     return this.http.get(`${environment.apiUrl}/studies/` + id).toPromise();
   }
-  post(name,description,targets,settings,issues){
-    return this.http.post(`${environment.apiUrl}/studies/`,{name,description,targets,settings,issues}).toPromise();
+  post(name,description,targets,records,settings,issues){
+    console.log(name,description,targets,records,settings,issues);
   };
   
 

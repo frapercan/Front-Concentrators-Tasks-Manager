@@ -6,8 +6,13 @@
     <button mat-icon-button (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <h1 class="app-name" [routerLink]="['/']">{{ "pageTitle" | translate }}</h1>
+    <h1 mat-raised-button
+        matTooltip="AUTOMATIC RESOLUTION TASKS & EXPERT MONITORING ISSUE SYSTEM APP"
+        matTooltipPosition="after"
 
+        class="app-name" [routerLink]="['/']" >
+        {{ "pageTitle" | translate }}
+  </h1>
     <ul fxLayout fxLayoutGap="20px" class="navigation-items">
       <li fxHide.xs>
         <button mat-icon-button [matMenuTriggerFor]="settings">

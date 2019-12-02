@@ -1,5 +1,6 @@
 ﻿<div id="title">{{ "study.form.title" | translate }}</div>
 <mat-horizontal-stepper [linear]="isLinear" #stepper id="stepper">
+  <!--------------------------------------------- Name Step---------------------------------------------------------------------------------->
   <mat-step [stepControl]="nameFormGroup">
     <form [formGroup]="nameFormGroup">
       <ng-template matStepLabel
@@ -19,6 +20,8 @@
       </div>
     </form>
   </mat-step>
+  <!--------------------------------------------- Description Step---------------------------------------------------------------------------------->
+
   <mat-step [stepControl]="descriptionFormGroup">
     <form [formGroup]="descriptionFormGroup">
       <ng-template matStepLabel>{{
@@ -28,8 +31,8 @@
         <textarea
           matInput
           formControlName="description"
-          placeholder="Descripcion"
-          matTextareaAutosize
+          placeholder="{{ 'study.form.descriptionPlaceholder' | translate }}"
+          matTextareaAutosizet
           matAutosizeMinRows="5"
           matAutosizeMaxRows="50"
         ></textarea>
@@ -40,16 +43,82 @@
       </div>
     </form>
   </mat-step>
+  <!--------------------------------------------- Cerco selection (Packages) Step------------------------------------------------------------------->
   <mat-step [stepControl]="targetsFormGroup">
     <form [formGroup]="targetsFormGroup" id="CERCOSelection">
       <ng-template matStepLabel>{{
         "study.form.selectCERCO" | translate
       }}</ng-template>
-      <button type="button" mat-raised-button (click)="fileImportInput.click()">
+      <mat-radio-group
+        class="radio-group"
+        name="runtype"
+        formControlName="selectionMode"
+        aria-labelledby="targetLabel"
+      >
+        <label id="targetLabel">{{
+          "study.form.targetMode" | translate
+        }}</label>
+
+        <mat-radio-button class="radio-button" value="1">
+          {{ "study.form.packageSelection" | translate }}
+        </mat-radio-button>
+
+        <mat-radio-button class="radio-button" value="2">
+          {{ "study.form.packageCreation" | translate }}
+        </mat-radio-button>
+      </mat-radio-group>
+
+      <mat-form-field *ngIf="targetsFormGroup.value.selectionMode == '1'">
+        <mat-label>Paquete</mat-label>
+        <mat-select formControlName="package">
+          <mat-option
+            *ngFor="let package of packages"
+            [value]="package.id_paquete"
+            matTooltip="{{ package.descripcion }}"
+            matTooltipClass="package-description"
+            matTooltipPosition="after"
+          >
+            {{ package.nombre }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button
+        *ngIf="targetsFormGroup.value.selectionMode == '2'"
+        type="button"
+        mat-raised-button
+        (click)="fileImportInput.click()"
+      >
         Choose File
       </button>
-      <mat-card style="width: 70%; margin: 15px auto; background-color: gray"><concentratorPreview [package]='cercoRecords'></concentratorPreview></mat-card>
-      
+
+      <mat-form-field *ngIf="targetsFormGroup.value.selectionMode == '2'">
+        <input
+          matInput
+          placeholder="{{ 'study.form.namePackagePlaceholder' | translate }}"
+          formControlName="name"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field *ngIf="targetsFormGroup.value.selectionMode == '2'">
+        <textarea
+          matInput
+          formControlName="description"
+          placeholder="{{
+            'study.form.descriptionPackagePlaceholder' | translate
+          }}"
+          matTextareaAutosize
+          matAutosizeMinRows="1"
+          matAutosizeMaxRows="50"
+        ></textarea>
+      </mat-form-field>
+
+      <mat-card
+        *ngIf="cercoRecords.length"
+        style="width: 70%; margin: 15px auto; background-color: gray"
+        ><concentratorPreview [package]="cercoRecords"></concentratorPreview
+      ></mat-card>
       <input
         hidden
         formControlName="targets"
@@ -67,12 +136,15 @@
       </div>
     </form>
   </mat-step>
+
+  <!--------------------------------------------- Settings Step------------------------------------------------------------------->
+
   <mat-step [stepControl]="settingsFormGroup">
     <form [formGroup]="settingsFormGroup">
       <mat-radio-group
         class="radio-group"
         name="runtype"
-        formControlName="mode"
+        formControlName="settingsMode"
         aria-labelledby="executionLabel"
       >
         <label id="executionLabel">{{
@@ -80,11 +152,11 @@
         }}</label>
 
         <mat-radio-button class="radio-button" value="1">
-          Single run
+          {{ "study.form.singleRun" | translate }}
         </mat-radio-button>
 
         <mat-radio-button class="radio-button" value="2">
-          Loop
+          {{ "study.form.loop" | translate }}
         </mat-radio-button>
       </mat-radio-group>
       <mat-form-field>
@@ -135,6 +207,7 @@
       </div>
     </form>
   </mat-step>
+  <!--------------------------------------------- Issues Step------------------------------------------------------------------->
 
   <mat-step [stepControl]="issuesFormGroup">
     <form [formGroup]="issuesFormGroup" style="padding-top:0%">
@@ -210,7 +283,7 @@
   </mat-step>
 
   <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
+    <ng-template matStepLabel>{{ "study.form.done" | translate }}</ng-template>
     You are now done. Resume:
     <div>
       <button mat-button matStepperPrevious>Back</button>
@@ -220,3 +293,4 @@
   </mat-step>
 </mat-horizontal-stepper>
 
+{{ targetsFormGroup.value.selectionMode }}

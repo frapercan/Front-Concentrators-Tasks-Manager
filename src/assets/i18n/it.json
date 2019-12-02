@@ -1,13 +1,13 @@
 {
     "loggedIn": "connesso",
-    "pageTitle": "Compiti di CERCO ",
+    "pageTitle": "ARTEMISA",
     "search": "Ricerca",
     "next": "Il prossimo",
     "back": "indietro",
     "menu": {
         "title": "Menù",
-        "concentrators": "concentratori",
-        "studies": "studi"
+        "concentrators": "Concentratori",
+        "studies": "Studi"
     },
     "welcome": "benvenuto",
     "forms": {
@@ -37,8 +37,10 @@
             "title": "titolo",
             "name": "nome",
             "namePlaceholder": "namePlaceholder",
+            "namePackagePlaceholder": "Nome descrittivo del pacchetto",
             "description": "descrizione",
             "descriptionPlaceholder": "descriptionPlaceholder",
+            "descriptionPackagePlaceholder": "Descrizione del pacchetto",
             "selectCERCO": "selectCERCO",
             "selectCERCOPlaceholder": "selectCERCOPlaceholder",
             "settings": "impostazioni",
@@ -51,8 +53,14 @@
             "issuesSelector": "issuesSelector",
             "issuesName": "issuesName",
             "detect": "individuare",
-            "fix": "fix",
-            "executionNumber": "executionNumber"
+            "fix": "Soluzione",
+            "executionNumber": "executionNumber",
+            "targetMode":"Scegliere il modo:",
+            "packageSelection":"Seleziona pacchetto",
+            "packageCreation":"Crea pacchetto",
+            "done" : "Finito"
+
+
         },
         "id": "id",
         "name": "nome",

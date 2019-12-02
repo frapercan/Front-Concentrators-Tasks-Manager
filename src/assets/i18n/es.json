@@ -1,12 +1,12 @@
 {
   "loggedIn": "Conectado como:",
-  "pageTitle": "Tarea Cerco",
+  "pageTitle": "ARTEMISA",
   "search": "Buscar",
-  "next": "siguiente",
-  "back": "atrás",
+  "next": "Siguiente",
+  "back": "Atrás",
   "menu": {
     "title": "Menú",
-    "concentrators": " Concentradores",
+    "concentrators": "Concentradores",
     "studies": "Estudios"
   },
   "welcome": "Bienvenido",
@@ -37,8 +37,10 @@
       "title": "Crea un nuevo estudio",
       "name": "Nombre del estudio",
       "namePlaceholder": " Nombre descriptivo",
+      "namePackagePlaceholder": "Nombre descriptivo del paquete",
       "description": "Descripción",
       "descriptionPlaceholder": "Descripción del estudio",
+      "descriptionPackagePlaceholder": "Descripcion del paquete",
       "selectCERCO": "Objetivos CERCO",
       "selectCERCOPlaceholder": "Subir lista de Cerco",
       "settings": "Configuraciones",
@@ -52,7 +54,14 @@
       "issuesName": "Nombre de problemas",
       "detect": "Detectar",
       "fix": "Fijar",
-      "executionNumber": "Numero de ejecuciones"
+      "executionNumber": "Numero de ejecuciones",
+      "targetMode":"Elige modo:",
+      "packageSelection":"Selecciona paquete",
+      "packageCreation":"Crea paquete",
+      "done" : "Terminado",
+      "singleRun": "Única",
+      "loop": "Cíclica"
+      
     },
     "id": "ID",
     "name": "Nombre",
@@ -80,7 +89,7 @@
     "Error de autenticacion": "Error de autenticación",
     "Pendientes": "Pendiente",
     "Inaccesibles": " Inalcanzable",
-    "issues": "Cuestiones",
+    "issues": "Incidencias",
     "issuesAnalysis": "Análisis de problemas",
     "graphics": "Gráficos",
     "comunicationGraphicTitle": "Resultados de comunicación",

@@ -3,7 +3,10 @@
   [selectedIndex]="selected.value"
   (selectedIndexChange)="selected.setValue($event)"
 >
-  <mat-tab *ngFor="let tab of cycleTabs[0]" label = "{{tab.first | date:'medium' }}"></mat-tab>
+  <mat-tab
+    *ngFor="let tab of cycleTabs[0]"
+    label="{{ tab.first | date: 'medium' }}"
+  ></mat-tab>
 </mat-tab-group>
 
 <mat-tab-group id="expandlastright">
@@ -21,19 +24,16 @@
   <mat-tab label="{{ 'result.issuesAnalysis' | translate }}">
     <ng-template matTabContent>
       <div *ngIf="issues">
-        <issues
-          [issues]="issues[selected.value]"
-          [study]="study"></issues>
+        <issues [issues]="issues[selected.value]" [study]="study"></issues>
       </div>
     </ng-template>
   </mat-tab>
 
-  <mat-tab disabled class = "margin-left: auto; ">
-    <ng-template mat-tab-label  id='hola'>
-        <button mat-icon-button (click)="refresh()">
-          <mat-icon style="color:black" >cached</mat-icon>
-        </button>
+  <mat-tab disabled class="margin-left: auto; ">
+    <ng-template mat-tab-label>
+      <button mat-icon-button (click)="refresh()">
+        <mat-icon style="color:black">cached</mat-icon>
+      </button>
     </ng-template>
-</mat-tab>
-  
+  </mat-tab>
 </mat-tab-group>

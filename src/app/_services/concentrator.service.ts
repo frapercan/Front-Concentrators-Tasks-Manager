@@ -1,7 +1,7 @@
 ﻿import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
-import { Concentrator } from "../_models";
+import { Concentrator,Package } from "../_models";
 
 @Injectable({ providedIn: "root" })
 export class ConcentratorService {
@@ -14,9 +14,15 @@ export class ConcentratorService {
   }
 
   getConcentrators(concentrators) {
-    console.log('serv',concentrators)
     return this.http
       .post<Concentrator[]>(`${environment.apiUrl}/concentrators/concentrators`,concentrators)
+      .toPromise();
+  }
+
+  getConcentratorsByPackage(pack) {
+    console.log('pack',pack)
+    return this.http
+      .post<Package[]>(`${environment.apiUrl}/concentrators/package`,pack)
       .toPromise();
   }
 }
