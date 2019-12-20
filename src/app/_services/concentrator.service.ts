@@ -20,7 +20,6 @@ export class ConcentratorService {
   }
 
   getConcentratorsByPackage(pack) {
-    console.log('pack',pack)
     return this.http
       .post<Package[]>(`${environment.apiUrl}/concentrators/package`,pack)
       .toPromise();

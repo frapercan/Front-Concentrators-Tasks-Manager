@@ -46,7 +46,6 @@ export class StudyIssuesDetailsComponent implements OnInit, OnChanges {
 
   ngOnInit() {}
   ngOnChanges() {
-    console.log('issues',this.issues)
     if (this.issues) {
       if (this.issues.some(element => element.detectado > 0)) {
         this.renderIssuesChart();

@@ -48,7 +48,7 @@ export class StudyDetailsComponent implements OnInit, OnChanges {
       .get(this.id)
       .then(study => (this.study = study));
     
-    this.studyService.getCicloInfo(this.id).then(tab => (this.cycleTabs.push(tab),this.selected.setValue(Infinity)))
+    this.studyService.getCicloInfo(this.id).then(tab => (this.cycleTabs.push(tab),this.selected.setValue(Infinity)));
 
     this.studyService
       .getCommunicationResult(this.id)
@@ -67,6 +67,9 @@ export class StudyDetailsComponent implements OnInit, OnChanges {
     }
   }
   refresh() {
+
+    this.studyService.getCicloInfo(this.id).then(tab => (this.cycleTabs.push(tab),this.selected.setValue(Infinity)));
+
     this.studyService
     .getCommunicationResult(this.id)
     .then(communication => (this.communication = communication));

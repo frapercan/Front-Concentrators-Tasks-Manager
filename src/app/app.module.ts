@@ -29,6 +29,9 @@ import {
   StudyIssuesDetailsComponent,
   StudyFormComponent
 } from "./study";
+
+import {StudyComponent,TargetsComponent,SettingsComponent, TasksComponent, StudyOverviewComponent} from "./study/form"
+
 import { ConcentratorListComponent,ConcentratorPreviewComponent } from "./concentrator";
 
 import { MatFileUploadModule } from "angular-material-fileupload";
@@ -44,6 +47,11 @@ import { from } from "rxjs";
     StudyCommunicationComponent,
     StudyIssuesDetailsComponent,
     StudyFormComponent,
+    TargetsComponent,
+    TasksComponent,
+    SettingsComponent,
+    StudyOverviewComponent,
+    StudyComponent,
     ConcentratorListComponent,
     ConcentratorPreviewComponent,
     NavComponent

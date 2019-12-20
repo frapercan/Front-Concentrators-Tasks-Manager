@@ -1,0 +1,87 @@
+﻿<form [formGroup]="targetsFormGroup" id="CERCOSelection">
+    <mat-radio-group
+      class="radio-group"
+      name="targets"
+      formControlName="selectionMode"
+      aria-labelledby="selectionMode"
+    >
+      <label id="selectionMode">{{
+        "study.form.targetMode" | translate
+      }}</label>
+
+      <mat-radio-button class="radio-button" value="1">
+        {{ "study.form.packageSelection" | translate }}
+      </mat-radio-button>
+
+      <mat-radio-button class="radio-button" value="2">
+        {{ "study.form.packageCreation" | translate }}
+      </mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field *ngIf="targetsFormGroup.value.selectionMode == '1'">
+      <mat-label>Paquete</mat-label>
+      <mat-select formControlName="package">
+        <mat-option
+          *ngFor="let package of packages"
+          [value]="package.id_paquete"
+          matTooltip="{{ package.descripcion }}"
+          matTooltipClass="package-description"
+          matTooltipPosition="after"
+        >
+          {{ package.nombre }}
+        </mat-option> 
+      </mat-select>
+    </mat-form-field> 
+
+    <button
+      *ngIf="targetsFormGroup.value.selectionMode == '2'"
+      type="button"
+      mat-raised-button
+      (click)="fileImportInput.click()"
+    >
+      Choose File
+    </button>
+
+    <mat-form-field *ngIf="targetsFormGroup.value.selectionMode == '2'">
+      <input
+        matInput
+        placeholder="{{ 'study.form.namePackagePlaceholder' | translate }}"
+        formControlName="name"
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field *ngIf="targetsFormGroup.value.selectionMode == '2'">
+      <textarea
+        matInput
+        formControlName="description"
+        placeholder="{{
+          'study.form.descriptionPackagePlaceholder' | translate
+        }}"
+        matTextareaAutosize
+        matAutosizeMinRows="1"
+        matAutosizeMaxRows="50"
+      ></textarea>
+    </mat-form-field>
+
+    <mat-card
+      *ngIf="targetsFormGroup.value.targets"
+      style="width: 70%; margin: 15px auto; background-color: gray"
+      ><concentratorPreview [package]="targetsFormGroup.value.targets"></concentratorPreview
+    ></mat-card>
+    <input
+      hidden
+      formControlName="file"
+      type="file"
+      #fileImportInput
+      name="File Upload"
+      id="txtFileUpload"
+      (change)="fileChangeListener($event)"
+      accept=".csv"
+    />
+
+    <div>
+      <button mat-button matStepperPrevious>{{ "back" | translate }}</button>
+      <button mat-button matStepperNext>{{ "next" | translate }}</button>
+    </div>
+  </form>

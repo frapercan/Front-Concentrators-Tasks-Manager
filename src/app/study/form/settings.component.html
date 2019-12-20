@@ -1,0 +1,43 @@
+﻿<form [formGroup]="settingsFormGroup">
+  <mat-radio-group class="radio-group" name="settings" formControlName="settingsMode" aria-labelledby="settingsMode">
+    <label id="settingsMode">{{
+        "study.form.executionModeLabel" | translate
+      }}</label>
+
+    <mat-radio-button class="radio-button" value="1">
+      {{ "study.form.singleRun" | translate }}
+    </mat-radio-button>
+
+    <mat-radio-button class="radio-button" value="2">
+      {{ "study.form.loop" | translate }}
+    </mat-radio-button>
+  </mat-radio-group>
+  <mat-form-field>
+    <input matInput placeholder="{{ 'study.form.executionNumber' | translate }}" formControlName="executionNumber"
+      type="number" min="2" required /></mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="{{ 'study.form.loopLengthPlaceholder' | translate }}" formControlName="loopLength"
+      type="number" min="2" required />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="{{ 'study.form.attempts' | translate }}" type="number" min="3"
+      class="example-right-align" formControlName="attempts" />
+  </mat-form-field>
+
+  <ng-template matStepLabel>{{
+      "study.form.settings" | translate
+    }}</ng-template>
+  <mat-form-field>
+    <mat-label>Priority</mat-label>
+    <select matNativeControl required formControlName="priority">
+      <option value="3">High</option>
+      <option value="2">Medium</option>
+      <option value="1">Low</option>
+    </select>
+  </mat-form-field>
+
+  <div>
+    <button mat-button matStepperPrevious>{{ "back" | translate }}</button>
+    <button mat-button matStepperNext>{{ "next" | translate }}</button>
+  </div>
+</form>

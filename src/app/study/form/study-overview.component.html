@@ -1,0 +1,97 @@
+﻿<mat-card style="margin: 30px 25%;">
+    <mat-card-title>{{"study.form.overviewCreation" | translate}}</mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-list>
+        <mat-list-item>
+            <h4 mat-line>
+                <div class="numberCircle">1</div>
+            </h4>
+            <p mat-line> {{ "study.form.name" | translate }}:{{ studyFormGroup.value.name }}</p>
+
+            <p mat-line>
+                {{"study.form.description" | translate}}:
+                <span
+                    *ngIf="studyFormGroup.value.description">{{ studyFormGroup.value.description }}</span>
+                <span *ngIf="!studyFormGroup.value.description">{{ emptyChar }} </span>
+            </p>
+
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+            <h4 mat-line>
+                <div class="numberCircle">2</div>
+            </h4>
+            <p mat-line>{{"study.form.targetsNumber" | translate }}
+                <span *ngIf="targetsFormGroup.value.targets">
+                    {{ targetsFormGroup.value.targets.length }}
+                </span>
+                <span *ngIf="!targetsFormGroup.value.targets">
+                    {{ emptyChar }}
+                </span>
+            </p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+            <h4 mat-line>
+                <div class="numberCircle">3</div>
+            </h4>
+            <p mat-line>{{"study.form.executionModeLabel" | translate }}
+                <span *ngIf="settingsFormGroup.value.settingsMode == 1">
+                    {{ "study.form.singleRun" | translate }}
+                </span>
+                <span *ngIf="settingsFormGroup.value.settingsMode == 2">
+                    {{ "study.form.loop" | translate }}
+                </span>
+                <span *ngIf="!settingsFormGroup.value.settingsMode">
+                    {{ emptyChar }}
+                </span>
+            </p>
+
+            <p mat-line>
+                {{"study.form.executionNumber" | translate}}:
+                <span
+                    *ngIf="settingsFormGroup.value.executionNumber">{{ settingsFormGroup.value.executionNumber }}</span>
+                <span *ngIf="!settingsFormGroup.value.executionNumber">{{ emptyChar }} </span>
+            </p>
+
+            <p mat-line>
+                {{"study.form.loopLength" | translate}}:
+                <span *ngIf="settingsFormGroup.value.loopLength">{{ settingsFormGroup.value.loopLength }}</span>
+                <span *ngIf="!settingsFormGroup.value.loopLength">{{ emptyChar }} </span>
+            </p>
+
+            <p mat-line>
+                {{"study.form.attempts" | translate}}:
+                <span *ngIf="settingsFormGroup.value.attempts">{{ settingsFormGroup.value.attempts }}</span>
+                <span *ngIf="!settingsFormGroup.value.attempts">{{ emptyChar }} </span>
+            </p>
+
+            <p mat-line>
+                {{"study.form.priority" | translate}}:
+                <span *ngIf="settingsFormGroup.value.priority">{{ settingsFormGroup.value.priority }}</span>
+                <span *ngIf="!settingsFormGroup.value.priority">{{ emptyChar }} </span>
+            </p>
+
+
+
+
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+            <h4 mat-line>
+                <div class="numberCircle">4</div>
+            </h4>
+
+            <p mat-line>
+                {{"study.form.tasksMode" | translate }}
+                <span *ngIf="tasksFormGroup.value.tasksMode == 0">{{ "study.form.communicationTask" | translate }}</span>
+                <span *ngIf="tasksFormGroup.value.tasksMode == 1">{{ "study.form.issuesTasks" | translate }}</span>
+            </p>
+
+
+
+
+
+        </mat-list-item>
+    </mat-list>
+</mat-card>

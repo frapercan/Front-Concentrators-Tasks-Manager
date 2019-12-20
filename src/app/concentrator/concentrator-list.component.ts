@@ -61,7 +61,6 @@ export class ConcentratorListComponent implements OnInit, OnDestroy {
 
   displayFilter() {
     var x = document.getElementById("filter");
-    console.log(x);
     if (x.style.display === "none") {
       x.style.display = "block";
     } else {

@@ -35,8 +35,9 @@
     "study": {
         "form": {
             "title": "titolo",
+            "study": "Studio",
             "name": "nome",
-            "namePlaceholder": "namePlaceholder",
+            "namePlaceholder": "Nome",
             "namePackagePlaceholder": "Nome descrittivo del pacchetto",
             "description": "descrizione",
             "descriptionPlaceholder": "descriptionPlaceholder",
@@ -58,7 +59,15 @@
             "targetMode":"Scegliere il modo:",
             "packageSelection":"Seleziona pacchetto",
             "packageCreation":"Crea pacchetto",
-            "done" : "Finito"
+            "done" : "Finito",
+            "tasksMode": "Modalità di selezione dei compiti: ",
+            "communicationTask": "Compiti di comunicazione esclusivamente",
+            "issuesTasks": "Incidenze",
+            "overviewCreation": "Stai per creare il seguente studio",
+            "targetsNumber": "Numero di obiettivi",
+            "loopLength": "Numero di cicli",
+            "priority": "Priorità"
+            
 
 
         },

@@ -62,7 +62,6 @@ export class StudyListComponent implements OnInit {
 
   displayFilter() {
     var x = document.getElementById("filter");
-    console.log(x);
     if (x.style.display === "none") {
       x.style.display = "block";
     } else {

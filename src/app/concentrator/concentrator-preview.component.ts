@@ -41,13 +41,14 @@ export class ConcentratorPreviewComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    console.log(this.package)
+    console.log('hola',this.package)
     this.loadConcentrators();
   }
 
 
   private loadConcentrators(){
     if (this.package.length){
+      console.log('haylength')
     
     this.concentratorService
     .getConcentrators(this.package)
@@ -69,7 +70,6 @@ export class ConcentratorPreviewComponent implements OnInit, OnChanges {
 
   displayFilter() {
     var x = document.getElementById("filter");
-    console.log(x);
     if (x.style.display === "none") {
       x.style.display = "block";
     } else {

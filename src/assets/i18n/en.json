@@ -35,8 +35,9 @@
   "study": {
     "form": {
       "title": "Create a new  study",
+      "study": "Study",
       "name": "Study name",
-      "namePlaceholder": " Descriptive name",
+      "namePlaceholder": " Name",
       "namePackagePlaceholder": "Descriptive package name",
       "description": "Description",
       "descriptionPlaceholder": "Description of de study",
@@ -60,7 +61,15 @@
       "packageCreation":"Create package",
       "done" : "Done",
       "singleRun": "Single run",
-      "loop": "Loop"
+      "loop": "Loop",
+      "tasksMode": "Task mode Selection: ",
+      "communicationTask": "Communication Only",
+      "issuesTasks": "Issues",
+      "overviewCreation": "You are going to create the following study",
+      "targetsNumber":"Number of targets:",
+      "loopLength": "Number of loops",
+      "priority": "Priority"
+      
     },
     "id": "id",
     "name": "Name",

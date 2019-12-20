@@ -18,9 +18,7 @@
   width: 50%;
 }
 
-.half-width {
-  width: 50%;
-}
+
 
 body {
   margin: 0;
@@ -70,6 +68,12 @@ mat-toolbar-row {
   margin: 15px 40%;
   
 }
+.task-radio-group {
+  display: flex;
+  flex-direction: row;
+  margin: 15px 40%;
+
+}
 
 .radio-group-header {
   display: flex;
@@ -99,3 +103,25 @@ form {
   text-align: center;
 }
 
+
+
+.short-width{
+  width: 10%
+}
+
+
+.valign{
+  display: flex;
+  flex-direction: column;
+}
+
+.numberCircle {
+  width: 24px;
+  line-height: 24px;
+  border-radius: 100%;
+  text-align: center;
+  font-size: 16px;
+  background-color: rgba(0,0,0,.54);
+  color: white;
+  
+}

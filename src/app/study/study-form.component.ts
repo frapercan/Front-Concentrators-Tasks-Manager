@@ -9,19 +9,9 @@ import {
   ControlContainer
 } from "@angular/forms";
 import {
-  StudyService,
-  PackageService,
-  ConcentratorService
+  StudyService
 } from "../_services";
-import { Issue, Package } from "../_models";
-import { AbstractControl } from "@angular/forms";
-import { SelectionModel } from "@angular/cdk/collections";
-import { MatTableDataSource, MatPaginator, MatSort } from "@angular/material";
 
-export interface IssueElement {
-  id: number;
-  name: string;
-}
 
 @Component({
   selector: "study-form",
@@ -29,248 +19,57 @@ export interface IssueElement {
   styleUrls: ["./study-form.component.scss"]
 })
 export class StudyFormComponent implements OnInit {
-  displayedColumns: string[] = ["id_incidencia", "nombre", "detect", "fix"];
-  dataSource;
-  detect = new SelectionModel<Issue>(true, []);
-  fix = new SelectionModel<Issue>(true, []);
-  public cercoRecords: any[] = [];
-  demoForm: FormGroup;
-  @ViewChild("fileImportInput", { static: true }) fileImportInput: any;
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
-  issuesSelection = IssuesSelection;
-  isLinear = true;
-  nameFormGroup: FormGroup;
-  descriptionFormGroup: FormGroup;
+
+  isLinear = false; //Stepper mode (Linear 1-2-3-4 , NonLinear 1-3-2-1-4...)
+  
+  studyFormGroup: FormGroup;
   targetsFormGroup: FormGroup;
   settingsFormGroup: FormGroup;
-  issuesFormGroup: FormGroup;
+  tasksFormGroup: FormGroup;
   fileName: String;
-  packages: Package[];
 
   constructor(
     private _formBuilder: FormBuilder,
-    private studyService: StudyService,
-    private packageService: PackageService,
-    private concentratorService: ConcentratorService
-  ) {}
+    private studyService: StudyService
+  ) { }
 
   ngOnInit() {
-    this.nameFormGroup = this._formBuilder.group({
-      name: ["", Validators.required]
+
+    this.studyFormGroup = this._formBuilder.group({
+      name: ["", Validators.required],
+      description: [""]
     });
-    this.descriptionFormGroup = this._formBuilder.group({
-      description: ["", Validators.required]
-    });
+
     this.targetsFormGroup = this._formBuilder.group({
       selectionMode: ["", Validators.required],
+      file: [""],
       targets: ["", Validators.required],
-      package: ["", Validators.required],
-      name: ["", Validators.required],
-      description: ["", Validators.required]
+      package: [""],
+      name: [""],
+      description: [""]
     });
     this.settingsFormGroup = this._formBuilder.group({
+      settingsMode: ["", Validators.required],
       loopLength: ["", [Validators.required, Validators.min(1)]],
       executionNumber: ["", [Validators.required, Validators.min(1)]],
       attempts: ["", [Validators.required, Validators.min(1)]],
       priority: ["", Validators.required],
-      settingsMode: ["", Validators.required]
     });
-    this.issuesFormGroup = this._formBuilder.group({
-      detect: [[], [Validators.required]],
+    this.tasksFormGroup = this._formBuilder.group({
+      tasksMode: [[],Validators.required],
+      detect: [[]],
       fix: [[]]
     });
 
-    this.loadAllIssues();
-    this.thirdFormGroupValueChanged();
-    this.fifthFormGroupValueChanged();
   }
-
-  fileChangeListener($event: any): void {
-    let files = $event.srcElement.files;
-
-    if (this.isCSVFile(files[0])) {
-      let input = $event.target;
-      let reader = new FileReader();
-      reader.readAsText(input.files[0]);
-
-      reader.onload = () => {
-        let csvData = reader.result;
-        let csvRecordsArray = (<string>csvData).split(/\r\n|\n/);
-
-        this.cercoRecords = this.getDataRecordsArrayFromCSVFile(
-          csvRecordsArray
-        );
-      };
-
-      reader.onerror = function() {
-        alert("Unable to read " + input.files[0]);
-      };
-    } else {
-      alert("Please import valid .csv file.");
-      this.fileReset();
-    }
-  }
-
-  getDataRecordsArrayFromCSVFile(csvRecordsArray: any) {
-    let dataArr = [];
-
-    for (let i = 1; i < csvRecordsArray.length; i++) {
-      let data = (<string>csvRecordsArray[i]).split(",");
-
-      let csvRecord: CSVRecord = new CSVRecord();
-
-      csvRecord.LVCID = data[0].trim();
-      dataArr.push(csvRecord);
-    }
-    return dataArr;
-  }
-
-  isCSVFile(file: any) {
-    return file.name.endsWith(".csv");
-  }
-
-  fileReset() {
-    this.fileImportInput.nativeElement.value = "";
-    this.cercoRecords = [];
-    this.targetsFormGroup.get("targets").reset;
-  }
-
-  thirdFormGroupValueChanged() {
-    const selectionModeControl = this.targetsFormGroup.get("selectionMode");
-    const nameControl = this.targetsFormGroup.get("name");
-    const descriptionControl = this.targetsFormGroup.get("description");
-    const targetControl = this.targetsFormGroup.get("targets");
-    const packageControl = this.targetsFormGroup.get("package");
-
-    selectionModeControl.valueChanges.subscribe((selectionMode: string) => {
-      this.cercoRecords = [];
-      if (selectionMode == packageModeSelection.select) {
-        packageControl.setValidators(Validators.required);
-        nameControl.reset();
-        descriptionControl.reset();
-        targetControl.reset();
-        this.getPackages();
-        nameControl.clearValidators();
-        descriptionControl.clearValidators();
-        targetControl.clearValidators();
-        nameControl.updateValueAndValidity();
-        descriptionControl.updateValueAndValidity();
-        targetControl.updateValueAndValidity();
-      }
-      if (selectionMode == packageModeSelection.new) {
-        packageControl.reset();
-        packageControl.clearValidators();
-        nameControl.setValidators(Validators.required);
-        descriptionControl.setValidators(Validators.required);
-        targetControl.setValidators(Validators.required);
-        nameControl.updateValueAndValidity();
-        descriptionControl.updateValueAndValidity();
-        targetControl.updateValueAndValidity();
-        packageControl.updateValueAndValidity();
-      }
-    });
-
-    packageControl.valueChanges.subscribe(pack => {
-      if (pack){
-      this.concentratorService
-        .getConcentratorsByPackage({ id_paquete: pack })
-        .then(records => (this.cercoRecords = records));
-    }});
-  }
-
-  forthFormGroupValueChanged() {
-    const settingsModeControl = this.settingsFormGroup.get("settingsMode");
-    const loopLengthControl = this.settingsFormGroup.get("loopLength");
-    const executionNumberControl = this.settingsFormGroup.get(
-      "executionNumber"
-    );
-    const communicationAttemptsControl = this.settingsFormGroup.get("attempts");
-    const priorityControl = this.settingsFormGroup.get("priority");
-
-
-    settingsModeControl.valueChanges.subscribe((settingsMode: string) => {
-      if (settingsMode == modeSelection.loop) {
-        loopLengthControl.setValidators([Validators.required]);
-        loopLengthControl.setValue(null);
-        loopLengthControl.enable();
-        executionNumberControl.enable();
-        executionNumberControl.setValidators([Validators.required]);
-        communicationAttemptsControl.enable();
-        priorityControl.enable();
-      }
-      if (settingsMode === modeSelection.single) {
-        loopLengthControl.setValue(null);
-        loopLengthControl.clearValidators();
-        loopLengthControl.disable();
-        executionNumberControl.clearValidators();
-        executionNumberControl.setValue(1);
-        executionNumberControl.disable();
-        communicationAttemptsControl.enable();
-        priorityControl.enable();
-      }
-      loopLengthControl.updateValueAndValidity();
-    });
-  }
-  fifthFormGroupValueChanged() {
-    this.fix.changed.subscribe(value =>
-      this.issuesFormGroup.setValue({
-        fix: value.source.selected,
-        detect: this.issuesFormGroup.get("detect").value
-      })
-    );
-    this.detect.changed.subscribe(value =>
-      this.issuesFormGroup.setValue({
-        detect: value.source.selected,
-        fix: this.issuesFormGroup.get("fix").value
-      })
-    );
-  }
-
-  private loadAllIssues() {
-    this.studyService
-      .getIssuesList()
-      .then(
-        issues => (
-          (this.dataSource = new MatTableDataSource(issues)),
-          (this.dataSource.sort = this.sort),
-          (this.dataSource.paginator = this.paginator)
-        )
+     onSubmit() {
+      this.studyService.post(
+        this.studyFormGroup.value,
+        this.targetsFormGroup.value,
+        this.settingsFormGroup.value,
+        this.tasksFormGroup.value
       );
-  }
-  private getPackages() {
-    this.packageService.getAll().then(pack => (this.packages = pack));
-  }
-  onSubmit() {
-    this.studyService.post(
-      this.nameFormGroup.value,
-      this.descriptionFormGroup.value,
-      this.targetsFormGroup.value,
-      this.cercoRecords,
-      this.settingsFormGroup.value,
-      this.issuesFormGroup.value
-    );
-  }
+    } 
 }
 
-export class CSVRecord {
-  public LVCID: any;
 
-  constructor() {}
-}
-
-export enum IssuesSelection {
-  nothing = "",
-  detect = "1",
-  fix = "2"
-}
-
-export enum modeSelection {
-  single = "1",
-  loop = "2"
-}
-
-export enum packageModeSelection {
-  select = "1",
-  new = "2"
-}
