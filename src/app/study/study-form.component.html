@@ -24,20 +24,20 @@
     <settingsStep [settingsFormGroup]="settingsFormGroup"></settingsStep>
 
   </mat-step>
-  <!--------------------------------------------- Task Step------------------------------------------------------------------->
+  <!--------------------------------------------- Issues Step------------------------------------------------------------------->
 
-  <mat-step [stepControl]="tasksFormGroup">
+  <mat-step [stepControl]="issuesFormGroup">
     <ng-template matStepLabel>{{
           "study.form.issues" | translate
         }}</ng-template>
-    <tasksStep [issues]="issues" [tasksFormGroup]="tasksFormGroup"></tasksStep>
+    <issuesStep [issues]="issues" [issuesFormGroup]="issuesFormGroup"></issuesStep>
   </mat-step>
 
 
   <!---------------------------------------------- Resume Step -------------------------------------------------------------------->
   <mat-step>
     <ng-template matStepLabel>{{ "study.form.done" | translate }}</ng-template>
-    <studyOverview [studyFormGroup]="studyFormGroup" [targetsFormGroup]="targetsFormGroup" [settingsFormGroup]="settingsFormGroup" [tasksFormGroup]="tasksFormGroup"></studyOverview>
+    <studyOverview [studyFormGroup]="studyFormGroup" [targetsFormGroup]="targetsFormGroup" [settingsFormGroup]="settingsFormGroup" [issuesFormGroup]="issuesFormGroup"></studyOverview>
     <div>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button (click)="stepper.reset()">Reset</button>
@@ -46,6 +46,3 @@
   </mat-step>
 </mat-horizontal-stepper>
 
-{{ tasksFormGroup.value.detect }}
-
-{{ settingsFormGroup.value.settingsMode }}

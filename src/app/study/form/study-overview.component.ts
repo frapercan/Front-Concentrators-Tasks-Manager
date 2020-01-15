@@ -14,7 +14,7 @@ export class StudyOverviewComponent implements OnInit {
   @Input() public studyFormGroup: FormGroup;
   @Input() public targetsFormGroup: FormGroup;
   @Input() public settingsFormGroup: FormGroup;
-  @Input() public tasksFormGroup: FormGroup;
+  @Input() public issuesFormGroup: FormGroup;
   emptyChar = '-'
 
 

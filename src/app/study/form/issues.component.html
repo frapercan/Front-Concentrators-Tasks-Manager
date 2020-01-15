@@ -1,32 +1,13 @@
-﻿<form [formGroup]="tasksFormGroup" style="padding-top:0%">
-    <div *ngIf="tasksFormGroup.errors">
-      <mat-error *ngIf="tasksFormGroup.errors.atLeastOne">{{
+﻿<form [formGroup]="issuesFormGroup" style="padding-top:0%">
+    <div *ngIf="issuesFormGroup.errors">
+      <mat-error *ngIf="issuesFormGroup.errors.atLeastOne">{{
         "study.form.atLeastOne" | translate
       }}</mat-error>
     </div>
 
-    <mat-radio-group
-    class="task-radio-group"
-    name="tasks"
-    formControlName="tasksMode"
-    aria-labelledby="tasksMode"
-  >
-    <label id="tasksMode">{{
-      "study.form.tasksMode" | translate
-    }}</label>
-    <span class='valign'>
-    <mat-radio-button class="radio-button" value="0">
-      {{ "study.form.communicationTask" | translate }}
-    </mat-radio-button>
-
-    <mat-radio-button class="radio-button" value="1">
-      {{ "study.form.issuesTasks" | translate }}
-    </mat-radio-button>
-  </span>
-  </mat-radio-group>
 
     
-    <table *ngIf="tasksFormGroup.value.tasksMode == 1" mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="text-align: left">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="text-align: left">
       <!-- detect Checkbox Column -->
       <ng-container matColumnDef="detect">
         <th mat-header-cell *matHeaderCellDef>

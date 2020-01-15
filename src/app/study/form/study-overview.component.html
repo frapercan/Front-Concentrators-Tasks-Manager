@@ -10,8 +10,7 @@
 
             <p mat-line>
                 {{"study.form.description" | translate}}:
-                <span
-                    *ngIf="studyFormGroup.value.description">{{ studyFormGroup.value.description }}</span>
+                <span *ngIf="studyFormGroup.value.description">{{ studyFormGroup.value.description }}</span>
                 <span *ngIf="!studyFormGroup.value.description">{{ emptyChar }} </span>
             </p>
 
@@ -84,8 +83,7 @@
 
             <p mat-line>
                 {{"study.form.tasksMode" | translate }}
-                <span *ngIf="tasksFormGroup.value.tasksMode == 0">{{ "study.form.communicationTask" | translate }}</span>
-                <span *ngIf="tasksFormGroup.value.tasksMode == 1">{{ "study.form.issuesTasks" | translate }}</span>
+                <span>{{ "study.form.issuesTasks" | translate }}</span>
             </p>
 
 

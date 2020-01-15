@@ -8,7 +8,7 @@ import {
   ConcentratorService,
   StudyService
 } from "../../_services";
-import { Package,Issue } from "../../_models";
+import { Package, Issue } from "../../_models";
 import { SelectionModel } from "@angular/cdk/collections";
 import { MatTableDataSource, MatPaginator, MatSort } from "@angular/material";
 
@@ -16,11 +16,11 @@ import { MatTableDataSource, MatPaginator, MatSort } from "@angular/material";
 
 
 
-@Component({ selector: "tasksStep", templateUrl: "tasks.component.html", styleUrls: ["../study-form.component.scss"] })
-export class TasksComponent implements OnInit {
-  @Input() public tasksFormGroup: FormGroup;
+@Component({ selector: "issuesStep", templateUrl: "issues.component.html", styleUrls: ["../study-form.component.scss"] })
+export class IssuesComponent implements OnInit {
+  @Input() public issuesFormGroup: FormGroup;
   @Input() public issues: FormGroup;
-  
+
   dataSource;
   displayedColumns: string[] = ["id_incidencia", "nombre", "detect", "fix"];
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -43,29 +43,22 @@ export class TasksComponent implements OnInit {
 
   tasksGroupValueChanged() {
     this.fix.changed.subscribe(value =>
-      this.tasksFormGroup.setValue({
+      this.issuesFormGroup.setValue({
         fix: value.source.selected,
-        detect: this.tasksFormGroup.get("detect").value
+        detect: this.issuesFormGroup.get("detect").value,
       })
     );
     this.detect.changed.subscribe(value =>
-      
-      this.tasksFormGroup.setValue({
+      this.issuesFormGroup.setValue({
         detect: value.source.selected,
-        fix: this.tasksFormGroup.get("fix").value
+        fix: this.issuesFormGroup.get("fix").value,
       })
-      
-    );
-    this.tasksFormGroup.get('tasksMode').valueChanges.subscribe(mode => {
-      if (mode) {
-        this.detect.clear();
-        this.fix.clear()
 
-      }
-    });
+    );
+    
 
   }
-  
+
 
   private loadAllIssues() {
     this.studyService
@@ -79,7 +72,7 @@ export class TasksComponent implements OnInit {
       );
   }
 
-  
+
 
 }
 

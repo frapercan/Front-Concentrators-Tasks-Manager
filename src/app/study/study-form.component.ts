@@ -25,7 +25,7 @@ export class StudyFormComponent implements OnInit {
   studyFormGroup: FormGroup;
   targetsFormGroup: FormGroup;
   settingsFormGroup: FormGroup;
-  tasksFormGroup: FormGroup;
+  issuesFormGroup: FormGroup;
   fileName: String;
 
   constructor(
@@ -55,8 +55,7 @@ export class StudyFormComponent implements OnInit {
       attempts: ["", [Validators.required, Validators.min(1)]],
       priority: ["", Validators.required],
     });
-    this.tasksFormGroup = this._formBuilder.group({
-      tasksMode: [[],Validators.required],
+    this.issuesFormGroup = this._formBuilder.group({
       detect: [[]],
       fix: [[]]
     });
@@ -67,7 +66,7 @@ export class StudyFormComponent implements OnInit {
         this.studyFormGroup.value,
         this.targetsFormGroup.value,
         this.settingsFormGroup.value,
-        this.tasksFormGroup.value
+        this.issuesFormGroup.value
       );
     } 
 }
