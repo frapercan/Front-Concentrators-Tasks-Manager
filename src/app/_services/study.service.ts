@@ -1,7 +1,7 @@
 ﻿import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
-import { Study, Issue } from "../_models";
+import { Study, Issue, Performance } from "../_models";
 
 @Injectable({ providedIn: "root" })
 export class StudyService {
@@ -13,8 +13,9 @@ export class StudyService {
   post(study,
     targets,
     settings,
-    tasks) {
-    return this.http.post(`${environment.apiUrl}/studies/`,{study,targets,settings,tasks}).toPromise();
+    issues,
+    performances) {
+    return this.http.post(`${environment.apiUrl}/studies/`,{study,targets,settings,issues,performances}).toPromise();
   };
 
 
@@ -32,6 +33,10 @@ export class StudyService {
 
   getIssuesList() {
     return this.http.get<Issue[]>(`${environment.apiUrl}/studies/issues`).toPromise();
+  };
+
+  getPerformancesList() {
+    return this.http.get<Performance[]>(`${environment.apiUrl}/studies/performances`).toPromise();
   };
 
 

@@ -34,6 +34,14 @@
   </mat-step>
 
 
+  <!-------------------------------------------- Performances Step---------------------------------------------------------------->
+  <mat-step [stepControl]="perfomancesFormGroup">
+    <ng-template matStepLabel>{{
+          "study.form.performances" | translate
+        }}</ng-template>
+    <performancesStep [performances]="performances" [performancesFormGroup]="performancesFormGroup"></performancesStep>
+  </mat-step>
+
   <!---------------------------------------------- Resume Step -------------------------------------------------------------------->
   <mat-step>
     <ng-template matStepLabel>{{ "study.form.done" | translate }}</ng-template>

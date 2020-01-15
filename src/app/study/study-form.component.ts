@@ -26,7 +26,7 @@ export class StudyFormComponent implements OnInit {
   targetsFormGroup: FormGroup;
   settingsFormGroup: FormGroup;
   issuesFormGroup: FormGroup;
-  fileName: String;
+  performancesFormGroup: FormGroup
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -59,6 +59,9 @@ export class StudyFormComponent implements OnInit {
       detect: [[]],
       fix: [[]]
     });
+    this.performancesFormGroup = this._formBuilder.group({
+      performances: [[]]
+    });
 
   }
      onSubmit() {
@@ -66,7 +69,8 @@ export class StudyFormComponent implements OnInit {
         this.studyFormGroup.value,
         this.targetsFormGroup.value,
         this.settingsFormGroup.value,
-        this.issuesFormGroup.value
+        this.issuesFormGroup.value,
+        this.performancesFormGroup.value
       );
     } 
 }

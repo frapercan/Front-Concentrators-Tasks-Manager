@@ -22,7 +22,7 @@ export class IssuesComponent implements OnInit {
   @Input() public issues: FormGroup;
 
   dataSource;
-  displayedColumns: string[] = ["id_incidencia", "nombre", "detect", "fix"];
+  displayedColumns: string[] = ["id_incidencia", "nombre","descripcion","detect", "fix"];
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
@@ -56,7 +56,7 @@ export class IssuesComponent implements OnInit {
 
     );
     
-
+     
   }
 
 

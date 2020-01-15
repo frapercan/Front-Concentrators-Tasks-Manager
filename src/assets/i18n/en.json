@@ -47,6 +47,7 @@
       "settings": "Settings",
       "settingsPlaceholder": "Settings",
       "issues": "Issues",
+      "performances": "Performances",
       "loopLengthPlaceholder": "Repeat the study every x hours",
       "attempts": "Communication attempts",
       "executionModeLabel": "Execution Type: ",
