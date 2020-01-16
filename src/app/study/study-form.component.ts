@@ -26,7 +26,8 @@ export class StudyFormComponent implements OnInit {
   targetsFormGroup: FormGroup;
   settingsFormGroup: FormGroup;
   issuesFormGroup: FormGroup;
-  performancesFormGroup: FormGroup
+  performancesFormGroup: FormGroup;
+  readingFormGroup:FormGroup;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -61,6 +62,10 @@ export class StudyFormComponent implements OnInit {
     });
     this.performancesFormGroup = this._formBuilder.group({
       performances: [[]]
+    });
+
+    this.readingFormGroup = this._formBuilder.group({
+      reading: [[]]
     });
 
   }

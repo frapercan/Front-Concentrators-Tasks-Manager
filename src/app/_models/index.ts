@@ -4,3 +4,4 @@ export * from './study';
 export * from './issues';
 export * from './package'
 export * from './performances'
+export * from './attributes'

@@ -30,7 +30,7 @@ import {
   StudyFormComponent
 } from "./study";
 
-import {StudyComponent,TargetsComponent,SettingsComponent, IssuesComponent,PerformancesComponent,StudyOverviewComponent} from "./study/form"
+import {StudyComponent,TargetsComponent,SettingsComponent, IssuesComponent,PerformancesComponent,ReadingComponent,StudyOverviewComponent} from "./study/form"
 
 import { ConcentratorListComponent,ConcentratorPreviewComponent } from "./concentrator";
 
@@ -50,6 +50,7 @@ import { from } from "rxjs";
     TargetsComponent,
     IssuesComponent,
     PerformancesComponent,
+    ReadingComponent,
     SettingsComponent,
     StudyOverviewComponent,
     StudyComponent,

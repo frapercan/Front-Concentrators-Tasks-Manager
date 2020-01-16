@@ -1,7 +1,7 @@
 ﻿import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
-import { Study, Issue, Performance } from "../_models";
+import { Study, Issue, Performance, Attribute } from "../_models";
 
 @Injectable({ providedIn: "root" })
 export class StudyService {
@@ -37,6 +37,10 @@ export class StudyService {
 
   getPerformancesList() {
     return this.http.get<Performance[]>(`${environment.apiUrl}/studies/performances`).toPromise();
+  };
+
+  getAttributesList() {
+    return this.http.get<Attribute[]>(`${environment.apiUrl}/studies/attributes`).toPromise();
   };
 
 

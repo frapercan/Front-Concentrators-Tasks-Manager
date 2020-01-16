@@ -8,7 +8,7 @@ import {
   ConcentratorService,
   StudyService
 } from "../../_services";
-import { Package, Issue } from "../../_models";
+import { Attribute } from "../../_models";
 import { SelectionModel } from "@angular/cdk/collections";
 import { MatTableDataSource, MatPaginator, MatSort } from "@angular/material";
 
@@ -16,17 +16,17 @@ import { MatTableDataSource, MatPaginator, MatSort } from "@angular/material";
 
 
 
-@Component({ selector: "performancesStep", templateUrl: "performances.component.html", styleUrls: ["../study-form.component.scss"] })
-export class PerformancesComponent implements OnInit {
-  @Input() public performancesFormGroup: FormGroup;
+@Component({ selector: "readingStep", templateUrl: "reading.component.html", styleUrls: ["../study-form.component.scss"] })
+export class ReadingComponent implements OnInit {
+  @Input() public readingFormGroup: FormGroup;
 
   dataSource;
-  displayedColumns: string[] = ["id_actuacion", "nombre", "descripcion", "selection"];
+  displayedColumns: string[] = ["id_atributo", "nombre", "descripcion", "selection"];
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  select = new SelectionModel<Performance>(true, []);
-  perfomancesSelection = PerformancesSelection;
+  select = new SelectionModel<Attribute>(true, []);
+  attributesSelection = AttributesSelection;
 
   constructor(
     private studyService: StudyService
@@ -35,27 +35,27 @@ export class PerformancesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadAllPerformances();
-    this.performancesGroupValueChanged();
+    this.loadAllAttributes();
+    this.AttributesGroupValueChanged();
 
 
 
   }
 
-  performancesGroupValueChanged() {
+  AttributesGroupValueChanged() {
     this.select.changed.subscribe(value =>
-      this.performancesFormGroup.setValue({
+      this.readingFormGroup.setValue({
         performances: value.source.selected,
       })
     );
   }
 
-  private loadAllPerformances() {
+  private loadAllAttributes() {
     this.studyService
-      .getPerformancesList()
+      .getAttributesList()
       .then(
-        performances => (
-          (this.dataSource = new MatTableDataSource(performances)),
+        attributes => (
+          (this.dataSource = new MatTableDataSource(attributes)),
           (this.dataSource.sort = this.sort),
           (this.dataSource.paginator = this.paginator)
         )
@@ -73,7 +73,7 @@ export class PerformancesComponent implements OnInit {
 
 }
 
-export enum PerformancesSelection {
+export enum AttributesSelection {
   nothing = "",
   act = 1
 }

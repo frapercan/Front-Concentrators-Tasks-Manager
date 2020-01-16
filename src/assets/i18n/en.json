@@ -69,7 +69,9 @@
       "overviewCreation": "You are going to create the following study",
       "targetsNumber":"Number of targets:",
       "loopLength": "Number of loops",
-      "priority": "Priority"
+      "priority": "Priority",
+      "selection": "Selection",
+      "reading": "Reading"
       
     },
     "id": "id",

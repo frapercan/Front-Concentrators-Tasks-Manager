@@ -69,7 +69,9 @@
       "overviewCreation": "Vas a crear el siguiente estudio",
       "targetsNumber": "Número de objetivos:",
       "loopLength": "Número de ciclos",
-      "priority": "Prioridad"
+      "priority": "Prioridad",
+      "selection": "Selección",
+      "reading": "Lecturas"
     },
     "id": "ID",
     "name": "Nombre",
