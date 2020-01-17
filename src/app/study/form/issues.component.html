@@ -1,4 +1,10 @@
-﻿<form [formGroup]="issuesFormGroup" style="padding-top:0%">
+﻿<mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="applyFilter($event)">
+  <mat-tab *ngFor="let group of groups" label="{{ group.nombre }}" value = "{{ group.id_grupo_incidencia }}" select> </mat-tab>
+</mat-tab-group>
+
+
+
+<form [formGroup]="issuesFormGroup" style="padding-top:0%">
   <div *ngIf="issuesFormGroup.errors">
     <mat-error *ngIf="issuesFormGroup.errors.atLeastOne">{{
         "study.form.atLeastOne" | translate
@@ -38,7 +44,7 @@
 
     <!-- id Column -->
     <ng-container matColumnDef="id_incidencia">
-      <th mat-header-cell *matHeaderCellDef width ="10%">
+      <th mat-header-cell *matHeaderCellDef width="10%">
         {{
           "study.id" | translate
         }}
@@ -50,7 +56,7 @@
 
     <!-- name Column -->
     <ng-container matColumnDef="nombre">
-      <th mat-header-cell *matHeaderCellDef width ="10%">        {{
+      <th mat-header-cell *matHeaderCellDef width="10%"> {{
         "study.form.name" | translate
       }}</th>
       <td mat-cell *matCellDef="let element">
@@ -60,7 +66,7 @@
 
     <!-- description Column -->
     <ng-container matColumnDef="descripcion">
-      <th mat-header-cell *matHeaderCellDef width ="65%">        {{
+      <th mat-header-cell *matHeaderCellDef width="65%"> {{
         "study.form.description" | translate
       }}</th>
       <td mat-cell *matCellDef="let element">

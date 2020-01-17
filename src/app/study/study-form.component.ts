@@ -1,6 +1,13 @@
 ﻿import { Component, OnInit, OnChanges } from "@angular/core";
 import { ViewChild } from "@angular/core";
 import {
+  MatSnackBar,
+  MatSnackBarConfig
+} from '@angular/material';
+import { TranslateService } from "@ngx-translate/core";
+import { Router } from "@angular/router";
+
+import {
   FormBuilder,
   FormGroup,
   Validators,
@@ -21,17 +28,20 @@ import {
 export class StudyFormComponent implements OnInit {
 
   isLinear = false; //Stepper mode (Linear 1-2-3-4 , NonLinear 1-3-2-1-4...)
-  
   studyFormGroup: FormGroup;
   targetsFormGroup: FormGroup;
   settingsFormGroup: FormGroup;
   issuesFormGroup: FormGroup;
   performancesFormGroup: FormGroup;
-  readingFormGroup:FormGroup;
+  readingFormGroup: FormGroup;
 
   constructor(
     private _formBuilder: FormBuilder,
-    private studyService: StudyService
+    private studyService: StudyService,
+    private _snackBar: MatSnackBar,
+    private translate: TranslateService,
+    private router: Router
+
   ) { }
 
   ngOnInit() {
@@ -69,15 +79,33 @@ export class StudyFormComponent implements OnInit {
     });
 
   }
-     onSubmit() {
-      this.studyService.post(
-        this.studyFormGroup.value,
-        this.targetsFormGroup.value,
-        this.settingsFormGroup.value,
-        this.issuesFormGroup.value,
-        this.performancesFormGroup.value
-      );
-    } 
+  onSubmit() {
+    this.studyService.post(
+      this.studyFormGroup.value,
+      this.targetsFormGroup.value,
+      this.settingsFormGroup.value,
+      this.issuesFormGroup.value,
+      this.performancesFormGroup.value
+    ).then(resp => this.openSnackBarAndNavigateHome(this.translate.instant('study.form.createSuccess'), this.translate.instant('action.close'))).catch(e => this.openSnackBar(e, this.translate.instant('action.close')) );
+
+  }
+
+  openSnackBarAndNavigateHome(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+      panelClass: ['blue-snackbar']
+    });
+    this.router.navigate(['/']);
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+      panelClass: ['blue-snackbar']
+    });
+  }
+
+
 }
 
 

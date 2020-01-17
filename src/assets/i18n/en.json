@@ -21,7 +21,8 @@
   },
   "action": {
     "logout": "Logout",
-    "login": " Login"
+    "login": "Login",
+    "close": "Close"
   },
   "login": {
     "title": "Access",
@@ -71,7 +72,8 @@
       "loopLength": "Number of loops",
       "priority": "Priority",
       "selection": "Selection",
-      "reading": "Reading"
+      "reading": "Reading",
+      "createSuccess": "Study created successfully"
       
     },
     "id": "id",

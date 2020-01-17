@@ -41,14 +41,12 @@ export class ConcentratorPreviewComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    console.log('hola',this.package)
     this.loadConcentrators();
   }
 
 
   private loadConcentrators(){
     if (this.package.length){
-      console.log('haylength')
     
     this.concentratorService
     .getConcentrators(this.package)

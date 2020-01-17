@@ -21,7 +21,8 @@
     },
     "action": {
         "logout": "disconnettersi",
-        "login": "accesso"
+        "login": "accesso",
+        "close": "Chiudi"
     },
     "login": {
         "title": "titolo",
@@ -69,7 +70,8 @@
             "loopLength": "Numero di cicli",
             "priority": "Priorità",
             "selection": "Selezione",
-            "reading": "Lettura"
+            "reading": "Lettura",
+            "createSuccess": "Studio creato correttamente"
             
 
 

@@ -21,7 +21,8 @@
   },
   "action": {
     "logout": "Cerrar sesión",
-    "login": " Iniciar sesión"
+    "login": "Iniciar sesión",
+    "close": "Cerrar"
   },
   "login": {
     "title": "Acceso",
@@ -71,7 +72,8 @@
       "loopLength": "Número de ciclos",
       "priority": "Prioridad",
       "selection": "Selección",
-      "reading": "Lecturas"
+      "reading": "Lecturas",
+      "createSuccess": "Estudio creado correctamente"
     },
     "id": "ID",
     "name": "Nombre",

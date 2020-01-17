@@ -35,6 +35,10 @@ export class StudyService {
     return this.http.get<Issue[]>(`${environment.apiUrl}/studies/issues`).toPromise();
   };
 
+  getIssuesGroupList(){
+    return this.http.get<any[]>(`${environment.apiUrl}/studies/issues/groups`).toPromise();
+  };
+
   getPerformancesList() {
     return this.http.get<Performance[]>(`${environment.apiUrl}/studies/performances`).toPromise();
   };
