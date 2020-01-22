@@ -38,8 +38,8 @@
     mat-row
     [ngClass]="{
       'make-green': row.name == 'Finalizado correctamente',
-      'make-red': row.name == 'Inaccesibles',
-      'make-orange': row.name == 'Pendientes'
+      'make-red': row.name == 'no accedido',
+      'make-orange': row.name == 'pendiente'
     }"
     *matRowDef="let row; columns: communicationDisplayedColumns"
   ></tr>
