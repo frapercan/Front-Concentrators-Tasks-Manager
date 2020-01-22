@@ -61,7 +61,7 @@ export class TargetsComponent implements OnInit {
   getDataRecordsArrayFromCSVFile(csvRecordsArray: any) {
     let dataArr = [];
 
-    for (let i = 1; i < csvRecordsArray.length; i++) {
+    for (let i = 1; i < csvRecordsArray.length-1; i++) {
       let data = (<string>csvRecordsArray[i]).split(",");
 
       let csvRecord: CSVRecord = new CSVRecord();
@@ -69,6 +69,7 @@ export class TargetsComponent implements OnInit {
       csvRecord.lvcid = data[0].trim();
       dataArr.push(csvRecord);
     }
+    console.log(dataArr)
     return dataArr;
   }
 
