@@ -113,7 +113,12 @@
     "CERCO no encontrado en MongoDB": "Cerco Not found",
     "Claves CERCO no encontrada en BDE": "Cerco Password Not found",
     "amountCerco": " No. CERCOs",
-    "name": "Name"
+    "name": "Name",
+    "overview": "Overview",
+    "communicationIssue": "Not accesed due to communication issue",
+    "systemManagement": "Not accesed due to system management issue",
+    "possibleIssue": "Not accesed due to a possible concentrator issue",
+    "totalNotAccesed": "Total not accesed"
   },
   "issues": {
     "name": "Name",

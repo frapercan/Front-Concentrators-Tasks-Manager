@@ -69,22 +69,28 @@ export class StudyCommunicationComponent implements OnChanges {
           animationEnabled: true,
           exportEnabled: true,
           title: {
-            text: this.translate.instant("result.analisisComunicaciones")
+            text: this.translate.instant("result.analisisComunicaciones"),
+            fontSize: 30
+
           },
           subtitles: [
             {
               text:
                 this.translate.instant("result." + "totalAmountAnalyzed") +
-                this.study.total
+                this.study.total,
+              fontSize: 20
             }
-          ],
+          ], axisX: {
+            labelFontSize: 20
+          },
           axisY: {
             title: this.translate.instant("result.comunicationGraphicTitle"),
+            labelFontSize: 20,
             suffix: "%",
             minimum: 0,
             maximum: Math.max.apply(
               Math,
-              data.map(function(o) {
+              data.map(function (o) {
                 return o.y;
               })
             )

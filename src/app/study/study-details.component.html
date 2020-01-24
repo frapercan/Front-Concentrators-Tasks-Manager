@@ -1,10 +1,12 @@
-﻿<mat-toolbar class="align-items">{{ study.nombre }}</mat-toolbar>
+﻿
+<mat-toolbar class="align-items">{{ study.nombre }}</mat-toolbar>
+<communicationOverview *ngIf="communication && cycles.length > 0" [communication]="communication" [cycles]="cycles"></communicationOverview>
 <mat-tab-group
   [selectedIndex]="selected.value"
   (selectedIndexChange)="selected.setValue($event)"
 >
   <mat-tab
-    *ngFor="let tab of cycleTabs[0]"
+    *ngFor="let tab of cycles[0]"
     label="{{ tab.first | date: 'medium' }}"
   ></mat-tab>
 </mat-tab-group>

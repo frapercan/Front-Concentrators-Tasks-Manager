@@ -113,7 +113,8 @@
         "CERCO no encontrado en MongoDB": "CERCO no encontrado in MongoDB",
         "Claves CERCO no encontrada en BDE": "Claves CERCO no encontrada en BDE",
         "amountCerco": "amountCerco",
-        "name": "nome"
+        "name": "nome",
+        "overview": "Panoramica"
     },
     "issues": {
         "name": "nome",

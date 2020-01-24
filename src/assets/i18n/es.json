@@ -112,7 +112,12 @@
     "CERCO no encontrado en MongoDB": "Cerco no encontrado",
     "Claves CERCO no encontrada en BDE": "Contraseña Cerco no encontrada",
     "amountCerco": " No. CERCO",
-    "name": "Nombre"
+    "name": "Nombre",
+    "overview": "Resumen",
+    "communicationIssue": "No accedido por comunicación",
+    "systemManagement": "No accedido por gestión sistemas",
+    "possibleIssue": "No accedido por posible incidencia",
+    "totalNotAccesed": "Total no accedidos"
   },
   "issues": {
     "name": "Nombre",
