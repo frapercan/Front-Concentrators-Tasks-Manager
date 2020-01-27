@@ -1,24 +1,24 @@
-﻿
-<mat-toolbar class="align-items">{{ study.nombre }}</mat-toolbar>
-<communicationOverview *ngIf="communication && cycles.length > 0" [communication]="communication" [cycles]="cycles"></communicationOverview>
-<mat-tab-group
-  [selectedIndex]="selected.value"
-  (selectedIndexChange)="selected.setValue($event)"
->
-  <mat-tab
-    *ngFor="let tab of cycles[0]"
-    label="{{ tab.first | date: 'medium' }}"
-  ></mat-tab>
+﻿<mat-toolbar class="align-items">{{ study.nombre }}</mat-toolbar>
+<mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-tile>
+    <communicationOverview style="width: 100%;" *ngIf="communication && cycles.length > 0"
+      [communication]="communication" [cycles]="cycles"></communicationOverview>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <issuesOverview style="width: 100%" *ngIf="issues && cycles.length > 0" [issues]="issues" [cycles]="cycles">
+    </issuesOverview>
+  </mat-grid-tile>
+
+</mat-grid-list>
+<mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)">
+  <mat-tab *ngFor="let tab of cycles[0]" label="{{ tab.first | date: 'medium' }}"></mat-tab>
 </mat-tab-group>
 
 <mat-tab-group id="expandlastright">
   <mat-tab label="{{ 'result.analisisComunicaciones' | translate }}">
     <ng-template matTabContent>
       <div *ngIf="communication">
-        <communication
-          [communication]="communication[selected.value]"
-          [study]="study"
-        ></communication>
+        <communication [communication]="communication[selected.value]" [study]="study"></communication>
       </div>
     </ng-template>
   </mat-tab>
