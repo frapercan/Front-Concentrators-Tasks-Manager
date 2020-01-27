@@ -113,7 +113,9 @@
     "Claves CERCO no encontrada en BDE": "Contraseña Cerco no encontrada",
     "amountCerco": " No. CERCO",
     "name": "Nombre",
-    "overview": "Resumen",
+    "overviewCommunication": "Resumen de comunicaciones",
+    "overviewIssues": "Resumen de incidencias",
+
     "communicationIssue": "No accedido por comunicación",
     "systemManagement": "No accedido por gestión sistemas",
     "possibleIssue": "No accedido por posible incidencia",

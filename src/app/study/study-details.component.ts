@@ -21,7 +21,8 @@ import {FormControl} from '@angular/forms';
 
 @Component({
   selector: "study-details",
-  templateUrl: "study-details.component.html"
+  templateUrl: "study-details.component.html",
+  styleUrls: ["./study-details.component.scss"]
 })
 export class StudyDetailsComponent implements OnInit, OnChanges {
   cycles = [];

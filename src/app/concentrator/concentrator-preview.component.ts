@@ -54,7 +54,8 @@ export class ConcentratorPreviewComponent implements OnInit, OnChanges {
       concentrators => (
         (this.dataSource = new MatTableDataSource(concentrators)),
         (this.dataSource.sort = this.sort),
-        (this.dataSource.paginator = this.paginator)
+        (this.dataSource.paginator = this.paginator),
+        (console.log(concentrators))
       )
     );
   }

@@ -9,7 +9,9 @@ import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "communicationOverview",
-  templateUrl: "study-communication-overview.component.html"
+  templateUrl: "study-communication-overview.component.html",
+  styleUrls: ["./study-details.component.scss"]
+
 })
 export class StudyCommunicationOverviewComponent implements OnInit {
 
@@ -33,19 +35,22 @@ export class StudyCommunicationOverviewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.transform_data()
+    this.data.systemManagement = this.mapFilterReduce(this.communication,this.cycles,[7,4])
+    this.data.communicationIssue = this.mapFilterReduce(this.communication,this.cycles,[2])
+    this.data.possibleIssue = this.mapFilterReduce(this.communication,this.cycles,[3])
+    this.data.total = this.mapFilterReduce(this.communication,this.cycles,[7,4,2,3])
     this.renderCommunicationOverviewChart()
-
   }
 
-  transform_data() {
-    this.data.systemManagement = this.communication.map((cycleResults) => {
-      let filtered = cycleResults.filter((elem) => { return elem.id_resultado == 7 || elem.id_resultado == 4 })
+
+  mapFilterReduce(origin,cycles,ids){
+    let target = origin.map((cycle) => {
+      let filtered = cycle.filter((elem) => { return  ids.includes(elem.id_resultado)})
       if (filtered.length) {
         let amounts = filtered.map(item => item.amount)
         if (amounts){
           try{
-        return { x: new Date(this.cycles[0][cycleResults[0].ciclo - 1].first), y: amounts.reduce((sum, item) => { return sum + item }) }}
+        return { x: new Date(cycles[0][cycle[0].ciclo - 1].first), y: amounts.reduce((sum, item) => { return sum + item }) }}
         catch(e){
           
         }
@@ -53,59 +58,7 @@ export class StudyCommunicationOverviewComponent implements OnInit {
       }
 
     }).filter(point => {return point != undefined})
-
-
-    this.data.communicationIssue = this.communication.map((cycleResults) => {
-      let filtered = cycleResults.filter((elem) => { return elem.id_resultado == 2 })
-      if (filtered.length) {
-        let amounts = filtered.map(item => item.amount)
-        if (amounts){
-          try{
-        return { x: new Date(this.cycles[0][cycleResults[0].ciclo - 1].first), y: amounts.reduce((sum, item) => { return sum + item }) }}
-        catch(e){
-          
-        }
-      }
-      }
-
-    }).filter(point => {return point != undefined})
-
-
-
-    this.data.possibleIssue = this.communication.map((cycleResults) => {
-      let filtered = cycleResults.filter((elem) => { return elem.id_resultado == 3 })
-      if (filtered.length) {
-        let amounts = filtered.map(item => item.amount)
-        if (amounts.length){
-          try{
-        return { x: new Date(this.cycles[0][cycleResults[0].ciclo - 1].first), y: amounts.reduce((sum, item) => { return sum + item }) }}
-        catch(e){
-
-        }
-      }
-      }
-
-
-    }).filter(point => {return point != undefined})
-
-    this.data.total = this.communication.map((cycleResults) => {
-      let filtered = cycleResults.filter((elem) => { return elem.id_resultado == 7 || elem.id_resultado == 4 || elem.id_resultado == 2 || elem.id_resultado == 3 })
-      if (filtered.length) {
-        let amounts = filtered.map(item => item.amount)
-        if (amounts.length){
-          try{
-        return { x: new Date(this.cycles[0][cycleResults[0].ciclo - 1].first), y: amounts.reduce((sum, item) => { return sum + item }) }}
-        catch(e){
-          
-        }
-      }
-      }
-
-    }).filter(point => {return point != undefined})
-
-    console.log('total',this.data.total)
-
-
+    return target
   }
 
   renderCommunicationOverviewChart() {
@@ -116,7 +69,7 @@ export class StudyCommunicationOverviewComponent implements OnInit {
         zoomEnabled: true,
         theme: "light2",
         title: {
-          text: this.translate.instant('result.overview'),
+          text: this.translate.instant('result.overviewCommunication'),
           fontSize: 30
         },
         axisX: {

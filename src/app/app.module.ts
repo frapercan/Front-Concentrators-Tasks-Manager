@@ -27,6 +27,7 @@ import {
   StudyDetailsComponent,
   StudyCommunicationComponent,
   StudyCommunicationOverviewComponent,
+  StudyIssuesOverviewComponent,
   StudyIssuesDetailsComponent,
   StudyFormComponent
 } from "./study";
@@ -47,6 +48,7 @@ import { from } from "rxjs";
     StudyDetailsComponent,
     StudyCommunicationComponent,
     StudyCommunicationOverviewComponent,
+    StudyIssuesOverviewComponent,
     StudyIssuesDetailsComponent,
     StudyFormComponent,
     TargetsComponent,

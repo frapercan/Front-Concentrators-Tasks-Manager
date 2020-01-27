@@ -114,7 +114,8 @@
         "Claves CERCO no encontrada en BDE": "Claves CERCO no encontrada en BDE",
         "amountCerco": "amountCerco",
         "name": "nome",
-        "overview": "Panoramica"
+        "overviewCommunication": "Panoramica delle comunicazioni",
+        "overviewIssues": "Panoramica dei problemi"
     },
     "issues": {
         "name": "nome",
