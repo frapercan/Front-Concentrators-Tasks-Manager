@@ -1,11 +1,11 @@
 ﻿<mat-toolbar class="align-items">{{ study.nombre }}</mat-toolbar>
 <mat-grid-list cols="2" rowHeight="2:1">
   <mat-grid-tile>
-    <communicationOverview style="width: 100%;" *ngIf="communication && cycles.length > 0"
-      [communication]="communication" [cycles]="cycles"></communicationOverview>
+    <communicationOverview style="width: 100%; height: 100%;" *ngIf="communication && cycles.length > 0" [communication]="communication" [cycles]="cycles">
+    </communicationOverview>
   </mat-grid-tile>
   <mat-grid-tile>
-    <issuesOverview style="width: 100%" *ngIf="issues && cycles.length > 0" [issues]="issues" [cycles]="cycles">
+    <issuesOverview style="width: 100%; height: 100%;" *ngIf="issues && cycles.length > 0" [issues]="issues" [cycles]="cycles">
     </issuesOverview>
   </mat-grid-tile>
 
