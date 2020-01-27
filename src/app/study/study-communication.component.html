@@ -14,8 +14,8 @@
   <!-- amount Column -->
   <ng-container matColumnDef="amount">
     <th mat-header-cell *matHeaderCellDef>{{ "study.amount" | translate }}</th>
-    <td mat-cell *matCellDef="let element">      <span *ngIf="element.amount == null  && element.name != 'Pendientes'"><img src="assets/img/perfect.png"
-      /></span>{{ element.amount }}</td>
+    <td mat-cell *matCellDef="let element">      <span *ngIf="element.amount == null  && element.name != 'Pendientes'"><mat-icon>done_all</mat-icon>
+      </span>{{ element.amount }}</td>
   </ng-container>
 
   <!-- percentage Column -->
