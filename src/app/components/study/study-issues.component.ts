@@ -10,11 +10,11 @@
   AfterViewChecked
 } from "@angular/core";
 import { first } from "rxjs/operators";
-import { User, Study } from "../_models";
-import { AuthenticationService, StudyService } from "../_services";
+import { User, Study } from "../../_models";
+import { AuthenticationService, StudyService } from "../../_services";
 import { CompileShallowModuleMetadata } from "@angular/compiler";
 import { ActivatedRoute } from "@angular/router";
-import * as CanvasJS from "../../assets/scripts/canvasjs.min";
+import * as CanvasJS from "../../../assets/scripts/canvasjs.min";
 import { TranslateService } from "@ngx-translate/core";
 import { MatTabChangeEvent } from "@angular/material";
 

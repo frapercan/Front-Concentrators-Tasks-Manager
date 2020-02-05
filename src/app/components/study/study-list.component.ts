@@ -2,8 +2,8 @@
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
-import { User, Study } from "../_models";
-import { StudyService, AuthenticationService } from "../_services";
+import { User, Study } from "../../_models";
+import { StudyService, AuthenticationService } from "../../_services";
 import { Router } from "@angular/router";
 
 @Component({ templateUrl: "study-list.component.html" })

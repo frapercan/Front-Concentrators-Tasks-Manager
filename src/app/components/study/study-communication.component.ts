@@ -6,7 +6,7 @@
   Input
 } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import * as CanvasJS from "../../assets/scripts/canvasjs.min";
+import * as CanvasJS from "../../../assets/scripts/canvasjs.min";
 import { TranslateService } from "@ngx-translate/core";
 
 @Component({
@@ -18,9 +18,6 @@ export class StudyCommunicationComponent implements OnChanges {
   loading = false;
   @Input() communication: any;
   @Input() study: any;
-  @Input() index;
-  ciclo: String
-
   communicationDisplayedColumns;
   chartCommunication;
   translate: TranslateService;
@@ -57,12 +54,13 @@ export class StudyCommunicationComponent implements OnChanges {
         ) {
           data.push({
             y:
-              Math.round((element.amount / this.study.total) * 100 * 100) / 100,
+              element.amount ,
             label: this.translate.instant("result." + element.name),
             amount: element.amount
           });
         }
       });
+
       this.chartCommunication = new CanvasJS.Chart(
         'chartCommunicationContainer',
         {

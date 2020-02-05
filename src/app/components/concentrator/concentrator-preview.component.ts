@@ -2,8 +2,8 @@
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
-import { User, Concentrator } from "../_models";
-import { ConcentratorService, AuthenticationService } from "../_services";
+import { User, Concentrator } from "../../_models";
+import { ConcentratorService, AuthenticationService } from "../../_services";
 import { Router } from "@angular/router";
 
 @Component({ selector:"concentratorPreview", templateUrl: "concentrator-preview.component.html" })
@@ -54,8 +54,7 @@ export class ConcentratorPreviewComponent implements OnInit, OnChanges {
       concentrators => (
         (this.dataSource = new MatTableDataSource(concentrators)),
         (this.dataSource.sort = this.sort),
-        (this.dataSource.paginator = this.paginator),
-        (console.log(concentrators))
+        (this.dataSource.paginator = this.paginator)
       )
     );
   }

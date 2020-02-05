@@ -1,13 +1,8 @@
-﻿import { Component, Input, ViewChild, OnInit, OnDestroy } from "@angular/core";
-import {
-  FormBuilder, FormGroup, Validators
+﻿import { Component, Input, OnInit } from "@angular/core";
+import { FormGroup, Validators
 
 } from "@angular/forms";
-import {
-  PackageService,
-  ConcentratorService
-} from "../../_services";
-import { Package } from "../../_models";
+
 
 
 
@@ -16,10 +11,6 @@ export class SettingsComponent implements OnInit {
   @Input() public settingsFormGroup: FormGroup;
 
   constructor(
-    private _formBuilder: FormBuilder,
-    private packageService: PackageService,
-    private concentratorService: ConcentratorService
-
   ) {
   }
 

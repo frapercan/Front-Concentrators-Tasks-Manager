@@ -2,8 +2,8 @@
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
-import { User, Concentrator } from "../_models";
-import { ConcentratorService, AuthenticationService } from "../_services";
+import { User, Concentrator } from "../../_models";
+import { ConcentratorService, AuthenticationService } from "../../_services";
 import { Router } from "@angular/router";
 
 @Component({ templateUrl: "concentrator-list.component.html" })

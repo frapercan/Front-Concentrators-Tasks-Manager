@@ -3,7 +3,7 @@
   OnInit,
   Input
 } from "@angular/core";
-import * as CanvasJS from "../../assets/scripts/canvasjs.min";
+import * as CanvasJS from "../../../assets/scripts/canvasjs.min";
 import { TranslateService } from "@ngx-translate/core";
 
 @Component({
@@ -72,7 +72,7 @@ export class StudyIssuesOverviewComponent implements OnInit {
         let amounts = filtered.map(item => item[mode])
         if (amounts) {
           try {
-            return { x: new Date(cycles[0][cycle[0].ciclo - 1].first), y: amounts.reduce((sum, item) => { return sum + item }) }
+            return { x: new Date(cycles[cycle[0].ciclo].first), y: amounts.reduce((sum, item) => { return sum + item }) }
           }
           catch (e) {
 
@@ -120,14 +120,6 @@ export class StudyIssuesOverviewComponent implements OnInit {
 
   }
 
-  /*   {
-      type: "line",
-      name: this.translate.instant('result.communicationIssue'),
-      showInLegend: true,
-      xValueFormatString: "D-MMMM-YYYY HH:mm",
-      dataPoints: this.data.communicationIssue,
-      markerType: "circle"
-    } */
 
   addSymbols(e) {
     var suffixes = ["", "K", "M", "B"];
@@ -149,12 +141,12 @@ export class StudyIssuesOverviewComponent implements OnInit {
     e.chart.render();
   }
 
-  parseDataToGraphics(data){
+  parseDataToGraphics(data) {
 
     let detect = Object.keys(data.detectado).map(issue => {
       return {
         type: "line",
-        name: issue+'[D]',
+        name: issue + '[D]',
         showInLegend: true,
         xValueFormatString: "D-MMMM-YYYY HH:mm",
         dataPoints: this.data.detectado[issue],
@@ -165,7 +157,7 @@ export class StudyIssuesOverviewComponent implements OnInit {
     let fix = Object.keys(data.corregido).map(issue => {
       return {
         type: "line",
-        name: issue+['[F]'],
+        name: issue + ['[F]'],
         showInLegend: true,
         xValueFormatString: "D-MMMM-YYYY HH:mm",
         dataPoints: this.data.corregido[issue],
@@ -176,7 +168,7 @@ export class StudyIssuesOverviewComponent implements OnInit {
 
     return detect.concat(fix)
   };
-  
+
 
 
 

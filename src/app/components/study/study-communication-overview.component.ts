@@ -4,7 +4,7 @@
   Input
 } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import * as CanvasJS from "../../assets/scripts/canvasjs.min";
+import * as CanvasJS from "../../../assets/scripts/canvasjs.min";
 import { TranslateService } from "@ngx-translate/core";
 
 @Component({
@@ -50,9 +50,8 @@ export class StudyCommunicationOverviewComponent implements OnInit {
         let amounts = filtered.map(item => item.amount)
         if (amounts){
           try{
-        return { x: new Date(cycles[0][cycle[0].ciclo - 1].first), y: amounts.reduce((sum, item) => { return sum + item }) }}
+        return { x: new Date(cycles[cycle[0].ciclo].first), y: amounts.reduce((sum, item) => { return sum + item }) }}
         catch(e){
-          
         }
       }
       }

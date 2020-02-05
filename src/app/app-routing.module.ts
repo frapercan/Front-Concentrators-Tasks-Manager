@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { LoginComponent } from "./login/login.component";
-import { StudyListComponent } from "./study/study-list.component";
-import { StudyDetailsComponent } from "./study/study-details.component";
-import { StudyFormComponent } from "./study/study-form.component";
-import { ConcentratorListComponent } from "./concentrator/concentrator-list.component"
+import { LoginComponent } from "./components/login/login.component";
+import { StudyListComponent } from "./components/study/study-list.component";
+import { StudyDetailsComponent } from "./components/study/study-details.component";
+import { StudyFormComponent } from "./components/study/study-form.component";
+import { ConcentratorListComponent } from "./components/concentrator/concentrator-list.component"
 import { AuthGuard } from "./_helpers";
 
 const routes: Routes = [

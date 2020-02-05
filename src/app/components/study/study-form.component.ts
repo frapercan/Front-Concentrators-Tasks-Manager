@@ -17,7 +17,7 @@ import {
 } from "@angular/forms";
 import {
   StudyService
-} from "../_services";
+} from "../../_services";
 
 
 @Component({

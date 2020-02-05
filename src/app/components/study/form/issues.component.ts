@@ -7,8 +7,8 @@ import {
   PackageService,
   ConcentratorService,
   StudyService
-} from "../../_services";
-import { Package, Issue } from "../../_models";
+} from "../../../_services";
+import { Package, Issue } from "../../../_models";
 import { SelectionModel } from "@angular/cdk/collections";
 import { MatTableDataSource, MatPaginator, MatSort } from "@angular/material";
 import { FormControl } from '@angular/forms';

@@ -1,22 +1,14 @@
 ﻿import {
   Component,
   OnInit,
-  AfterViewInit,
-  ElementRef,
-  ViewChild,
   Output,
   EventEmitter,
   OnChanges
 } from "@angular/core";
-import { first } from "rxjs/operators";
-import { User, Study } from "../_models";
-import { AuthenticationService, StudyService } from "../_services";
-import { CompileShallowModuleMetadata } from "@angular/compiler";
+import { StudyService } from "../../_services";
 import { ActivatedRoute } from "@angular/router";
-import * as CanvasJS from "../../assets/scripts/canvasjs.min";
 import { TranslateService } from "@ngx-translate/core";
-import { MatTabChangeEvent } from "@angular/material";
-import {FormControl} from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 
 @Component({
@@ -25,7 +17,7 @@ import {FormControl} from '@angular/forms';
   styleUrls: ["./study-details.component.scss"]
 })
 export class StudyDetailsComponent implements OnInit, OnChanges {
-  cycles = [];
+  cycles = {};
   @Output() selected = new FormControl(0);
   id: string;
   loading = false;
@@ -47,9 +39,9 @@ export class StudyDetailsComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.study = this.studyService
       .get(this.id)
-      .then(study => (this.study = study));
-    
-    this.studyService.getCicloInfo(this.id).then(tab => (this.cycles.push(tab),this.selected.setValue(Infinity)));
+      .then(study => (this.study = study))
+
+    this.studyService.getCicloInfo(this.id).then(cycle => (this.cycles = cycle)).finally(() => this.selected.setValue(Object.keys(this.cycles).length))
 
     this.studyService
       .getCommunicationResult(this.id)
@@ -58,30 +50,34 @@ export class StudyDetailsComponent implements OnInit, OnChanges {
     this.studyService
       .getIssuesResult(this.id)
       .then(issues => (this.issues = issues));
-    
   }
 
   ngOnChanges() {
-    if (this.communication){
+    
+
+    if (this.communication) {
       this.getChart.emit(this.communication)
       this.getChart.emit(this.issues)
     }
   }
   refresh() {
 
-    this.studyService.getCicloInfo(this.id).then(tab => (this.cycles.push(tab),this.selected.setValue(Infinity)));
+
+    this.studyService.getCicloInfo(this.id).then(cycle => this.cycles = cycle);
 
     this.studyService
-    .getCommunicationResult(this.id)
-    .then(communication => (this.communication = communication));
+      .getCommunicationResult(this.id)
+      .then(communication => (this.communication = communication));
 
-  this.studyService
-    .getIssuesResult(this.id)
-    .then(issues => (this.issues = issues));
-    if (this.communication){
+    this.studyService
+      .getIssuesResult(this.id)
+      .then(issues => (this.issues = issues));
+    if (this.communication) {
       this.getChart.emit(this.communication)
       this.getChart.emit(this.issues)
     }
   }
-  
+
+  sortNull() {}
+
 }

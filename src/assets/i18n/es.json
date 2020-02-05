@@ -115,7 +115,6 @@
     "name": "Nombre",
     "overviewCommunication": "Resumen de comunicaciones",
     "overviewIssues": "Resumen de incidencias",
-
     "communicationIssue": "No accedido por comunicación",
     "systemManagement": "No accedido por gestión sistemas",
     "possibleIssue": "No accedido por posible incidencia",

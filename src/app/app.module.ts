@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AngularMaterialModule } from "./angular-material.module";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule } from "@angular/forms";
-import { LoginComponent } from "./login/login.component";
+import { LoginComponent } from "./components/login/login.component";
 
 import { ReactiveFormsModule } from "@angular/forms";
 
@@ -17,7 +17,7 @@ import { HttpClient } from "@angular/common/http";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 
-import { NavComponent } from "./navigation/nav.component";
+import { NavComponent } from "./components/navigation/nav.component";
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { JwtInterceptor, ErrorInterceptor } from "./_helpers";
@@ -30,11 +30,11 @@ import {
   StudyIssuesOverviewComponent,
   StudyIssuesDetailsComponent,
   StudyFormComponent
-} from "./study";
+} from "./components/study";
 
-import {StudyComponent,TargetsComponent,SettingsComponent, IssuesComponent,PerformancesComponent,ReadingComponent,StudyOverviewComponent} from "./study/form"
+import {StudyComponent,TargetsComponent,SettingsComponent, IssuesComponent,PerformancesComponent,ReadingComponent,StudyOverviewComponent} from "./components/study/form"
 
-import { ConcentratorListComponent,ConcentratorPreviewComponent } from "./concentrator";
+import { ConcentratorListComponent,ConcentratorPreviewComponent } from "./components/concentrator";
 
 import { MatFileUploadModule } from "angular-material-fileupload";
 

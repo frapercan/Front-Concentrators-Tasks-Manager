@@ -6,8 +6,8 @@ import {
 import {
   PackageService,
   ConcentratorService
-} from "../../_services";
-import { Package } from "../../_models";
+} from "../../../_services";
+import { Package } from "../../../_models";
 
 
 
@@ -69,7 +69,6 @@ export class TargetsComponent implements OnInit {
       csvRecord.lvcid = data[0].trim();
       dataArr.push(csvRecord);
     }
-    console.log(dataArr)
     return dataArr;
   }
 
