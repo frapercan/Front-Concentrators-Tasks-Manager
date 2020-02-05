@@ -8,8 +8,7 @@ import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "issuesOverview",
-  templateUrl: "study-issues-overview.component.html",
-  styleUrls: ["study-issues-overview.component.scss"]
+  templateUrl: "study-issues-overview.component.html"
 
 })
 export class StudyIssuesOverviewComponent implements OnInit {
