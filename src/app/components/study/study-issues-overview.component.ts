@@ -145,6 +145,7 @@ export class StudyIssuesOverviewComponent implements OnInit {
       return {
         type: "line",
         name: issue + '[D]',
+        showInLegend: true,
         xValueFormatString: "D-MMMM-YYYY HH:mm",
         dataPoints: this.data.detectado[issue],
         markerType: "circle"
