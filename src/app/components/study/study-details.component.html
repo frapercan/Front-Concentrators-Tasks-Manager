@@ -1,5 +1,5 @@
 ﻿<mat-toolbar class="align-items">{{ study.nombre }}</mat-toolbar>
-<mat-grid-list cols="2" rowHeight="2:1">
+<mat-grid-list cols="2" rowHeight="2:1" >
   <mat-grid-tile>
     <communicationOverview style="width: 100%; height: 100%;" *ngIf="communication && cycles"
       [communication]="communication" [cycles]="cycles">
@@ -10,7 +10,7 @@
       [cycles]="cycles">
     </issuesOverview>
   </mat-grid-tile>
-
+  <mat-divider></mat-divider>
 </mat-grid-list>
 <mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)">
   <mat-tab *ngFor="let cycle of cycles | keyvalue: sortNull" label="{{ cycles[cycle.key].first | date: 'medium' }}">

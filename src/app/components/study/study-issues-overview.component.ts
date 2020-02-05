@@ -9,7 +9,7 @@ import { TranslateService } from "@ngx-translate/core";
 @Component({
   selector: "issuesOverview",
   templateUrl: "study-issues-overview.component.html",
-  styleUrls: ["./study-details.component.scss"]
+  styleUrls: ["study-issues-overview.component.scss"]
 
 })
 export class StudyIssuesOverviewComponent implements OnInit {
@@ -52,7 +52,6 @@ export class StudyIssuesOverviewComponent implements OnInit {
     this.modes.forEach(mode => {
       Object.keys(this.data[mode]).forEach(issue => {
         this.data[mode][issue] = this.mapFilterReduce(this.issues, this.cycles, [this.labelToIssuesMap[issue]], mode)
-
       })
 
 
@@ -107,12 +106,12 @@ export class StudyIssuesOverviewComponent implements OnInit {
         },
         toolTip: {
           shared: true,
-          fontSize: 20
+          fontSize: 12
         },
         legend: {
-          cursor: "pointer",
-          itemclick: this.toggleDataSeries,
-          fontSize: 20
+          fontSize:14,
+          
+
         },
         data: this.parseDataToGraphics(this.data)
       });
@@ -147,7 +146,6 @@ export class StudyIssuesOverviewComponent implements OnInit {
       return {
         type: "line",
         name: issue + '[D]',
-        showInLegend: true,
         xValueFormatString: "D-MMMM-YYYY HH:mm",
         dataPoints: this.data.detectado[issue],
         markerType: "circle"
@@ -174,3 +172,4 @@ export class StudyIssuesOverviewComponent implements OnInit {
 
 
 }
+

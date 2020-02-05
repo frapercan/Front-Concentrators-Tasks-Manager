@@ -35,28 +35,29 @@ export class StudyCommunicationOverviewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.data.systemManagement = this.mapFilterReduce(this.communication,this.cycles,[7,4])
-    this.data.communicationIssue = this.mapFilterReduce(this.communication,this.cycles,[2])
-    this.data.possibleIssue = this.mapFilterReduce(this.communication,this.cycles,[3])
-    this.data.total = this.mapFilterReduce(this.communication,this.cycles,[7,4,2,3])
+    this.data.systemManagement = this.mapFilterReduce(this.communication, this.cycles, [7, 4])
+    this.data.communicationIssue = this.mapFilterReduce(this.communication, this.cycles, [2])
+    this.data.possibleIssue = this.mapFilterReduce(this.communication, this.cycles, [3])
+    this.data.total = this.mapFilterReduce(this.communication, this.cycles, [7, 4, 2, 3])
     this.renderCommunicationOverviewChart()
   }
 
 
-  mapFilterReduce(origin,cycles,ids){
+  mapFilterReduce(origin, cycles, ids) {
     let target = origin.map((cycle) => {
-      let filtered = cycle.filter((elem) => { return  ids.includes(elem.id_resultado)})
+      let filtered = cycle.filter((elem) => { return ids.includes(elem.id_resultado) })
       if (filtered.length) {
         let amounts = filtered.map(item => item.amount)
-        if (amounts){
-          try{
-        return { x: new Date(cycles[cycle[0].ciclo].first), y: amounts.reduce((sum, item) => { return sum + item }) }}
-        catch(e){
+        if (amounts) {
+          try {
+            return { x: new Date(cycles[cycle[0].ciclo].first), y: amounts.reduce((sum, item) => { return sum + item }) }
+          }
+          catch (e) {
+          }
         }
       }
-      }
 
-    }).filter(point => {return point != undefined})
+    }).filter(point => { return point != undefined })
     return target
   }
 
@@ -78,7 +79,7 @@ export class StudyCommunicationOverviewComponent implements OnInit {
         },
         axisY: {
           labelFontSize: 20
-          
+
         },
         toolTip: {
           shared: true,
@@ -98,6 +99,7 @@ export class StudyCommunicationOverviewComponent implements OnInit {
             dataPoints: this.data.communicationIssue,
             color: "yellow",
             markerType: "circle"
+
           },
           {
             type: "line",
@@ -118,7 +120,6 @@ export class StudyCommunicationOverviewComponent implements OnInit {
             color: "green",
             markerType: "circle"
 
-
           },
           {
             type: "column",
@@ -131,7 +132,7 @@ export class StudyCommunicationOverviewComponent implements OnInit {
             xValueFormatString: "D-MMMM-YYYY HH:mm",
             dataPoints: this.data.total,
             lineColor: "blue",
-            markerColor:"blue"
+            markerColor: "blue"
           }]
       });
     this.chartCommunicationOverview.render();
