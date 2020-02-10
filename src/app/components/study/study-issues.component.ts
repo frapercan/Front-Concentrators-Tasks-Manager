@@ -16,7 +16,7 @@ import { CompileShallowModuleMetadata } from "@angular/compiler";
 import { ActivatedRoute } from "@angular/router";
 import * as CanvasJS from "../../../assets/scripts/canvasjs.min";
 import { TranslateService } from "@ngx-translate/core";
-import { MatTabChangeEvent } from "@angular/material";
+import { MatTabChangeEvent } from "@angular/material/tabs";
 
 @Component({
   selector: "issues",

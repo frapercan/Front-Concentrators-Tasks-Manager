@@ -1,9 +1,6 @@
 ﻿import { Component, OnInit, OnChanges } from "@angular/core";
 import { ViewChild } from "@angular/core";
-import {
-  MatSnackBar,
-  MatSnackBarConfig
-} from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { TranslateService } from "@ngx-translate/core";
 import { Router } from "@angular/router";
 

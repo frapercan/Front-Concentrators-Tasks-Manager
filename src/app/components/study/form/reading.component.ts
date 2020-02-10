@@ -10,7 +10,9 @@ import {
 } from "../../../_services";
 import { Attribute } from "../../../_models";
 import { SelectionModel } from "@angular/cdk/collections";
-import { MatTableDataSource, MatPaginator, MatSort } from "@angular/material";
+import { MatPaginator } from "@angular/material/paginator";
+import { MatSort } from "@angular/material/sort";
+import { MatTableDataSource } from "@angular/material/table";
 
 
 
