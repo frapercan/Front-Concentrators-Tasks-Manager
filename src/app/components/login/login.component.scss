@@ -1,6 +1,6 @@
 .login-wrapper{
     height: 100vh;
-    background-image: url(https://lh4.googleusercontent.com/-XplyTa1Za-I/VMSgIyAYkHI/AAAAAAAADxM/oL-rD6VP4ts/w1184-h666/Android-Lollipop-wallpapers-Google-Now-Wallpaper-2.png);
+    background-image: url(https://www.ocu.org/-/media/ocu/seo/alimentaci%C3%B3n/05%20septiembre/tarifa-happy-endesa%201.jpg?la=es-es&rev=d016d6a9-0eeb-49fe-8fe1-254fa36c8091&h=338&w=600&hash=58E78C62B144152E25FB0ED941343450&mw=960);
     background-size: cover;
 
 }
@@ -17,12 +17,15 @@
   .login-wrapper .btn-block {
     width: 100%;
   }
+
   
   .login-wrapper mat-card-header {
     text-align: center;
     width: 100%;
     display: block;
     font-weight: 700;
+    
+
   }
   
   .login-wrapper mat-card-header mat-card-title {
@@ -32,13 +35,19 @@
   
   .login-wrapper .mat-card {
     padding: 40px 70px 50px;
-    
+    opacity: 0.9;
+    background-color: lightsteelblue;
+  }
+  .mat-button.mat-primary, .mat-icon-button.mat-primary, .mat-stroked-button.mat-primary {
+    color: black;
+    font-size: 20px;
+    background-color:gray;
   }
   
   .login-wrapper .mat-stroked-button {
     border: 1px solid currentColor;
     line-height: 54px;
-    background: #fff7fa;
+    
   }
   
   .login-wrapper .mat-form-field-appearance-legacy .mat-form-field-infix {

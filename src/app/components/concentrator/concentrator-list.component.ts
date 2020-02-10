@@ -40,7 +40,6 @@ export class ConcentratorListComponent implements OnInit, OnDestroy {
     this.loadAllConcentrators();
   }
 
-  ngAfterViewInit() {}
 
   private loadAllConcentrators() {
     this.concentratorService

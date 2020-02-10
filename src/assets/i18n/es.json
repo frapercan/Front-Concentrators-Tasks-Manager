@@ -9,7 +9,7 @@
     "concentrators": "Concentradores",
     "studies": "Estudios"
   },
-  "welcome": "Bienvenido",
+  "welcome": "Bienvenido a ARTEMISA",
   "forms": {
     "username": "Nombre de usuario",
     "password": "Contraseña"
@@ -20,6 +20,7 @@
     "apidoc": "API"
   },
   "action": {
+    "autentificacion": "Control de Acceso",
     "logout": "Cerrar sesión",
     "login": "Iniciar sesión",
     "close": "Cerrar"
@@ -31,7 +32,7 @@
   },
   "error": {
     "userRequired": "Se requiere nombre de usuario",
-    "passwordRequired": "se requiere contraseña"
+    "passwordRequired": "Se requiere contraseña"
   },
   "study": {
     "form": {

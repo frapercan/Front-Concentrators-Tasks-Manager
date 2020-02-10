@@ -89,7 +89,7 @@ export class IssuesComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     if (this.dataSource) {
-      if (filterValue == '0') { this.dataSource.filter = ''} else {
+      if (filterValue == '0') { this.dataSource.filter = '' } else {
         this.dataSource.filter = groupsByIndex[filterValue];
       }
     }

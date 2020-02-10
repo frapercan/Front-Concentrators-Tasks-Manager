@@ -1,5 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://192.168.0.101:9000',
-  
+  apiUrl: 'http://artemisa.lan:9002',
 };

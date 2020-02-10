@@ -1,7 +1,5 @@
 <div class="container" [class.is-mobile]="mobileQuery.matches">
-  <mat-toolbar class="welcome" *ngIf="!currentUser">{{
-    "welcome" | translate
-  }}</mat-toolbar>
+
   <mat-toolbar color="primary" class="toolbar" *ngIf="currentUser">
     <button mat-icon-button (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
