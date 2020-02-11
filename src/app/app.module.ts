@@ -31,11 +31,11 @@ import {
   StudyFormComponent
 } from "./components/study";
 
-import {StudyComponent,TargetsComponent,SettingsComponent, IssuesComponent,PerformancesComponent,ReadingComponent,StudyOverviewComponent} from "./components/study/form"
+import { StudyComponent, TargetsComponent, SettingsComponent, IssuesComponent, PerformancesComponent, ReadingComponent, StudyOverviewComponent } from "./components/study/form"
 
-import { ConcentratorListComponent,ConcentratorPreviewComponent } from "./components/concentrator";
+import { ConcentratorListComponent, ConcentratorPreviewComponent } from "./components/concentrator";
 
-import { MatFileUploadModule } from "angular-material-fileupload";
+
 
 import { from } from "rxjs";
 
@@ -77,7 +77,7 @@ import { from } from "rxjs";
         deps: [HttpClient]
       }
     }),
-    MatFileUploadModule
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
@@ -86,7 +86,7 @@ import { from } from "rxjs";
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule {}
+export class AppModule { }
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);

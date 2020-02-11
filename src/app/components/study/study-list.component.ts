@@ -56,7 +56,7 @@ export class StudyListComponent implements OnInit {
     this.router.navigate(["/study", row.id_estudio]);
   }
 
-  routeToCreation(row) {
+  routeToCreation() {
     this.router.navigate(["/study/new"]);
   }
 
