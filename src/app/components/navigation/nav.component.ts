@@ -1,10 +1,8 @@
 import { MediaMatcher } from "@angular/cdk/layout";
 import { ChangeDetectorRef, Component, OnDestroy, OnInit,EventEmitter, Output } from "@angular/core";
-import { Study } from "../../_models";
-import { ConcentratorService } from "../../_services";
 import { TranslateService } from "@ngx-translate/core";
 import { AuthenticationService } from "../../_services/authentication.service";
-import { NavigationEnd, Router } from "@angular/router";
+import { Router } from "@angular/router";
 import { User } from "../../_models"
 
 

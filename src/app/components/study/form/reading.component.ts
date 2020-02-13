@@ -1,13 +1,6 @@
-﻿import { Component, Input, ViewChild, OnInit, OnDestroy } from "@angular/core";
-import {
-  FormBuilder, FormGroup, Validators
-
-} from "@angular/forms";
-import {
-  PackageService,
-  ConcentratorService,
-  StudyService
-} from "../../../_services";
+﻿import { Component, Input, ViewChild, OnInit } from "@angular/core";
+import { FormGroup } from "@angular/forms";
+import { StudyService } from "../../../_services";
 import { Attribute } from "../../../_models";
 import { SelectionModel } from "@angular/cdk/collections";
 import { MatPaginator } from "@angular/material/paginator";
@@ -65,14 +58,6 @@ export class ReadingComponent implements OnInit {
 
 
   }
-
-
-
-
-
-
-
-
 }
 
 export enum AttributesSelection {

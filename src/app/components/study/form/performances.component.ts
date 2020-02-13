@@ -1,14 +1,11 @@
-﻿import { Component, Input, ViewChild, OnInit, OnDestroy } from "@angular/core";
+﻿import { Component, Input, ViewChild, OnInit } from "@angular/core";
 import {
   FormBuilder, FormGroup, Validators
 
 } from "@angular/forms";
 import {
-  PackageService,
-  ConcentratorService,
   StudyService
 } from "../../../_services";
-import { Package, Issue } from "../../../_models";
 import { SelectionModel } from "@angular/cdk/collections";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
@@ -62,17 +59,7 @@ export class PerformancesComponent implements OnInit {
           (this.dataSource.paginator = this.paginator)
         )
       );
-
-
   }
-
-
-
-
-
-
-
-
 }
 
 export enum PerformancesSelection {

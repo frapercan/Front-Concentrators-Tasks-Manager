@@ -1,22 +1,13 @@
 ﻿import {
   Component,
   OnInit,
-  AfterViewInit,
-  ElementRef,
-  ViewChild,
   Input,
   OnChanges,
-  AfterContentInit,
-  AfterViewChecked
 } from "@angular/core";
-import { first } from "rxjs/operators";
-import { User, Study } from "../../_models";
-import { AuthenticationService, StudyService } from "../../_services";
-import { CompileShallowModuleMetadata } from "@angular/compiler";
-import { ActivatedRoute } from "@angular/router";
+
 import * as CanvasJS from "../../../assets/scripts/canvasjs.min";
 import { TranslateService } from "@ngx-translate/core";
-import { MatTabChangeEvent } from "@angular/material/tabs";
+
 
 @Component({
   selector: "issues",
@@ -30,8 +21,6 @@ export class StudyIssuesDetailsComponent implements OnInit, OnChanges {
   translate: TranslateService;
 
   constructor(
-    private studyService: StudyService,
-    private route: ActivatedRoute,
     translate: TranslateService
   ) {
     this.translate = translate;

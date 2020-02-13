@@ -3,7 +3,7 @@ import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { User, Concentrator } from "../../_models";
-import { ConcentratorService, AuthenticationService } from "../../_services";
+import { ConcentratorService } from "../../_services";
 import { Router } from "@angular/router";
 
 @Component({ selector:"concentratorPreview", templateUrl: "concentrator-preview.component.html" })
@@ -33,7 +33,6 @@ export class ConcentratorPreviewComponent implements OnInit, OnChanges {
 
   constructor(
     private concentratorService: ConcentratorService,
-    private router: Router
   ) {
   }
 

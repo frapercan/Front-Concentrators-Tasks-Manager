@@ -1,11 +1,9 @@
-﻿import { Component, Input, ViewChild, OnInit, OnDestroy } from "@angular/core";
+﻿import { Component, Input, ViewChild, OnInit } from "@angular/core";
 import {
   FormBuilder, FormGroup, Validators
 
 } from "@angular/forms";
 import {
-  PackageService,
-  ConcentratorService,
   StudyService
 } from "../../../_services";
 import { Package, Issue } from "../../../_models";
@@ -96,12 +94,6 @@ export class IssuesComponent implements OnInit {
       }
     }
   }
-
-
-
-
-
-
 }
 
 

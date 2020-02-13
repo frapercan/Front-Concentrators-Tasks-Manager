@@ -1,4 +1,4 @@
-﻿import { Component, Input, ViewChild, OnInit, OnDestroy } from "@angular/core";
+﻿import { Component, Input, OnInit } from "@angular/core";
 import {
   FormBuilder, FormGroup, Validators
 
@@ -17,7 +17,6 @@ export class TargetsComponent implements OnInit {
   packages: Package[];
 
   constructor(
-    private _formBuilder: FormBuilder,
     private packageService: PackageService,
     private concentratorService: ConcentratorService
 

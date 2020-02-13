@@ -3,7 +3,6 @@
   OnInit,
   Input
 } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
 import * as CanvasJS from "../../../assets/scripts/canvasjs.min";
 import { TranslateService } from "@ngx-translate/core";
 

@@ -7,10 +7,7 @@ import { Router } from "@angular/router";
 import {
   FormBuilder,
   FormGroup,
-  Validators,
-  FormControl,
-  FormArray,
-  ControlContainer
+  Validators
 } from "@angular/forms";
 import {
   StudyService

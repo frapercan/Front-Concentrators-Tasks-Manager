@@ -1,20 +1,12 @@
 ﻿<form [formGroup]="studyFormGroup">
-    <mat-form-field class="short-width">
-      <input matInput placeholder="{{ 'study.form.namePlaceholder' | translate }}" formControlName="name" required />
-    </mat-form-field>
-    
-    <br>
-    <mat-form-field class="half-width">
-      <textarea matInput formControlName="description"
-        placeholder="{{ 'study.form.descriptionPlaceholder' | translate }}" matTextareaAutosizet matAutosizeMinRows="5"
-        matAutosizeMaxRows="50"></textarea>
-    </mat-form-field>
-
-
-
-
-
-
+  <mat-form-field class="short-width">
+    <input matInput placeholder="{{ 'study.form.namePlaceholder' | translate }}" formControlName="name" required />
+  </mat-form-field>
+  <br>
+  <mat-form-field class="half-width">
+    <textarea matInput formControlName="description" placeholder="{{ 'study.form.descriptionPlaceholder' | translate }}"
+      matTextareaAutosizet matAutosizeMinRows="5" matAutosizeMaxRows="50"></textarea>
+  </mat-form-field>
   <div>
     <button mat-button matStepperNext>{{ "next" | translate }}</button>
   </div>
