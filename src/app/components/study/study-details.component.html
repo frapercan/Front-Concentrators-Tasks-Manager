@@ -1,12 +1,12 @@
 ﻿<mat-toolbar class="align-items">{{ study.nombre }}</mat-toolbar>
 <mat-grid-list cols="2" rowHeight="2:1" >
   <mat-grid-tile>
-    <communicationOverview style="width: 100%; height: 100%;" *ngIf="communication && cycles"
+    <communicationOverview class="full-size" *ngIf="communication && cycles"
       [communication]="communication" [cycles]="cycles">
     </communicationOverview>
   </mat-grid-tile>
   <mat-grid-tile>
-    <issuesOverview style="width: 100%; height: 100%;" *ngIf="issues && cycles" [issues]="issues"
+    <issuesOverview class="full-size" *ngIf="issues && cycles" [issues]="issues"
       [cycles]="cycles">
     </issuesOverview>
   </mat-grid-tile>
@@ -37,7 +37,7 @@
   <mat-tab disabled class="margin-left: auto; ">
     <ng-template mat-tab-label>
       <button mat-icon-button (click)="refresh()">
-        <mat-icon style="color:black">cached</mat-icon>
+        <mat-icon black>cached</mat-icon>
       </button>
     </ng-template>
   </mat-tab>
