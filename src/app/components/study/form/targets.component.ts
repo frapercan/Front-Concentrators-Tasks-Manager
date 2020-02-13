@@ -11,7 +11,7 @@ import { Package } from "../../../_models";
 
 
 
-@Component({ selector: "targetStep", templateUrl: "targets.component.html", styleUrls: ["../study-form.component.scss"] })
+@Component({ selector: "targetStep", templateUrl: "targets.component.html", styleUrls: ["./targets.component.scss","../study-form.component.scss"] })
 export class TargetsComponent implements OnInit {
   @Input() public targetsFormGroup: FormGroup;
   packages: Package[];

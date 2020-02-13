@@ -4,7 +4,7 @@
 
 
 
-<form [formGroup]="issuesFormGroup" style="padding-top:0%">
+<form id ="issuesFormGroup" [formGroup]="issuesFormGroup">
   <div *ngIf="issuesFormGroup.errors">
     <mat-error *ngIf="issuesFormGroup.errors.atLeastOne">{{
         "study.form.atLeastOne" | translate
@@ -13,7 +13,7 @@
 
 
 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="text-align: left">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!-- detect Checkbox Column -->
     <ng-container matColumnDef="detect">
       <th mat-header-cell *matHeaderCellDef>

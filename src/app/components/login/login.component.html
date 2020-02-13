@@ -27,7 +27,7 @@
             <button mat-stroked-button color="primary" class="btn btn-primary btn-block" [disabled]="loading">
                 {{"action.login" | translate}}   
             </button>
-            <mat-progress-spinner style="margin: auto; padding-top: 5px" *ngIf="loading" [mode]="'indeterminate'" [diameter]="40"></mat-progress-spinner>  
+            <mat-progress-spinner *ngIf="loading" [mode]="'indeterminate'" [diameter]="40"></mat-progress-spinner>  
             <mat-error *ngIf="error">{{error}}</mat-error>
         </form>
     </mat-card>

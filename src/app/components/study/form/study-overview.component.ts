@@ -9,7 +9,7 @@ import {
 
 
 
-@Component({ selector: "studyOverview", templateUrl: "study-overview.component.html", styleUrls: ["../study-form.component.scss"] })
+@Component({ selector: "studyOverview", templateUrl: "study-overview.component.html", styleUrls: ["./study-overview.component.scss","../study-form.component.scss"] })
 export class StudyOverviewComponent implements OnInit {
   @Input() public studyFormGroup: FormGroup;
   @Input() public targetsFormGroup: FormGroup;

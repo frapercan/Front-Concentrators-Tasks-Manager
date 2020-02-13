@@ -9,7 +9,8 @@ import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "communication",
-  templateUrl: "study-communication.component.html"
+  templateUrl: "study-communication.component.html",
+  styleUrls: ["study-communication.component.scss"]
 })
 export class StudyCommunicationComponent implements OnChanges {
   id: string;

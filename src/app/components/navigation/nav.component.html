@@ -62,8 +62,8 @@
       [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56"
     >
-      <mat-nav-list style="padding-top: 0px">
-        <mat-toolbar-row style="background-color: #3f51b5">
+      <mat-nav-list> 
+        <mat-toolbar-row >
           <h2 class="toolbar-title">{{ "menu.title" | translate }}</h2>
         </mat-toolbar-row>
         <a
@@ -76,7 +76,7 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
-      <router-outlet style="height: 100%;"></router-outlet>
+      <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

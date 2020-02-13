@@ -6,7 +6,9 @@ import { User, Concentrator } from "../../_models";
 import { ConcentratorService, AuthenticationService } from "../../_services";
 import { Router } from "@angular/router";
 
-@Component({ templateUrl: "concentrator-list.component.html" })
+@Component({   selector: "concentratorList",
+templateUrl: "concentrator-list.component.html",
+styleUrls: ["./concentrator-list.component.scss"] })
 export class ConcentratorListComponent implements OnInit, OnDestroy {
   currentUser: User;
   displayedColumns: string[] = [
