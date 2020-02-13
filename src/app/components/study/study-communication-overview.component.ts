@@ -10,7 +10,7 @@ import { TranslateService } from "@ngx-translate/core";
 @Component({
   selector: "communicationOverview",
   templateUrl: "study-communication-overview.component.html",
-  styleUrls: ["./study-details.component.scss"]
+  styleUrls: ["./study-communication-overview.component.scss"]
 
 })
 export class StudyCommunicationOverviewComponent implements OnInit {
