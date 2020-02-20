@@ -15,7 +15,7 @@ export class ConcentratorService {
 
   getConcentrators(concentrators) {
     return this.http
-      .post<Concentrator[]>(`${environment.apiUrl}/concentrators/concentrators`,concentrators)
+      .post<Concentrator[]>(`${environment.apiUrl}/concentrators`,concentrators)
       .toPromise();
   }
 
