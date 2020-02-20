@@ -1,27 +1,41 @@
 ﻿<mat-toolbar class="align-items">{{ study.nombre }}</mat-toolbar>
-<mat-grid-list cols="2" rowHeight="2:1" >
-  <mat-grid-tile>
-    <communicationOverview class="full-size" *ngIf="communication && cycles"
-      [communication]="communication" [cycles]="cycles">
+<div class="half-height">
+  <div class="full-height-half-width">
+    <communicationOverview class="full-size" *ngIf="communicationOverview && loops"
+      [communicationOverview]="communicationOverview" [loops]="loops">
     </communicationOverview>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <issuesOverview class="full-size" *ngIf="issues && cycles" [issues]="issues"
-      [cycles]="cycles">
+  </div>
+  <div class="full-height-half-width">
+    <issuesOverview class="full-size" *ngIf="issuesOverview && loops && issues" [issuesOverview]="issuesOverview"
+      [loops]="loops" [issues]="issues">
     </issuesOverview>
-  </mat-grid-tile>
-  <mat-divider></mat-divider>
-</mat-grid-list>
-<mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)">
-  <mat-tab *ngFor="let cycle of cycles | keyvalue" label="{{ cycles[cycle.key].first | date: 'medium' }}">
-  </mat-tab>
-</mat-tab-group>
+  </div>
+</div>
 
-<mat-tab-group id="expandlastright">
+<div class="half-height">
+  <div class="full-height-full-width">
+    <mat-tab-group *ngIf='!loopsExplorer'>
+      <mat-tab>
+        <ng-template mat-tab-label *ngIf="loops[loopsKeys[selected.value]]">
+          <span>{{loops[loopsKeys[selected.value]].first | date: 'medium' }} </span>
+        </ng-template>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <span (click)="loopsExplorer = true"> {{ 'study.activateLoopsExplorer' | translate}}</span></ng-template>
+      </mat-tab>
+  
+    </mat-tab-group>
+
+    <mat-tab-group *ngIf='loopsExplorer' [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)">
+      <mat-tab *ngFor="let loop of loops | keyvalue:keepOrder" label="{{loop.value.first | date: 'medium' }}">
+      </mat-tab>
+    </mat-tab-group>
+    <mat-tab-group id="expandlastright">
   <mat-tab label="{{ 'result.analisisComunicaciones' | translate }}">
     <ng-template matTabContent>
       <div *ngIf="communication">
-        <communication [communication]="communication[selected.value]" [study]="study"></communication>
+        <communication [communication]="communication[loopsKeys[selected.value]]" [study]="study"></communication>
       </div>
     </ng-template>
   </mat-tab>
@@ -29,10 +43,20 @@
   <mat-tab label="{{ 'result.issuesAnalysis' | translate }}">
     <ng-template matTabContent>
       <div *ngIf="issues">
-        <issues [issues]="issues[selected.value]" [study]="study"></issues>
+        <issues [issues]="issues[loopsKeys[selected.value]]" [study]="study"></issues>
       </div>
     </ng-template>
   </mat-tab>
+
+  <mat-tab label="{{ 'result.performancesAnalysis' | translate }}">
+    <ng-template matTabContent>
+      <div *ngIf="performances">
+        <performances [performances]="performances[loopsKeys[selected.value]]" [study]="study"></performances>
+      </div>
+    </ng-template>
+  </mat-tab>
+
+
 
   <mat-tab disabled class="margin-left: auto; ">
     <ng-template mat-tab-label>
@@ -42,3 +66,5 @@
     </ng-template>
   </mat-tab>
 </mat-tab-group>
+  </div>
+</div>

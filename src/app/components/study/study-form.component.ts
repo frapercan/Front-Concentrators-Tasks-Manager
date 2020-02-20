@@ -46,15 +46,15 @@ export class StudyFormComponent implements OnInit {
     });
 
     this.targetsFormGroup = this._formBuilder.group({
-      selectionMode: ["", Validators.required],
+      mode: ["", Validators.required],
       file: [""],
       targets: ["", Validators.required],
-      package: [""],
+      packageId: [""],
       name: [""],
       description: [""]
     });
     this.settingsFormGroup = this._formBuilder.group({
-      settingsMode: ["", Validators.required],
+      mode: ["", Validators.required],
       loopLength: ["", [Validators.required, Validators.min(1)]],
       executionNumber: ["", [Validators.required, Validators.min(1)]],
       attempts: ["", [Validators.required, Validators.min(1)]],
@@ -74,13 +74,40 @@ export class StudyFormComponent implements OnInit {
 
   }
   onSubmit() {
+    console.log(this.studyFormGroup.value.name,
+      this.studyFormGroup.value.description,
+      this.targetsFormGroup.value.mode,
+      this.targetsFormGroup.value.packageId,
+      this.targetsFormGroup.value.targets,
+      this.targetsFormGroup.value.name,
+      this.targetsFormGroup.value.description,
+      this.settingsFormGroup.value.mode,
+      this.settingsFormGroup.value.loopLength,
+      this.settingsFormGroup.value.executionNumber,
+      this.settingsFormGroup.value.attempts,
+      this.settingsFormGroup.value.priority,
+      this.issuesFormGroup.value.detect,
+      this.issuesFormGroup.value.fix,
+      this.performancesFormGroup.value.performances,
+      this.readingFormGroup.value.reading)
     this.studyService.post(
-      this.studyFormGroup.value,
-      this.targetsFormGroup.value,
-      this.settingsFormGroup.value,
-      this.issuesFormGroup.value,
-      this.performancesFormGroup.value
-    ).then(resp => this.openSnackBarAndNavigateHome(this.translate.instant('study.form.createSuccess'), this.translate.instant('action.close'))).catch(e => this.openSnackBar(e, this.translate.instant('action.close')) );
+      this.studyFormGroup.value.name,
+      this.studyFormGroup.value.description,
+      this.targetsFormGroup.value.mode,
+      this.targetsFormGroup.value.packageId,
+      this.targetsFormGroup.value.targets,
+      this.targetsFormGroup.value.name,
+      this.targetsFormGroup.value.description,
+      this.settingsFormGroup.value.mode,
+      this.settingsFormGroup.value.loopLength,
+      this.settingsFormGroup.value.executionNumber,
+      this.settingsFormGroup.value.attempts,
+      this.settingsFormGroup.value.priority,
+      this.issuesFormGroup.value.detect,
+      this.issuesFormGroup.value.fix,
+      this.performancesFormGroup.value.performances,
+      this.readingFormGroup.value.reading
+    ).then(resp => this.openSnackBarAndNavigateHome(this.translate.instant('study.form.createSuccess'), this.translate.instant('action.close'))).catch(e => this.openSnackBar(e, this.translate.instant('action.close')));
 
   }
 

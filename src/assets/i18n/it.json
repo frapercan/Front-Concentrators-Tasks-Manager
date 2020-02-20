@@ -72,6 +72,7 @@
             "selection": "Selezione",
             "reading": "Lettura",
             "createSuccess": "Studio creato correttamente"
+
             
 
 
@@ -89,7 +90,8 @@
         "ID": "ID",
         "NAME": "NOME",
         "DATE": "DATA",
-        "TARGETS": "OBIETTIVI"
+        "TARGETS": "OBIETTIVI",
+        "activateLoopsExplorer": "Attivare loop explorer"
     },
     "result": {
         "analisisComunicaciones": "analisisComunicaciones",
@@ -115,7 +117,10 @@
         "amountCerco": "amountCerco",
         "name": "nome",
         "overviewCommunication": "Panoramica delle comunicazioni",
-        "overviewIssues": "Panoramica dei problemi"
+        "overviewIssues": "Panoramica dei problemi",
+        "performancesAnalysis": "Analisi delle Azioni",
+        "successful": "Successo",
+        "unsuccessful": "Infruttuoso"
     },
     "issues": {
         "name": "nome",

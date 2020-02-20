@@ -11,7 +11,8 @@ import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "issues",
-  templateUrl: "study-issues.component.html"
+  templateUrl: "study-issues.component.html",
+  styleUrls: ["study-issues.component.scss"]
 })
 export class StudyIssuesDetailsComponent implements OnInit, OnChanges {
   @Input() issues: any;
@@ -24,41 +25,53 @@ export class StudyIssuesDetailsComponent implements OnInit, OnChanges {
     translate: TranslateService
   ) {
     this.translate = translate;
-    this.issuesDisplayedColumns = [
-      "nombre_incidencia",
-      "detectados",
-      "porcentaje_detectados",
-      "corregidos",
-      "porcentaje_arreglados"
-    ];
+    this.issuesDisplayedColumns = []
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
   ngOnChanges() {
+    this.renderIssuesChart();
     if (this.issues) {
-      if (this.issues.some(element => element.detectado > 0)) {
-        this.renderIssuesChart();
-      } else {
-        var chart = new CanvasJS.Chart("chartIssuesContainer", {});
-        chart.render();
-      }
-    } 
+      this.issuesDisplayedColumns = Object.keys(this.issues.detectado)
+      this.renderIssuesChart();
+    }
   }
 
   renderIssuesChart() {
+
+
     let data = { detected: [], fixed: [] };
-    this.issues.forEach(element => {
-      if (element.detectado > 0) {
-        data.detected.push({
-          y: Number(element.detectado - element.corregido),
-          label: element.nombre
-        });
-        data.fixed.push({
-          y: Number(element.corregido),
-          label: element.nombre
-        });
-      }
+
+    Object.keys(this.issues.detectado).forEach(element => {
+      data.detected.push({
+        y: Number(this.issues.detectado[element] - this.issues.corregido[element]),
+        label: element
+      })
+      data.fixed.push({
+        y: Number(this.issues.corregido[element]),
+        label: element
+      })
+
+
+
+
+
+
+      // if (element.detectado > 0) {
+      //   data.detected.push({
+      //     y: Number(element.detectado - element.corregido),
+      //     label: element.nombre
+      //   });
+      //   data.fixed.push({
+      //     y: Number(element.corregido),
+      //     label: element.nombre
+      //   });
+      // }
     });
+
+
+
+
     var chart = new CanvasJS.Chart("chartIssuesContainer", {
       title: {
         text: this.translate.instant("result.issuesAnalysis")
@@ -81,17 +94,18 @@ export class StudyIssuesDetailsComponent implements OnInit, OnChanges {
       data: [
         {
           type: "stackedColumn",
-          legendText: "Detected",
+          legendText: this.translate.instant("issues.remainingLabel"),
           showInLegend: "true",
           dataPoints: data.detected,
-          toolTipContent: "Remaining: <b>{y}</b>",
+          toolTipContent: this.translate.instant("issues.remainingLabel")+": <b>{y}</b>",
           color: "rgba(244,67,54,0.6)"
         },
         {
           type: "stackedColumn",
-          legendText: "Repaired",
+          legendText: this.translate.instant("issues.detectedLabel"),
           showInLegend: "true",
-          toolTipContent: "Repaired: <b>{y}</b>",
+          toolTipContent: this.translate.instant("issues.detectedLabel")+": <b>{y}</b>",
+
           dataPoints: data.fixed,
           color: "rgba(76,175,80,0.6)"
         }

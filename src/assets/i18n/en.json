@@ -83,13 +83,14 @@
     "target": "Target",
     "results": "Results",
     "tipoEjecucion": "EXECUTION TYPE",
-    "currentLoopNumber": "No. LOOP",
+    "currentLoopNumber": "CURRENT LOOP",
     "currentLoopStart" : "LOOP START",
     "progress": "PROGRESS",
     "ID": "ID",
     "NAME": "NAME",
     "DATE": "DATE",
-    "TARGETS": "TARGETS"
+    "TARGETS": "TARGETS",
+    "activateLoopsExplorer": "Activate loops explorer"
   },
   "result": {
     "analisisComunicaciones": "Comunication analysis",
@@ -119,7 +120,10 @@
     "communicationIssue": "Not accesed due to communication issue",
     "systemManagement": "Not accesed due to system management issue",
     "possibleIssue": "Not accesed due to a possible concentrator issue",
-    "totalNotAccesed": "Total not accesed"
+    "totalNotAccesed": "Total not accesed",
+    "performancesAnalysis": "Performances Analysis",
+    "successful": "Successful",
+    "unsuccessful": "Unsuccessful"
   },
   "issues": {
     "name": "Name",
@@ -127,8 +131,8 @@
     "fixed": "Fixed",
     "porcentaje_detectados": "% Detected",
     "porcentaje_arreglados": "% Fixed",
-    "remainingLabel": "Remaining: ",
-    "detectedLabel": "Detected: "
+    "remainingLabel": "Remaining",
+    "detectedLabel": "Detected"
   },
   "tooltip": {
     "studies":"STUDIES",

@@ -4,7 +4,7 @@ import {
 
 } from "@angular/forms";
 import {
-  StudyService
+  IssueService
 } from "../../../_services";
 import { Package, Issue } from "../../../_models";
 import { SelectionModel } from "@angular/cdk/collections";
@@ -17,7 +17,7 @@ import { FormControl } from '@angular/forms';
 
 
 
-@Component({ selector: "issuesStep", templateUrl: "issues.component.html", styleUrls: ["../study-form.component.scss"] })
+@Component({ selector: "issuesStep", templateUrl: "issues.component.html", styleUrls: ["./issues.component.scss"] })
 export class IssuesComponent implements OnInit {
   @Input() public issuesFormGroup: FormGroup;
 
@@ -33,7 +33,7 @@ export class IssuesComponent implements OnInit {
   groupsByIndex = groupsByIndex;
 
   constructor(
-    private studyService: StudyService
+    private issueService: IssueService
 
   ) {
   }
@@ -63,7 +63,7 @@ export class IssuesComponent implements OnInit {
   }
 
   private loadAllIssues() {
-    this.studyService
+    this.issueService
       .getIssuesList()
       .then(
         issues => (
@@ -80,7 +80,7 @@ export class IssuesComponent implements OnInit {
   }
 
   private loadAllIssuesGroups() {
-    this.studyService.getIssuesGroupList().then(
+    this.issueService.getIssuesGroupList().then(
       groups => (
         (this.groups = groups)
       ))

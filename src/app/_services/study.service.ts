@@ -10,12 +10,41 @@ export class StudyService {
   get(id) {
     return this.http.get(`${environment.apiUrl}/studies/` + id).toPromise();
   }
-  post(study,
+  post(
+    studyName,
+    studyDescription,
+    targetsMode,
+    packageId,
     targets,
-    settings,
-    issues,
-    performances) {
-    return this.http.post(`${environment.apiUrl}/studies/`,{study,targets,settings,issues,performances}).toPromise();
+    packageName,
+    packageDescription,
+    settingsMode,
+    loopLength,
+    executionNumber,
+    attempts,
+    priority,
+    detect,
+    fix,
+    performances,
+    reading) {
+    return this.http.post(`${environment.apiUrl}/studies/`, {
+      studyName,
+      studyDescription,
+      targetsMode,
+      packageId,
+      targets,
+      packageName,
+      packageDescription,
+      settingsMode,
+      loopLength,
+      executionNumber,
+      attempts,
+      priority,
+      detect,
+      fix,
+      performances,
+      reading
+    }).toPromise();
   };
 
 
@@ -24,19 +53,11 @@ export class StudyService {
   };
 
   getCommunicationResult(id) {
-    return this.http.get(`${environment.apiUrl}/studies/` + id + "/result").toPromise();
+    return this.http.get(`${environment.apiUrl}/studies/` + id + "/communication").toPromise();
   };
 
-  getIssuesResult(id) {
-    return this.http.get(`${environment.apiUrl}/studies/` + id + "/result/issues").toPromise();
-  };
-
-  getIssuesList() {
-    return this.http.get<Issue[]>(`${environment.apiUrl}/studies/issues`).toPromise();
-  };
-
-  getIssuesGroupList(){
-    return this.http.get<any[]>(`${environment.apiUrl}/studies/issues/groups`).toPromise();
+  getCommunicationResultOverview(id) {
+    return this.http.get(`${environment.apiUrl}/studies/` + id + "/communication/overview").toPromise();
   };
 
   getPerformancesList() {
@@ -46,10 +67,9 @@ export class StudyService {
   getAttributesList() {
     return this.http.get<Attribute[]>(`${environment.apiUrl}/studies/attributes`).toPromise();
   };
-
-
-  getCicloInfo(id) {
-    return this.http.get(`${environment.apiUrl}/studies/` + id + "/result/ciclos").toPromise();
+  
+  getLoopsInfo(id) {
+    return this.http.get(`${environment.apiUrl}/studies/` + id + "/loops").toPromise();
   };
 
 

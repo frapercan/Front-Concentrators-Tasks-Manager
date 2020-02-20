@@ -50,8 +50,8 @@ mat-toolbar-row {
 }
 #stepper {
   width: 100%;
-  min-width: 1000px;
-  min-height: 100%;
+  min-width: 80%;
+  min-height: 80%;
   flex: 1;
   justify-content: center;
   margin: auto;
@@ -96,7 +96,7 @@ form {
   padding-top: 10%;
 }
 #CERCOSelection {
-  padding-top:5%;
+  padding-top:10%;
 }
 
 .mat-stepper-horizontal, .mat-stepper-vertical {
@@ -136,4 +136,16 @@ td.mat-cell {
 #blue-snackbar {
   background: #2196F3;
   color: white
+}
+
+#issuesFormGroup {
+  padding-top:0%
+}
+
+#performancesFormGroup {
+  padding-top:0%
+}
+
+#readingsFormGroup {
+  padding-top:0%
 }

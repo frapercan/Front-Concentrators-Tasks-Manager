@@ -1,6 +1,7 @@
 ﻿import {
   Component,
   OnInit,
+  AfterViewInit,OnChanges,
   Input
 } from "@angular/core";
 import * as CanvasJS from "../../../assets/scripts/canvasjs.min";
@@ -12,10 +13,11 @@ import { TranslateService } from "@ngx-translate/core";
   styleUrls: ["./study-communication-overview.component.scss"]
 
 })
-export class StudyCommunicationOverviewComponent implements OnInit {
+export class StudyCommunicationOverviewComponent implements OnChanges {
 
-  @Input() communication: any;
-  @Input() cycles: any;
+  @Input() issues: any;
+  @Input() communicationOverview: any;
+  @Input() loops: any;
   data = {
     systemManagement: [],
     communicationIssue: [],
@@ -24,8 +26,6 @@ export class StudyCommunicationOverviewComponent implements OnInit {
 
   }
 
-
-  communicationDisplayedColumns;
   chartCommunicationOverview;
   translate: TranslateService;
 
@@ -33,32 +33,26 @@ export class StudyCommunicationOverviewComponent implements OnInit {
     this.translate = translate;
   }
 
-  ngOnInit() {
-    this.data.systemManagement = this.mapFilterReduce(this.communication, this.cycles, [7, 4])
-    this.data.communicationIssue = this.mapFilterReduce(this.communication, this.cycles, [2])
-    this.data.possibleIssue = this.mapFilterReduce(this.communication, this.cycles, [3])
-    this.data.total = this.mapFilterReduce(this.communication, this.cycles, [7, 4, 2, 3])
+  ngOnChanges() {
+
+    this.initializeData()
+
     this.renderCommunicationOverviewChart()
+  
+
   }
 
-
-  mapFilterReduce(origin, cycles, ids) {
-    let target = origin.map((cycle) => {
-      let filtered = cycle.filter((elem) => { return ids.includes(elem.id_resultado) })
-      if (filtered.length) {
-        let amounts = filtered.map(item => item.amount)
-        if (amounts) {
-          try {
-            return { x: new Date(cycles[cycle[0].ciclo].first), y: amounts.reduce((sum, item) => { return sum + item }) }
-          }
-          catch (e) {
-          }
-        }
+  initializeData() {
+    this.communicationOverview.forEach(element => {
+      if (this.loops[element.ciclo] != undefined) {
+        this.data.systemManagement.push({ x: new Date(this.loops[element.ciclo].first), y: Number(element.gestion_sistemas) })
+        this.data.communicationIssue.push({ x: new Date(this.loops[element.ciclo].first), y: Number(element.comunicacion) })
+        this.data.possibleIssue.push({ x: new Date(this.loops[element.ciclo].first), y: Number(element.posible_incidencia) })
+        this.data.total.push({ x: new Date(this.loops[element.ciclo].first), y: Number(element.total) })
       }
-
-    }).filter(point => { return point != undefined })
-    return target
+    })
   }
+
 
   renderCommunicationOverviewChart() {
     this.chartCommunicationOverview = new CanvasJS.Chart(
@@ -74,20 +68,20 @@ export class StudyCommunicationOverviewComponent implements OnInit {
         axisX: {
           interval: 5,
           intervalType: "day",
-          labelFontSize: 15
+          labelFontSize: 12
         },
         axisY: {
-          labelFontSize: 20
+          labelFontSize: 12
 
         },
         toolTip: {
           shared: true,
-          fontSize: 20
+          fontSize: 18
         },
         legend: {
           cursor: "pointer",
           itemclick: this.toggleDataSeries,
-          fontSize: 20
+          fontSize: 14
         },
         data: [
           {
@@ -157,9 +151,6 @@ export class StudyCommunicationOverviewComponent implements OnInit {
     }
     e.chart.render();
   }
-
-
-
 
 
 

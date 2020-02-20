@@ -28,7 +28,8 @@ import {
   StudyCommunicationOverviewComponent,
   StudyIssuesOverviewComponent,
   StudyIssuesDetailsComponent,
-  StudyFormComponent
+  StudyFormComponent,
+  StudyPerformancesComponent
 } from "./components/study";
 
 import { StudyComponent, TargetsComponent, SettingsComponent, IssuesComponent, PerformancesComponent, ReadingComponent, StudyOverviewComponent } from "./components/study/form"
@@ -49,6 +50,7 @@ import { from } from "rxjs";
     StudyCommunicationOverviewComponent,
     StudyIssuesOverviewComponent,
     StudyIssuesDetailsComponent,
+    StudyPerformancesComponent,
     StudyFormComponent,
     TargetsComponent,
     IssuesComponent,

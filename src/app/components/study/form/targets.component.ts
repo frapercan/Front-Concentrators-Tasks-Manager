@@ -33,6 +33,7 @@ export class TargetsComponent implements OnInit {
 
   fileChangeListener($event: any): void {
     let files = $event.srcElement.files;
+    console.log(files)
 
     if (this.isCSVFile(files[0])) {
       let input = $event.target;
@@ -46,6 +47,7 @@ export class TargetsComponent implements OnInit {
           csvRecordsArray
         ));
         this.targetsFormGroup.updateValueAndValidity;
+        console.log(this.targetsFormGroup.value.targets)
       };
 
       reader.onerror = function () {
@@ -55,6 +57,7 @@ export class TargetsComponent implements OnInit {
       alert("Please import valid .csv file.");
       this.fileReset();
     }
+    
   }
 
   getDataRecordsArrayFromCSVFile(csvRecordsArray: any) {
@@ -81,16 +84,16 @@ export class TargetsComponent implements OnInit {
 
 
   targetsFormGroupValueChanged() {
-    const selectionModeControl = this.targetsFormGroup.get("selectionMode");
+    const modeControl = this.targetsFormGroup.get("mode");
     const nameControl = this.targetsFormGroup.get("name");
     const descriptionControl = this.targetsFormGroup.get("description");
     const targetControl = this.targetsFormGroup.get("targets");
-    const packageControl = this.targetsFormGroup.get("package");
+    const packageIdControl = this.targetsFormGroup.get("packageId");
 
-    selectionModeControl.valueChanges.subscribe((selectionMode: string) => {
+    modeControl.valueChanges.subscribe((mode: string) => {
       targetControl.reset()
-      if (selectionMode == packageModeSelection.select) {
-        packageControl.setValidators(Validators.required);
+      if (mode == packageModeSelection.select) {
+        packageIdControl.setValidators(Validators.required);
         nameControl.reset();
         descriptionControl.reset();
         targetControl.reset();
@@ -102,20 +105,20 @@ export class TargetsComponent implements OnInit {
         descriptionControl.updateValueAndValidity();
         targetControl.updateValueAndValidity();
       }
-      if (selectionMode == packageModeSelection.new) {
-        packageControl.reset();
-        packageControl.clearValidators();
+      if (mode == packageModeSelection.new) {
+        packageIdControl.reset();
+        packageIdControl.clearValidators();
         nameControl.setValidators(Validators.required);
         descriptionControl.setValidators(Validators.required);
         targetControl.setValidators(Validators.required);
         nameControl.updateValueAndValidity();
         descriptionControl.updateValueAndValidity();
         targetControl.updateValueAndValidity();
-        packageControl.updateValueAndValidity();
+        packageIdControl.updateValueAndValidity();
       }
     });
 
-    packageControl.valueChanges.subscribe(pack => {
+    packageIdControl.valueChanges.subscribe(pack => {
       if (pack) {
         this.concentratorService
           .getConcentratorsByPackage({ id_paquete: pack })

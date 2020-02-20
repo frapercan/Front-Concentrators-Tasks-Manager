@@ -1,0 +1,16 @@
+﻿<table mat-table [dataSource]="[performances]" class="mat-elevation-z8">
+
+
+  <ng-container *ngFor="let col of performancesDisplayedColumns | keyvalue" matColumnDef="{{col.value}}">
+    <th mat-header-cell *matHeaderCellDef>{{col.value}}</th>
+    <td mat-cell *matCellDef="let element">
+      <div id="performanceRow">{{'result.total' | translate}}: {{ element[col.value]['Actuación completada'] + element[col.value]['Actuación fallida'] }} <br> Corregido: {{ element[col.value]['Actuación completada'] }} <br> fallida: {{ element[col.value]['Actuación fallida'] }}</div>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="performancesDisplayedColumns" style="border-style: dotted dashed solid double;"></tr>
+  <tr mat-row *matRowDef="let row; columns: performancesDisplayedColumns;"></tr>
+
+</table>
+
+
+<div id="chartPerformancesContainer"></div>

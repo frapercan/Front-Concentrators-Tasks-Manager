@@ -35,13 +35,13 @@
                 <div class="numberCircle">3</div>
             </h4>
             <p mat-line>{{"study.form.executionModeLabel" | translate }}
-                <span *ngIf="settingsFormGroup.value.settingsMode == 1">
+                <span *ngIf="settingsFormGroup.value.mode == 1">
                     {{ "study.form.singleRun" | translate }}
                 </span>
-                <span *ngIf="settingsFormGroup.value.settingsMode == 2">
+                <span *ngIf="settingsFormGroup.value.mode == 2">
                     {{ "study.form.loop" | translate }}
                 </span>
-                <span *ngIf="!settingsFormGroup.value.settingsMode">
+                <span *ngIf="!settingsFormGroup.value.mode">
                     {{ emptyChar }}
                 </span>
             </p>

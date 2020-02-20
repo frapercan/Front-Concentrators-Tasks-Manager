@@ -26,10 +26,7 @@ body {
 .radio-group {
   justify-content: center;
 }
-.positronx {
-  text-decoration: none;
-  color: #ffffff;
-}
+
 
 .box {
   position: relative;
@@ -91,16 +88,20 @@ body {
 #expandlastright .mat-tab-label:last-child {
   margin-left: auto;
 }
+
+.make-blue {
+  background-color: #9586f8;
+}
 .make-green {
-  background-color: rgba(76, 175, 80, 0.6);
+  background-color: #86f8a6;
 }
 
 .make-red {
-  background-color: rgba(244, 67, 54, 0.6);
+  background-color: #f88e86;
 }
 
 .make-orange {
-  background-color: burlywood;
+  background-color: #f8c786;
 }
 
 .mat-header-cell {

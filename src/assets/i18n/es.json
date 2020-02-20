@@ -83,13 +83,14 @@
     "target": "Objetivo",
     "results": "Resultados",
     "tipoEjecucion": "TIPO DE EJECUCION",
-    "currentLoopNumber": "Nº LOOP",
+    "currentLoopNumber": "CICLO ACTUAL",
     "currentLoopStart": "ARRANQUE EN BUCLE",
     "progress": "PROGRESO",
     "ID": "ID",
     "NAME": "NOMBRE",
     "DATE": "FECHA",
-    "TARGETS": "OBJETIVOS"
+    "TARGETS": "OBJETIVOS",
+    "activateLoopsExplorer": "Activar explorador de ciclos"
   },
   "result": {
     "analisisComunicaciones": "Análisis de comunicación.",
@@ -119,7 +120,11 @@
     "communicationIssue": "No accedido por comunicación",
     "systemManagement": "No accedido por gestión sistemas",
     "possibleIssue": "No accedido por posible incidencia",
-    "totalNotAccesed": "Total no accedidos"
+    "totalNotAccesed": "Total no accedidos",
+    "performancesAnalysis": "Análisis de Actuaciones",
+    "successful": "Exitoso",
+    "unsuccessful": "Fallido"
+
   },
   "issues": {
     "name": "Nombre",
@@ -127,8 +132,8 @@
     "fixed": "Arreglado",
     "porcentaje_detectados": "% Detectado",
     "porcentaje_arreglados": "% Arreglado",
-    "remainingLabel": "Restante: ",
-    "detectedLabel": "Detectado: "
+    "remainingLabel": "Restante",
+    "detectedLabel": "Detectado"
   },
   "tooltip": {
     "studies": "ESTUDIOS",

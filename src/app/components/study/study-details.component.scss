@@ -1,3 +1,38 @@
 ﻿.mat-icon {
     color: black;
 }
+
+
+
+
+
+.full-height {
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+
+}
+
+.half-height {
+    display: flex;
+    height: calc(50% - (128px));
+    width: 100%;
+}
+.full-height-half-width {
+    display: flex;
+    height: 100%;
+    width: 50%;
+}
+
+.full-height-full-width{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+
+
+}
+.mat-tab-group{
+    display: flex; width: 100%;
+}

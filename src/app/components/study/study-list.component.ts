@@ -10,14 +10,14 @@ import { Router } from "@angular/router";
 export class StudyListComponent implements OnInit {
   currentUser: User;
   displayedColumns: string[] = [
-    "id_estudio",
-    "nombre",
-    "fecha_insercion",
-    "total",
-    "n_ciclos",
-    "ciclo_actual",
-    "fecha_incicio_ciclo",
-    "progreso"
+    "id",
+    "name",
+    "concentratorsAmount",
+    "initialDate",
+    "loops",
+    "currentLoop",
+    "start",
+    "taskProgressAmount"
   ];
   dataSource: MatTableDataSource<Study>;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -38,7 +38,7 @@ export class StudyListComponent implements OnInit {
     this.loadAllStudies();
   }
 
-  ngAfterViewInit() {}
+  ngAfterViewInit() { }
 
   private loadAllStudies() {
     this.studyService
@@ -53,7 +53,7 @@ export class StudyListComponent implements OnInit {
   }
 
   routeToDetails(row) {
-    this.router.navigate(["/study", row.id_estudio]);
+    this.router.navigate(["/study", row.id]);
   }
 
   routeToCreation() {

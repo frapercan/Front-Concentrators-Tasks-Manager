@@ -2,8 +2,8 @@
     <mat-radio-group
       class="radio-group"
       name="targets"
-      formControlName="selectionMode"
-      aria-labelledby="selectionMode"
+      formControlName="mode"
+      aria-labelledby="mode"
     >
       <label id="selectionMode">{{
         "study.form.targetMode" | translate
@@ -18,9 +18,9 @@
       </mat-radio-button>
     </mat-radio-group>
 
-    <mat-form-field *ngIf="targetsFormGroup.value.selectionMode == '1'">
+    <mat-form-field *ngIf="targetsFormGroup.value.mode == '1'">
       <mat-label>Paquete</mat-label>
-      <mat-select formControlName="package">
+      <mat-select formControlName="packageId">
         <mat-option
           *ngFor="let package of packages"
           [value]="package.id_paquete"
@@ -34,7 +34,7 @@
     </mat-form-field> 
 
     <button
-      *ngIf="targetsFormGroup.value.selectionMode == '2'"
+      *ngIf="targetsFormGroup.value.mode == '2'"
       type="button"
       mat-raised-button
       (click)="fileImportInput.click()"
@@ -42,7 +42,7 @@
       Choose File
     </button>
 
-    <mat-form-field *ngIf="targetsFormGroup.value.selectionMode == '2'">
+    <mat-form-field *ngIf="targetsFormGroup.value.mode == '2'">
       <input
         matInput
         placeholder="{{ 'study.form.namePackagePlaceholder' | translate }}"
@@ -51,7 +51,7 @@
       />
     </mat-form-field>
 
-    <mat-form-field *ngIf="targetsFormGroup.value.selectionMode == '2'">
+    <mat-form-field *ngIf="targetsFormGroup.value.mode == '2'">
       <textarea
         matInput
         formControlName="description"

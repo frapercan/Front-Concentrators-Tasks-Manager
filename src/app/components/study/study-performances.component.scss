@@ -1,5 +1,6 @@
-﻿#chartCommunicationContainer {
+﻿#chartPerformancesContainer {
   min-height: 35vh; width:100%; margin-top:1px;
+
 
 }
 
@@ -11,7 +12,11 @@
 
 th.mat-header-cell, td.mat-cell { 
   text-align: center;
-  width: 10%
+  width: 10%;
+}
+
+#performanceRow {
+  display: inline-block; text-align: right;
 }
 
 

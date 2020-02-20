@@ -1,7 +1,9 @@
 export class Issue {
     id_incidencia: number;
-    nombre_incidencia: string;
+    nombre: string;
     descripcion: string;
-    id_grupo: number;
+    id_grupo_incidencia: number;
     prioridad: number;
+    detectar: boolean;
+    arreglar: boolean;
 }

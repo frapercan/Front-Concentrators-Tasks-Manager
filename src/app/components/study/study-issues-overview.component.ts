@@ -1,7 +1,8 @@
 ﻿import {
   Component,
   OnInit,
-  Input
+  Input,
+  OnChanges
 } from "@angular/core";
 import * as CanvasJS from "../../../assets/scripts/canvasjs.min";
 import { TranslateService } from "@ngx-translate/core";
@@ -11,15 +12,16 @@ import { TranslateService } from "@ngx-translate/core";
   templateUrl: "study-issues-overview.component.html"
 
 })
-export class StudyIssuesOverviewComponent implements OnInit {
+export class StudyIssuesOverviewComponent implements OnChanges {
 
   @Input() issues: any;
-  @Input() cycles: any;
+  @Input() issuesOverview: any;
+  @Input() loops: any;
 
-  labelToIssuesMap = {}
-  data = { detectado: {}, corregido: {} }
-  modes = ["detectado", "corregido"]
+  data = { detectado: [], corregido: [] }
+
   chartIssuesOverview;
+
   translate: TranslateService;
 
   constructor(translate: TranslateService) {
@@ -28,62 +30,36 @@ export class StudyIssuesOverviewComponent implements OnInit {
 
   ngOnInit() {
 
-    this.initializeDataWithLabels()
-    this.transformData()
-    this.renderIssuesOverviewChart()
+
+  }
+  ngOnChanges() {
+    this.initializeData()
+    this.renderCommunicationOverviewChart()
 
   }
 
-  initializeDataWithLabels() {
-
-    let labels = this.issues.map(item => {
-      item.map(it => {
-        if (!Object.keys(this.data).includes(it.nombre)) {
-          this.data.detectado[it.nombre] = []
-          this.data.corregido[it.nombre] = []
+  initializeData() {
+    if (!this.data.detectado.length && !this.data.corregido.length) {
+      Object.keys(this.issuesOverview).forEach(loop => {
+        
+        const date = CanvasJS.formatDate(this.loops[loop].first, "D-MMM-YY hh:mm")
+        
+        let contentCorregido = date+"<br>" +"<b><span style='color:green;'>Total:</span></b>"+this.issuesOverview[loop].corregido + "<br>" + Object.keys(this.issues[loop].corregido).map(issueKey => {
+          return "<span style='color:green;'>"+issueKey+":</span>"  + this.issues[loop].corregido[issueKey] + '<br>'
         }
-        this.labelToIssuesMap[it.nombre] = it.id_incidencia
-      })
-    })
-  }
-
-  transformData() {
-    this.modes.forEach(mode => {
-      Object.keys(this.data[mode]).forEach(issue => {
-        this.data[mode][issue] = this.mapFilterReduce(this.issues, this.cycles, [this.labelToIssuesMap[issue]], mode)
-      })
-
-
-
-
-
-
-    })
-
-  }
-
-
-  mapFilterReduce(origin, cycles, ids, mode) {
-    let target = origin.map((cycle) => {
-      let filtered = cycle.filter((elem) => { return ids.includes(elem.id_incidencia) })
-      if (filtered.length) {
-        let amounts = filtered.map(item => item[mode])
-        if (amounts) {
-          try {
-            return { x: new Date(cycles[cycle[0].ciclo].first), y: amounts.reduce((sum, item) => { return sum + item }) }
-          }
-          catch (e) {
-
-          }
+        )
+        let contentDetectado = date+"<br>" +"<b><span style='color:red;'>Total:</span></b>"+this.issuesOverview[loop].detectado + "<br>" + Object.keys(this.issues[loop].detectado).map(issueKey => {
+          return "<span style='color:red;'>"+issueKey+":</span>"  + this.issues[loop].detectado[issueKey] + '<br>'
         }
-      }
-
-    }).filter(point => { return point != undefined })
-    return target
+        )
+        this.data.detectado.push({ x: new Date(this.loops[loop].first), y: Number(this.issuesOverview[loop].detectado), toolTipContent: contentDetectado.toString().replace(/,/g, '') })
+        this.data.corregido.push({ x: new Date(this.loops[loop].first), y: Number(this.issuesOverview[loop].corregido), toolTipContent: contentCorregido.toString().replace(/,/g, '') })
+      })
+    }
   }
 
 
-  renderIssuesOverviewChart() {
+  renderCommunicationOverviewChart() {
     this.chartIssuesOverview = new CanvasJS.Chart(
       'chartIssuesOverviewContainer',
       {
@@ -97,27 +73,47 @@ export class StudyIssuesOverviewComponent implements OnInit {
         axisX: {
           interval: 5,
           intervalType: "day",
-          labelFontSize: 15
+          labelFontSize: 12
         },
         axisY: {
-          labelFontSize: 20
+          labelFontSize: 12
 
         },
         toolTip: {
-          shared: true,
-          fontSize: 12
+          shared: false,
+          fontSize: 18
         },
         legend: {
-          fontSize:14,
-          
-
+          cursor: "pointer",
+          itemclick: this.toggleDataSeries,
+          fontSize: 14
         },
-        data: this.parseDataToGraphics(this.data)
+        data: [
+          {
+            type: "line",
+            name: this.translate.instant('issues.detected'),
+            showInLegend: true,
+            xValueFormatString: "D-MMMM-YYYY HH:mm",
+            dataPoints: this.data.detectado,
+            color: "red",
+            markerType: "circle"
+
+          },
+          {
+            type: "line",
+            name: this.translate.instant('issues.fixed'),
+            showInLegend: true,
+            xValueFormatString: "D-MMMM-YYYY HH:mm",
+            dataPoints: this.data.corregido,
+            color: "green",
+            markerType: "circle"
+
+          }
+        ]
       });
     this.chartIssuesOverview.render();
 
   }
-
 
   addSymbols(e) {
     var suffixes = ["", "K", "M", "B"];
@@ -139,33 +135,8 @@ export class StudyIssuesOverviewComponent implements OnInit {
     e.chart.render();
   }
 
-  parseDataToGraphics(data) {
 
-    let detect = Object.keys(data.detectado).map(issue => {
-      return {
-        type: "line",
-        name: issue + '[D]',
-        showInLegend: true,
-        xValueFormatString: "D-MMMM-YYYY HH:mm",
-        dataPoints: this.data.detectado[issue],
-        markerType: "circle"
-      }
 
-    })
-    let fix = Object.keys(data.corregido).map(issue => {
-      return {
-        type: "line",
-        name: issue + ['[F]'],
-        showInLegend: true,
-        xValueFormatString: "D-MMMM-YYYY HH:mm",
-        dataPoints: this.data.corregido[issue],
-        markerType: "circle"
-      }
-
-    })
-
-    return detect.concat(fix)
-  };
 
 
 

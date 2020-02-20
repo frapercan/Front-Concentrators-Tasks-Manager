@@ -1,48 +1,24 @@
-﻿<table mat-table [dataSource]="communication" class="mat-elevation-z8">
-  <!--- Note that these columns can be defined in any order.
-              The actual rendered columns are set as a property on the row definition" -->
+﻿<table mat-table [dataSource]="[communication]" class="mat-elevation-z8">
 
-  <!-- name Column -->
 
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>{{ "study.name" | translate }}</th>
-    <td mat-cell *matCellDef="let element">
-      <span> {{ "result." + element.name | translate }}</span>
+  <ng-container *ngFor="let col of communicationDisplayedColumns | keyvalue" matColumnDef="{{col.value}}">
+    <th mat-header-cell *matHeaderCellDef>{{"result."+col.value | translate}}</th>
+    <td mat-cell *matCellDef="let element" [ngClass]="{
+      'make-green': col.value == 'Finalizado correctamente',
+      'make-red': col.value == 'no accedido',
+      'make-orange': col.value == 'pendiente',
+      'make-blue': col.value == 'total'
+    }">
+      {{element[col.value]}}
     </td>
   </ng-container>
-
-  <!-- amount Column -->
-  <ng-container matColumnDef="amount">
-    <th mat-header-cell *matHeaderCellDef>{{ "study.amount" | translate }}</th>
-    <td mat-cell *matCellDef="let element">      <span *ngIf="element.amount == null  && element.name != 'Pendientes'"><mat-icon>done_all</mat-icon>
-      </span>{{ element.amount }}</td>
-  </ng-container>
-
-  <!-- percentage Column -->
-  <ng-container matColumnDef="percentage">
-    <th mat-header-cell *matHeaderCellDef>
-      {{ "study.percentage" | translate }}
-    </th>
-    <td mat-cell *matCellDef="let element">
-      <span *ngIf="element.name != 'total' && element.amount != null"
-        >{{
-          (element.amount / study.total) * 100 | number: ".2-2"
-        }}%</span
-      >
-
-    </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="communicationDisplayedColumns"></tr>
   <tr
-    mat-row
-    [ngClass]="{
-      'make-green': row.name == 'Finalizado correctamente',
-      'make-red': row.name == 'no accedido',
-      'make-orange': row.name == 'pendiente'
-    }"
-    *matRowDef="let row; columns: communicationDisplayedColumns"
+    mat-header-row
+    *matHeaderRowDef="communicationDisplayedColumns"
+    style="border-style: dotted dashed solid double;"
   ></tr>
+  <tr mat-row *matRowDef="let row; columns: communicationDisplayedColumns;"></tr>
+  
 </table>
 
 <div class="flex">

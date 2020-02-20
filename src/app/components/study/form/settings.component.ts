@@ -20,7 +20,7 @@ export class SettingsComponent implements OnInit {
 
 
   settingsModeValueChanged() {
-    const settingsModeControl = this.settingsFormGroup.get("settingsMode");
+    const modeControl = this.settingsFormGroup.get("mode");
     const loopLengthControl = this.settingsFormGroup.get("loopLength");
     const executionNumberControl = this.settingsFormGroup.get(
       "executionNumber"
@@ -29,8 +29,8 @@ export class SettingsComponent implements OnInit {
     const priorityControl = this.settingsFormGroup.get("priority");
 
 
-    settingsModeControl.valueChanges.subscribe((settingsMode: string) => {
-      if (settingsMode == modeSelection.loop) {
+    modeControl.valueChanges.subscribe((mode: string) => {
+      if (mode == modeSelection.loop) {
         loopLengthControl.setValidators([Validators.required]);
         loopLengthControl.setValue(null);
         loopLengthControl.enable();
@@ -39,7 +39,7 @@ export class SettingsComponent implements OnInit {
         communicationAttemptsControl.enable();
         priorityControl.enable();
       }
-      if (settingsMode === modeSelection.single) {
+      if (mode === modeSelection.single) {
         loopLengthControl.setValue(null);
         loopLengthControl.clearValidators();
         loopLengthControl.disable();
