@@ -60,10 +60,6 @@ export class StudyService {
     return this.http.get(`${environment.apiUrl}/studies/` + id + "/communication/overview").toPromise();
   };
 
-  getPerformancesList() {
-    return this.http.get<Performance[]>(`${environment.apiUrl}/studies/performances`).toPromise();
-  };
-
   getAttributesList() {
     return this.http.get<Attribute[]>(`${environment.apiUrl}/studies/attributes`).toPromise();
   };

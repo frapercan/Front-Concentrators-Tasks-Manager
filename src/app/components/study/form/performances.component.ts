@@ -4,7 +4,7 @@ import {
 
 } from "@angular/forms";
 import {
-  StudyService
+  PerformanceService
 } from "../../../_services";
 import { SelectionModel } from "@angular/cdk/collections";
 import { MatPaginator } from "@angular/material/paginator";
@@ -28,7 +28,7 @@ export class PerformancesComponent implements OnInit {
   perfomancesSelection = PerformancesSelection;
 
   constructor(
-    private studyService: StudyService
+    private performanceService: PerformanceService
 
   ) {
   }
@@ -50,7 +50,7 @@ export class PerformancesComponent implements OnInit {
   }
 
   private loadAllPerformances() {
-    this.studyService
+    this.performanceService
       .getPerformancesList()
       .then(
         performances => (
